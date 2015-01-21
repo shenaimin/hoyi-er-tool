@@ -29,7 +29,7 @@ namespace Hoyi
 
         private void 关于HOYI设计AToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("shenaimin [Ellen] 2014-11-8 . Ellen.shen@ctauto.cn ");
+            MessageBox.Show("shenaimin [Ellen] 2014-11-8 . ellen@hoyi.org ");
         }
 
         private void btnAppInfo_Click(object sender, EventArgs e)
