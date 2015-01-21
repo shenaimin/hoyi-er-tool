@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<OPERATES>
+  <ALL_OPERATES>
+    <OPERATE Type="Add" />
+    <OPERATE Type="AddUnId"  />
+    <OPERATE Type="DeleteBy" />
+    <OPERATE Type="GetAll" />
+    <OPERATE Type="GetBy" />
+    <OPERATE Type="GetSimpleEntityBy" />
+    <OPERATE Type="GetListBy" />
+    <OPERATE Type="UpdateBy" />
+    <OPERATE Type="UpdateUnIdBy" />
+    <OPERATE Type="ExistsBy" />
+  </ALL_OPERATES>
+  <DEFAULT_OPERATES>
+    <OPERATE Type="Add" FieldIndex="0" />
+    <OPERATE Type="AddUnId" FieldIndex="0" />
+    <OPERATE Type="DeleteBy" FieldIndex="0" />
+    <OPERATE Type="DeleteBy" FieldIndex="1" />
+    <OPERATE Type="GetAll" FieldIndex="0" />
+    <OPERATE Type="GetBy" FieldIndex="0" />
+    <OPERATE Type="GetBy" FieldIndex="1" />
+    <OPERATE Type="GetBy" FieldIndex="0,1" />
+    <OPERATE Type="GetSimpleEntityBy" FieldIndex="0" />
+    <OPERATE Type="GetSimpleEntityBy" FieldIndex="1" />
+    <OPERATE Type="GetSimpleEntityBy" FieldIndex="0,1" />
+    <OPERATE Type="LikeBy" FieldIndex="0" />
+    <OPERATE Type="LikeBy" FieldIndex="1" />
+    <OPERATE Type="LikeBy" FieldIndex="0,1" />
+    <OPERATE Type="UpdateBy" FieldIndex="0" />
+    <OPERATE Type="UpdateBy" FieldIndex="1" />
+    <OPERATE Type="UpdateUnIdBy" FieldIndex="0" />
+    <OPERATE Type="UpdateUnIdBy" FieldIndex="1" />
+    <OPERATE Type="ExistsBy" FieldIndex="1" />
+    <OPERATE Type="ExistsBy" FieldIndex="0,1" />
+    <OPERATE Type="ExistsBy" FieldIndex="0" />
+  </DEFAULT_OPERATES>
+</OPERATES>

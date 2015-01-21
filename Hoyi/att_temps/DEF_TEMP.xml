@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AttributeInfo>
+    <Comment>%EntityName%编号</Comment>
+    <ColumnName>%ClassName%id</ColumnName>
+    <TypeName>bigint</TypeName>
+    <Length>30</Length>
+    <IsPK>true</IsPK>
+    <IsIdentity>true</IsIdentity>
+    <cisNull>false</cisNull>
+    <IsUnique>false</IsUnique>
+  </AttributeInfo>
+  <AttributeInfo>
+    <Comment>%EntityName%姓名</Comment>
+    <ColumnName>%ClassName%name</ColumnName>
+    <TypeName>varchar</TypeName>
+    <Length>50</Length>
+    <IsPK>false</IsPK>
+    <IsIdentity>false</IsIdentity>
+    <cisNull>false</cisNull>
+    <IsUnique>false</IsUnique>
+  </AttributeInfo>
+  <AttributeInfo>
+    <Comment>%EntityName%类型</Comment>
+    <ColumnName>%ClassName%type</ColumnName>
+    <TypeName>varchar</TypeName>
+    <Length>50</Length>
+    <IsPK>false</IsPK>
+    <IsIdentity>false</IsIdentity>
+    <cisNull>false</cisNull>
+    <IsUnique>false</IsUnique>
+  </AttributeInfo>
+  <AttributeInfo>
+    <Comment>备注</Comment>
+    <ColumnName>notes</ColumnName>
+    <TypeName>varchar</TypeName>
+    <Length>50</Length>
+    <IsPK>false</IsPK>
+    <IsIdentity>false</IsIdentity>
+    <cisNull>false</cisNull>
+    <IsUnique>false</IsUnique>
+  </AttributeInfo>
+</ArrayOfAttributeInfo>

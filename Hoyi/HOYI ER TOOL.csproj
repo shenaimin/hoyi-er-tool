@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11158F47-B0B4-4581-97F1-986035644DEC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hoyi</RootNamespace>
+    <AssemblyName>Hoyi ER TOOL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>settings.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Crainiate.ERM4">
+      <HintPath>..\..\Crainiate.ERM4.DLL</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="appConf\formConf.cs" />
+    <Compile Include="attscon\GetObjectHelper.cs" />
+    <Compile Include="attscon\ObjectFactory.cs" />
+    <Compile Include="ctrl\CheckTreeCTRL.cs" />
+    <Compile Include="ctrl\ConnCtrl.cs" />
+    <Compile Include="ctrl\CONSCTRL.cs" />
+    <Compile Include="ctrl\DEFAULT_OPERATE_READER.cs" />
+    <Compile Include="ctrl\directCtrl.cs" />
+    <Compile Include="ctrl\EntityCtrl.cs" />
+    <Compile Include="ctrl\ExCodeTreeCtrl.cs" />
+    <Compile Include="ctrl\EXPCTRL.cs" />
+    <Compile Include="ctrl\GeneralSQL.cs" />
+    <Compile Include="ctrl\ImportCTRL.cs" />
+    <Compile Include="ctrl\OperatorCtrl.cs" />
+    <Compile Include="ctrl\ProTreeCtrl.cs" />
+    <Compile Include="filetype\FileTypeRegInfo.cs" />
+    <Compile Include="filetype\FileTypeRegister.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ctrl\ClassDiagCtrl.cs" />
+    <Compile Include="forms\ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\ConfigForm.designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Customer.cs" />
+    <Compile Include="forms\FMApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMApp.Designer.cs">
+      <DependentUpon>FMApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMClass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMClass.Designer.cs">
+      <DependentUpon>FMClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMEntityEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMEntityEditor.Designer.cs">
+      <DependentUpon>FMEntityEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMExecute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMExecute.Designer.cs">
+      <DependentUpon>FMExecute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMExeCute2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMExeCute2.Designer.cs">
+      <DependentUpon>FMExeCute2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMEXPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMEXPS.Designer.cs">
+      <DependentUpon>FMEXPS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMGenSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMGenSQL.Designer.cs">
+      <DependentUpon>FMGenSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMImportFDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMImportFDB.Designer.cs">
+      <DependentUpon>FMImportFDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMModuleName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMModuleName.Designer.cs">
+      <DependentUpon>FMModuleName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FmSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FmSet.Designer.cs">
+      <DependentUpon>FmSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMTB_OUT_MOVE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMTB_OUT_MOVE.Designer.cs">
+      <DependentUpon>FMTB_OUT_MOVE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMTB_MOVE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMTB_MOVE.Designer.cs">
+      <DependentUpon>FMTB_MOVE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FMUseCase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FMUseCase.Designer.cs">
+      <DependentUpon>FMUseCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\properGridCtrl.cs" />
+    <Compile Include="model\AttributeRows.cs" />
+    <Compile Include="model\AttributeViewRow.cs" />
+    <Compile Include="model\AttrTemplateCtrl.cs" />
+    <Compile Include="model\EntityView.cs" />
+    <Compile Include="model\OperateCollection.cs" />
+    <Compile Include="model\SingleOperate.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMApp.resx">
+      <DependentUpon>FMApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMClass.resx">
+      <DependentUpon>FMClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMEntityEditor.resx">
+      <DependentUpon>FMEntityEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMExecute.resx">
+      <DependentUpon>FMExecute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMExeCute2.resx">
+      <DependentUpon>FMExeCute2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMEXPS.resx">
+      <DependentUpon>FMEXPS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMGenSQL.resx">
+      <DependentUpon>FMGenSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMImportFDB.resx">
+      <DependentUpon>FMImportFDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMModuleName.resx">
+      <DependentUpon>FMModuleName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FmSet.resx">
+      <DependentUpon>FmSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMTB_OUT_MOVE.resx">
+      <DependentUpon>FMTB_OUT_MOVE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMTB_MOVE.resx">
+      <DependentUpon>FMTB_MOVE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FMUseCase.resx">
+      <DependentUpon>FMUseCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="att_temps\DEF_TEMP.xml" />
+    <Content Include="DefaultOPERA.xml" />
+    <Content Include="img\ui-check-box-mix.png" />
+    <Content Include="img\ui-check-box-uncheck.png" />
+    <Content Include="img\ui-check-box.png" />
+    <Content Include="settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelCode.Builder.Templates\ModelCode.Builder.Templates.csproj">
+      <Project>{639f9efd-ff13-4c41-9632-cd5250fcccfa}</Project>
+      <Name>ModelCode.Builder.Templates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelCode.ModelInfo\ModelCode.ModelInfo.csproj">
+      <Project>{99209bdd-714f-40fd-a011-0b3bcd5c7082}</Project>
+      <Name>ModelCode.ModelInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelCode.Util\ModelCode.Util.csproj">
+      <Project>{d648af99-3b74-4d44-aadf-26e47b3a8669}</Project>
+      <Name>ModelCode.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <FileAssociation Include=".hoyi">
+      <Visible>False</Visible>
+      <Description>HOYI ER图、类图设计</Description>
+      <Progid>ICON_1</Progid>
+      <DefaultIcon>settings.ico</DefaultIcon>
+    </FileAssociation>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

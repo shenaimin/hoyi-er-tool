@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{639F9EFD-FF13-4C41-9632-CD5250FCCCFA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModelCode.Builder.Templates</RootNamespace>
+    <AssemblyName>ModelCode.Builder.Templates</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>http://localhost/ModelCode.Builder.Templates/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\TemplateRule.cs" />
+    <Compile Include="Analysis\TemplateURLControl.cs" />
+    <Compile Include="Config\AnaConfig.cs" />
+    <Compile Include="Field_CTR\ExCtr.cs" />
+    <Compile Include="Field_CTR\FieldCtr.cs" />
+    <Compile Include="Field_CTR\MethodExCTRL.cs" />
+    <Compile Include="Field_CTR\RELATION_METHOD_EX.cs" />
+    <Compile Include="Infos\MCTemplates.cs" />
+    <Compile Include="ORM\baseExpert.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegAnalysis\ContentAnalysis.cs" />
+    <Compile Include="SpecialTrans\CSharpTypeTrans.cs" />
+    <Compile Include="SpecialTrans\JavaTypeTrans.cs" />
+    <Compile Include="Transfer\exec\BaseExecute.cs" />
+    <Compile Include="Transfer\exec\JudgeExecute.cs" />
+    <Compile Include="Transfer\exec\URLExecute.cs" />
+    <Compile Include="Transfer\interface\IObjExecute.cs" />
+    <Compile Include="Transfer\methodEx\MethodExCtr.cs" />
+    <Compile Include="Transfer\model\ColumnExTransfer.cs" />
+    <Compile Include="Transfer\model\ExTransferFactory.cs" />
+    <Compile Include="Transfer\model\ColumnExTransferFactory.cs" />
+    <Compile Include="Transfer\model\NoteTransfer.cs" />
+    <Compile Include="Transfer\model\OperateTransfer.cs" />
+    <Compile Include="Transfer\model\TableExTransfer.cs" />
+    <Compile Include="Transfer\model\TemplateExTransfer.cs" />
+    <Compile Include="Transfer\ut\FieldExRegAna.cs" />
+    <Compile Include="Transfer\model\FieldExTransfer.cs" />
+    <Compile Include="Transfer\interface\IExTransfer.cs" />
+    <Compile Include="Transfer\interface\IExTransferFactory.cs" />
+    <Compile Include="Transfer\model\KeyExTransfer.cs" />
+    <Compile Include="Util\AnaUtil.cs" />
+    <Compile Include="Util\DbAttrUtil.cs" />
+    <Compile Include="Util\RegexUtil.cs" />
+    <Compile Include="Util\STREX.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelCode.ModelInfo\ModelCode.ModelInfo.csproj">
+      <Project>{99209BDD-714F-40FD-A011-0B3BCD5C7082}</Project>
+      <Name>ModelCode.ModelInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelCode.Util\ModelCode.Util.csproj">
+      <Project>{D648AF99-3B74-4D44-AADF-26E47B3A8669}</Project>
+      <Name>ModelCode.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft.Net.Framework.3.5.SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
