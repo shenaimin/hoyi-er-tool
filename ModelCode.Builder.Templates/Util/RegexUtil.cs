@@ -1,6 +1,6 @@
 ﻿/*
- *          Author:Sam
- *          Email:ellen@hoyi.org
+ *          Author:Ellen
+ *          Email:ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com
  *          CreateDate:2015-01-20
  *          ModifyDate:2015-01-20
  *          hoyi entities @ hoyi.org

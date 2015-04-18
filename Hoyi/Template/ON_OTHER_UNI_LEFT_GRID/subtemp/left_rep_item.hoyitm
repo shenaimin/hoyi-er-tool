@@ -1,0 +1,27 @@
+        protected void rep<%%# e.en_unikey().REFERENCED_TABLE_NAME  #%%>_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "checkfilter")
+            {
+                ViewState["FIL_ID"] = e.CommandArgument.ToString();
+                setFilterByID();
+            }
+        }
+
+        public void setFilterByID()
+        {
+            if (ViewState["FIL_ID"] == null)
+            {
+                lb_checked<%%# e.en_unikey().REFERENCED_TABLE_NAME  #%%>Name.Text = "未选择<%%# e.unienti().EntityName #%%>，这里显示所有<%%# e.unienti().EntityName #%%>";
+                lb_checked<%%# e.en_unikey().REFERENCED_TABLE_NAME  #%%>.Text = "";
+            }
+            else
+            {
+                string <%%# e.uni1field().ColumnName #%%> = ViewState["FIL_ID"].ToString();
+                tx_<%%# e.uni1field().ColumnName #%%>.Text = <%%# e.uni1field().ColumnName #%%>;
+                <%%# e.unikey_out_tb_name() #%%>Info <%%# e.unikey_out_tb_name() #%%> = <%%# e.unikey_out_tb_name() #%%>Factory.Create().GetSimpleBy<%%# e.uni1field().ColumnName.ToParscal() #%%>(<%%# e.uni1field().ColumnName #%%>);
+                lb_checked<%%# e.en_unikey().REFERENCED_TABLE_NAME  #%%>Name.Text = <%%# e.unikey_out_tb_name() #%%>.<%%# e.uni2field().ColumnName #%%>;
+                lb_checked<%%# e.en_unikey().REFERENCED_TABLE_NAME  #%%>.Text = <%%# e.unikey_out_tb_name() #%%>.ToJson();
+            }
+
+            Reload();
+        }

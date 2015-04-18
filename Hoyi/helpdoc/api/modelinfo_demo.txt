@@ -1,0 +1,72 @@
+
+
+------------------------------------------------- ModelInfo类  -----------------------------------------------------
+
+全局用modelInfo 访问
+
+    /// <summary>
+    /// 操作模型.F开头字段标识是字段名称的String值.
+    /// </summary>
+    public class IModelInfo
+    {
+        /// <summary>
+        /// F开头标识是名称.
+        /// </summary>
+        public static string F_NameSpace = "NameSpace";
+
+        public static string F_WebPageNameSpace = "WebPageNameSpace";
+
+        public static string F_Modelpath = "Modelpath";
+
+        public static string F_ModelName = "ModelName";
+
+        public static string F_Fieldlist = "Fieldlist";
+
+        public static string F_EntityName = "EntityName";
+
+        public static string F_Table = "Table";
+
+        public static string F_DbHelperName = "DbHelperName";
+
+        public static string F_VSType = "VSType";
+
+        public DBTYPE currentType = DBTYPE.UNKNOW;
+
+        /// <summary>
+        /// 顶级命名空间.
+        /// </summary>
+        public string NameSpace { get; set; }
+        /// <summary>
+        /// 页面的命名空间.
+        /// </summary>
+        public string WebPageNameSpace { get; set; }
+        /// <summary>
+        /// 实体类的命名空间.
+        /// </summary>
+        public string Modelpath { get; set; }
+        /// <summary>
+        /// 模型名称.
+        /// </summary>
+        public string ModelName { get; set; }
+        /// <summary>
+        /// 选择的字段列表.
+        /// </summary>
+        public List<ColumnInfo> Fieldlist { get; set; }
+        /// <summary>
+        /// 实体名称.
+        /// </summary>
+        public string EntityName { get; set; }
+        /// <summary>
+        /// 当前模型的表.
+        /// </summary>
+        public TableInfo Table { get; set; }
+        /// <summary>
+        /// 数据库访问类,仅生成SQL操作时需要用到.
+        /// </summary>
+        public string DbHelperName { get; set; }
+        /// <summary>
+        /// Visual Studio 版本.
+        /// </summary>
+        public string VSType { get; set; }
+    }
+------------------------------------------------- ModelInfo类  -----------------------------------------------------

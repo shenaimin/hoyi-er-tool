@@ -1,0 +1,35 @@
+<html>
+
+<head></head>
+<body>
+
+	<h1>代码生成器API</h1>
+	
+
+&nbsp;&nbsp;&nbsp;&nbsp;1. 使用方式 </br>
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	    <%%# 和 #%%> 包含函数。函数调用方法，this 或者 modelInfo 调用, </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		this 表示当前对象，modelInfo表示一个全局的对象，对象内容请见：</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<a href="api/fields_demo.txt">Fields 操作函数 请点这里</a> </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<a href="api/column_demo.txt">Column 类 请点这里</a></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<a href="api/modelinfo_demo.txt">model 类 请点这里</a></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		如:</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<%%# modelInfo.NameSpace #%%></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<%%# this.EntityName #%%></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<a href="api/fields_demo.txt"> 点击查看Column 中的使用方法</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</br></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		this 表示当前对象，modelInfo表示一个全局的对象.</br>
+		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<%%# 这个范围内可以使用this 和 modelInfo 做关键词 #%%></br></br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<%%# [Fields[inner,0,last(1)]={  <%#= this.TypeName.tojavapackclass() #%> <%#= this.ColumnName #%>	,	}] #%%></br></br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		<%%# [Fields[last(1)]={  <%#= 这里的this， #%> <%#= this.ColumnName #%>	,	}] #%%></br></br>
+		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		2. <%%#!-- 这里生成所有字段 #%%>  注释 ，注释函数内的内容不会显示出来
+&nbsp;&nbsp;&nbsp;&nbsp;	3. 示例，下面是一个生成Java类的示例文件.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	    <a href="api/java_ex.java"> 点此查看生成Java类的示例文件.</a></br>
+
+</body>
+</html>

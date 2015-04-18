@@ -55,10 +55,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data">
-      <HintPath>D:\WorkSpace_dNET\CTERP\Lib\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data.Entity">
-      <HintPath>D:\WorkSpace_dNET\CTERP\Lib\MySql.Data.Entity.dll</HintPath>
+      <HintPath>..\Lib\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">

@@ -1,0 +1,18 @@
+
+<tr>
+	<td>
+		<%%# t.unikey().REFERENCED_TABLE_NAME.toentity().getsecfield().Comment  #%%>:
+	</td>
+	<td style="background-color:white;">
+		<asp:DropDownList ID="ddl<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>" runat="server" Height="27px" Width="115px">
+		</asp:DropDownList>
+	</td>
+</tr>	
+<tr style="display:none;">
+	<td>
+		<%%# t.Comment #%%>:
+	</td>
+	<td style="background-color:white;">
+		<asp:TextBox runat="server" ID="tx_<%%# t.ColumnName #%%>"></asp:TextBox>
+	</td>
+</tr>	

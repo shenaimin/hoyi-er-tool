@@ -1,0 +1,1 @@
+this.ddl<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>.Attributes.Add("onchange", "on<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>change(this)");

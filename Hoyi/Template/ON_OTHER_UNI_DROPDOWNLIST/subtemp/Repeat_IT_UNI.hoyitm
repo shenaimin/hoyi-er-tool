@@ -1,0 +1,1 @@
+<td><%# Get<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>NameBy<%%# t.unikey().REFERENCED_TABLE_NAME.toentity().getfirfieldname()  #%%>(Eval(<%%# e.ClassName #%%>Info.F_<%%#= t.ColumnName #%%>).ToString()) %></td>

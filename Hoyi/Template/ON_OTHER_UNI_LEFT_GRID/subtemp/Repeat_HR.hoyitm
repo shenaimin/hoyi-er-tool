@@ -1,0 +1,1 @@
+<th> <asp:LinkButton runat="server" CommandArgument="<%# <%%# e.ClassName #%%>Info.F_<%%#= t.ColumnName #%%> %>" OnClick="btnOrder_Click" ><%# OrderTag("<%%# t.Comment #%%>", <%%# e.ClassName #%%>Info.F_<%%# t.ColumnName #%%>) %></asp:LinkButton></th>

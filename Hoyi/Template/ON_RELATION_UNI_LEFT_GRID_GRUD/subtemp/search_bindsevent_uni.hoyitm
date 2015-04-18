@@ -1,0 +1,9 @@
+if (ViewState["FIL_ID"] ==null)
+            {
+				this.rep1.DataSource = <%%# e.ClassName #%%>Factory.Create().LikeBy<%%# e.getsecfieldname().ToParscal() #%%>(pgd, tx_<%%# e.getsecfieldname() #%%>.Text);        
+            }
+            else
+            {
+                string <%%# e.rela_uni_out_tb_infield() #%%> = ViewState["FIL_ID"].ToString();            
+                this.rep1.DataSource = <%%# e.ClassName #%%>Extend.Create().LikeBy<%%# e.getsecfieldname().ToParscal() #%%>A<%%# e.rela_uni_out_tb_infield().ToParscal() #%%>(pgd, tx_<%%# e.getsecfieldname() #%%>.Text, <%%# e.rela_uni_out_tb_infield() #%%>);
+            }

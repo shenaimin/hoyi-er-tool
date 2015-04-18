@@ -1,0 +1,41 @@
+
+------------------------------------------------- Fields 函数内参数 使用方式  -----------------------------------------------------
+
+              x 表示循环所有值,0表示第一个，>2表示从第三个开始，<2表示从第一个到第二个,Last表示最后一个,Last2表示最后两个,First表示第一个，First2表示前两个.
+             {} 表示内容.
+         
+             aaaa <%%# [Fields[x]={<div>aac <%#= ColumnInfo.ColumnName #%></div>abcdef<div> aab <%#= ColumnInfo.ColumnName.ToParscal() #%></div> }]  #%%>abcd
+         
+             first2<%%# [Fields[first,2]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>first2
+          
+             last2<%%# [Fields[last,2]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>last2
+          
+             equal(1)<%%# [Fields[equal(1)]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>equal(1)
+           
+             equal(3)<%%# [Fields[equal(3)]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>equal(3)
+         
+             >1<%%# [Fields[>1]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>>1
+         
+             <3<%%# [Fields[<3]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%><3
+         
+             Fields[greatless, 2, 3] 表示取<2 并且大于3 的对象.
+             [greatless, 2, 4]<%%# [Fields[greatless, 2, 4]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>[greatless, 2, 4]
+         
+                 
+             [greatless, 2, last(1)] 表示取<2 并且大于长度 count - 1的值..
+             [greatless, 2, last(1)]<%%# [Fields[greatless, 2, last(1)]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>[greatless, 2, last(1)]
+         
+         
+             [inner, 2, last(1)] 表示取>2 并且 < 长度 count - 1的值..
+             [inner, 2, last(1)]<%%# [Fields[inner, 2, last(1)]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>[inner, 2, last(1)]
+         
+         
+             [inner, 2, 4] 表示取>2 并且 < 长度 4 的值..
+             [inner, 2, 4]<%%# [Fields[inner, 2, 4]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>[inner, 2, 4]
+         
+             abc<%%# [Fields[x]={<div><%#= ColumnInfo.ColumnName.ToParscal()#%></div> }]  #%%>bcd
+		
+
+------------------------------------------------- Fields 使用方式  -----------------------------------------------------
+
+

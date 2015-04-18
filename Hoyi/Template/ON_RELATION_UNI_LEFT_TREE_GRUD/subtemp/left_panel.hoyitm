@@ -1,0 +1,23 @@
+<div id="leftpanel">
+	<div style="width: 100%; height: 500px;">
+		<table id="lefttable" style="font-size:12px;">
+			<caption class="uni_caption"><%%# t.rela_uni_out_tb().EntityName  #%%></caption>
+			<tbody>
+				<asp:Repeater runat="server" ID="rep<%%# e.rela_uni_out_tb_name()  #%%>" OnItemCommand="rep<%%# t.rela_uni_out_tb().ClassName  #%%>_ItemCommand">
+					<ItemTemplate>
+						<tr>
+							<th class="specalt">
+								<asp:LinkButton runat="server" CommandName="checkfilter" CommandArgument="<%#  Eval(<%%# t.rela_uni_out_tb().ClassName  #%%>Info.F_<%%# t.rela_uni_out_tb().getfirfieldname()  #%%>) %>">
+										<%#  Eval(<%%# t.rela_uni_out_tb().ClassName  #%%>Info.F_<%%# t.rela_uni_out_tb().getsecfieldname()  #%%>) %>
+								</asp:LinkButton>
+							</th>
+						</tr>
+					</ItemTemplate>
+				</asp:Repeater>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<uc1:ctPaging runat="server" ID="ctPaging" />
+	</div>
+</div>

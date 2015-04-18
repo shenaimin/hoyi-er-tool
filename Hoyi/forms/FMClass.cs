@@ -1,6 +1,6 @@
 ﻿/*
- *          Author:Sam
- *          Email:ellen@hoyi.org
+ *          Author:Ellen
+ *          Email:ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com
  *          CreateDate:2015-01-20
  *          ModifyDate:2015-01-20
  *          hoyi entities @ hoyi.org
@@ -69,7 +69,7 @@ namespace Hoyi.forms
                 string path = loadargs[0];
                 LoadFromPath(path);
                 AppConf.LoadAndSavedPath = path;
-                this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "";
+                this.Text = "HOYI ER、类图设计        " + AppConf.LoadAndSavedPath + "   [hoyi.org][kuaifish.com 快鱼技术 快人一步]" ;
                 MessageBox.Show("加载完成.");
             }
         }
@@ -116,7 +116,9 @@ namespace Hoyi.forms
 
         private void 关于HOYI设计HToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("shenaimin [Ellen@hoyi.org] [www.hoyi.org] @2015 All rights reserved.");
+            FMAbout abs = new FMAbout();
+            abs.ShowDialog();
+            //MessageBox.Show("hoyi.org@2015 All rights reserved.   [专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com   ellen@kuaifish.com] ");
         }
 
         private void 属性视图AToolStripMenuItem_Click(object sender, EventArgs e)
@@ -151,7 +153,7 @@ namespace Hoyi.forms
                 string path = AppConf.LoadAndSavedPath;
                 XmlSerializer.SaveToXml(path, AppConf.Ins.Application, AppConf.Ins.Application.GetType(), null);
 
-                this.Text = "HOYI ER、类图设计 " + path + "      已保存.";
+                this.Text = "HOYI ER、类图设计 " + path + "      已保存.                    [hoyi.org][kuaifish.com 快鱼技术 快人一步]" ;
             }
         }
 
@@ -173,7 +175,7 @@ namespace Hoyi.forms
                 string path = dialog.FileName;
                 LoadFromPath(path);
                 AppConf.LoadAndSavedPath = path;
-                this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "";
+                this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
                 MessageBox.Show("加载完成.");
             }
             ProTreeCtrl.Ins.ReLoadTree();
@@ -350,7 +352,7 @@ namespace Hoyi.forms
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "";
+            this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "        [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
         }
 
         public void UnCheckExT(ToolStripButton tsb)

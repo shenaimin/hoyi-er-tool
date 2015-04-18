@@ -1,0 +1,36 @@
+       /// <summary>
+        /// 初始化brandinfo数据.
+        /// </summary>
+        public void BindFilter()
+        {
+            int recordCount = <%%# e.unikey_out_tb_name()  #%%>Factory.Create().GetAllCount();
+            this.ctPaging.InitParams(<%%# e.unikey_out_tb_name()  #%%>Info.F_<%%# e.uni1field().ColumnName  #%%>, "1", ViewState["FLT_SIZE"].ToString(), recordCount);
+            AddEventFilter();
+            this.ctPaging.Binds();
+
+            IPagingDataInfo pgd = new IPagingDataInfo(<%%# e.unikey_out_tb_name()  #%%>Info.F_<%%# e.uni1field().ColumnName  #%%>, "1", "1");
+            DataTable dt = <%%# e.unikey_out_tb_name()  #%%>Factory.Create().GetAll(pgd);
+            if (dt.Rows.Count > 0)
+            {
+                ViewState["FIL_ID"] = dt.Rows[0]["<%%# e.unikey_out_fieldname()  #%%>"].ToString();
+                setFilterByID();
+            }
+        }
+        /// <summary>
+        /// brandinfo 事件
+        /// </summary>
+        public void AddEventFilter()
+        {
+            this.ctPaging.BindsEvent += ctPaging_BindsEvent;
+        }
+        /// <summary>
+        /// brandinfo 加载数据
+        /// </summary>
+        /// <param name="pgd"></param>
+        void ctPaging_BindsEvent(IPagingDataInfo pgd)
+        {
+            DataTable dt = <%%# e.unikey_out_tb_name()  #%%>Factory.Create().GetAll(pgd);
+            this.rep<%%# e.unikey_out_tb_name()  #%%>.DataSource = dt;
+            this.rep<%%# e.unikey_out_tb_name()  #%%>.DataBind();
+        }
+		

@@ -1,0 +1,14 @@
+
+            if (ViewState["FIL_ID"] == null)
+            {
+				 recordCount = <%%# e.ClassName #%%>Factory.Create().LikeBy<%%# e.getsecfieldname().ToParscal() #%%>Count(tx_<%%# e.getsecfieldname() #%%>.Text);
+            }
+            else
+            {
+				string <%%# e.uni1field().ColumnName  #%%> = ViewState["FIL_ID"].ToString();
+                //recordCount = <%%# e.ClassName #%%>Factory.Create().LikeAndBy<%%# e.getsecfieldname().ToParscal() #%%>A<%%# e.uni1field().ColumnName.ToParscal()  #%%>Count(tx_<%%# e.getsecfieldname() #%%>.Text, <%%# e.uni1field().ColumnName  #%%>);
+				
+                recordCount = <%%# e.ClassName #%%>Factory.Create().GetBy<%%# e.uni1field().ColumnName.ToParscal()  #%%>Count(<%%# e.uni1field().ColumnName  #%%>);
+            }
+			
+			

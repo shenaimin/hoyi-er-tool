@@ -1,0 +1,24 @@
+
+
+------------------------------------------------- ColumnInfo类  -----------------------------------------------------
+Fields内用this直接访问
+
+
+    public class ColumnInfo
+    {
+        public ColumnInfo();
+
+        public bool cisNull { get; set; }
+        public string Colorder { get; set; }
+        public string ColumnName { get; set; }
+        public string DefaultVal { get; set; }
+        public string DeText { get; set; }
+        public bool IsIdentity { get; set; }
+        public bool IsPK { get; set; }
+        public string Length { get; set; }
+        public string Preci { get; set; }
+        public string Scale { get; set; }
+        public string TypeName { get; set; }
+    }
+------------------------------------------------- ColumnInfo类  -----------------------------------------------------	
+

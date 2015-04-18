@@ -1,0 +1,1 @@
+<th> <asp:LinkButton runat="server" CommandArgument="<%# <%%# e.ClassName #%%>Info.F_<%%#= t.ColumnName #%%> %>" OnClick="btnOrder_Click" ><%# OrderTag("<%%# t.unikey().REFERENCED_TABLE_NAME.toentity().getsecfield().Comment #%%>", <%%# e.ClassName #%%>Info.F_<%%# t.ColumnName #%%>) %></asp:LinkButton></th>

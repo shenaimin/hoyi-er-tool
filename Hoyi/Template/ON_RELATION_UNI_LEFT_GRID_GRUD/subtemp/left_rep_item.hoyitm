@@ -1,0 +1,28 @@
+        protected void rep<%%# e.rela_uni_out_tb_name()  #%%>_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "checkfilter")
+            {
+				ViewState["PG_CTRL"] = pagectrlType.Default;
+                ViewState["FIL_ID"] = e.CommandArgument.ToString();
+                setFilterByID();
+            }
+        }
+
+        public void setFilterByID()
+        {
+            if (ViewState["FIL_ID"] == null)
+            {
+                lb_checked<%%# e.rela_uni_out_tb_name()  #%%>Name.Text = "未选择<%%# e.rela_uni_out_tb().EntityName #%%>，这里显示所有<%%# e.rela_uni_out_tb().EntityName #%%>";
+                lb_checked<%%# e.rela_uni_out_tb_name()  #%%>.Text = "";
+            }
+            else
+            {
+                string <%%# e.rela_uni_out_tb().getfirfieldname() #%%> = ViewState["FIL_ID"].ToString();
+                //tx_<%%# e.rela_uni_const().Column_Name #%%>.Text = <%%# e.rela_uni_out_tb().getfirfieldname() #%%>;
+                <%%# e.rela_uni_out_tb_name() #%%>Info <%%# e.rela_uni_out_tb_name() #%%> = <%%# e.rela_uni_out_tb_name() #%%>Factory.Create().GetSimpleBy<%%# e.rela_uni_out_tb().getfirfieldname().ToParscal() #%%>(<%%# e.rela_uni_out_tb().getfirfieldname() #%%>);
+                lb_checked<%%# e.rela_uni_out_tb_name()  #%%>Name.Text = <%%# e.rela_uni_out_tb_name() #%%>.<%%# e.rela_uni_out_tb().getsecfieldname() #%%>;
+                lb_checked<%%# e.rela_uni_out_tb_name()  #%%>.Text = <%%# e.rela_uni_out_tb_name() #%%>.ToJson();
+            }
+
+            Reload();
+        }
