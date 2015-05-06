@@ -192,11 +192,11 @@ namespace ModelCode.Builder.Templates.Field_CTR
             List<EntityInfo> cols = new List<EntityInfo>();
             foreach (int i in colindexs)
             {
-                if (entity.Attributes.Count > i)
-                {
+                //if (entity.Attributes.Count > i)
+                //{
                     //cols.Add(AppConf.Ins.getByEntityInfo(entity).Entitys[i]);// 这里不是从整个系统中拿.
                     cols.Add(AppConf.Ins.getByExeEntityInfo(entity).Entitys[i]);// 这里不是从整个系统中拿.
-                }
+                //}
             }
             return cols;
         }

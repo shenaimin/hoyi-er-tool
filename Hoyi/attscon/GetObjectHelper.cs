@@ -17,6 +17,7 @@ using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using ModelCode.ModelInfo;
 using Hoyi.appConf;
+using System.Windows.Forms;
 
 namespace ModelCode.Controll
 {
@@ -232,11 +233,18 @@ namespace ModelCode.Controll
 
                                 string fdd = dr["Type"].ToString();
 
-                                string lll = fdd.Split('(')[1];
-                                if (lll.Contains(','))
+                                try
                                 {
-                                    column.Preci = lll.TrimEnd(')').Split(',')[0];
-                                    column.Scale = lll.TrimEnd(')').Split(',')[1];
+                                    string lll = fdd.Split('(')[1];
+                                    if (lll.Contains(','))
+                                    {
+                                        column.Preci = lll.TrimEnd(')').Split(',')[0];
+                                        column.Scale = lll.TrimEnd(')').Split(',')[1];
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(tableID + ":" + ex.Message);
                                 }
 
                                 columns.Add(column);
