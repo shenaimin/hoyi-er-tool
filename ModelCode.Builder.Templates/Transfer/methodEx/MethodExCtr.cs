@@ -305,6 +305,8 @@ namespace ModelCode.Builder.Templates.Transfer.methodEx
                     return (((EntityInfo)obj).Attributes.Count + 3).ToString();
                 case "dbattr":
                     return DbAttrUtil.GOTColumnDBAttr(obj);
+                case "dbjavaattr":
+                    return DbAttrUtil.GOTColumnJAVADBAttr(obj);
                 case "and":
                     if (obj is IOperater)
                     {
