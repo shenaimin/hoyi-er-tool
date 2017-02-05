@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMEntityEditor));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cmbsysfield = new System.Windows.Forms.ComboBox();
             this.txNotes = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.chkNeedFPYTable = new System.Windows.Forms.CheckBox();
@@ -101,6 +102,10 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cmbchecktemplate = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -140,6 +145,11 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label18);
+            this.splitContainer1.Panel1.Controls.Add(this.label17);
+            this.splitContainer1.Panel1.Controls.Add(this.label16);
+            this.splitContainer1.Panel1.Controls.Add(this.cmbchecktemplate);
+            this.splitContainer1.Panel1.Controls.Add(this.cmbsysfield);
             this.splitContainer1.Panel1.Controls.Add(this.txNotes);
             this.splitContainer1.Panel1.Controls.Add(this.label15);
             this.splitContainer1.Panel1.Controls.Add(this.chkNeedFPYTable);
@@ -157,6 +167,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(1218, 641);
             this.splitContainer1.SplitterDistance = 65;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // cmbsysfield
+            // 
+            this.cmbsysfield.FormattingEnabled = true;
+            this.cmbsysfield.Location = new System.Drawing.Point(1032, 3);
+            this.cmbsysfield.Name = "cmbsysfield";
+            this.cmbsysfield.Size = new System.Drawing.Size(160, 20);
+            this.cmbsysfield.TabIndex = 22;
+            this.cmbsysfield.TextUpdate += new System.EventHandler(this.cmbsysfield_TextUpdate);
+            this.cmbsysfield.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbsysfield_KeyPress);
             // 
             // txNotes
             // 
@@ -929,6 +949,43 @@
             this.tabPage8.Text = "Rule/Constaint";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // cmbchecktemplate
+            // 
+            this.cmbchecktemplate.FormattingEnabled = true;
+            this.cmbchecktemplate.Location = new System.Drawing.Point(802, 4);
+            this.cmbchecktemplate.Name = "cmbchecktemplate";
+            this.cmbchecktemplate.Size = new System.Drawing.Size(160, 20);
+            this.cmbchecktemplate.TabIndex = 23;
+            this.cmbchecktemplate.TextUpdate += new System.EventHandler(this.cmbchecktemplate_TextUpdate);
+            this.cmbchecktemplate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbchecktemplate_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(741, 6);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(59, 12);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Template:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(968, 6);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 12);
+            this.label17.TabIndex = 24;
+            this.label17.Text = "Template:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(968, 6);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(59, 12);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "SysField:";
+            // 
             // FMEntityEditor
             // 
             this.AcceptButton = this.btnSave;
@@ -1052,6 +1109,10 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txNotes;
-
+        private System.Windows.Forms.ComboBox cmbsysfield;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cmbchecktemplate;
     }
 }

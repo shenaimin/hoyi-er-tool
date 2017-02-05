@@ -40,6 +40,11 @@ namespace Hoyi.forms
 
         public EntityInfo entity;
 
+        /// <summary>
+        /// 所有的模版
+        /// </summary>
+        public List<String> alltemplates = new List<string>();
+
         private void FMEntityEditor_Load(object sender, EventArgs e)
         {
             txEntityName.Focus();
@@ -47,6 +52,7 @@ namespace Hoyi.forms
             foreach (FileInfo dd in dir.GetFiles())
             {
                 cmbTemplate.Items.Add(dd.Name);
+                alltemplates.Add(dd.Name);
             }
             if (dir.GetFiles().Length > 0)
             {
@@ -355,8 +361,15 @@ namespace Hoyi.forms
             EntityInfo relation = new EntityInfo();
 
             ModuleInfo module = AppConf.Ins.getByEntityInfo(entity1);
+            string ClassName = "";
+            if (module.Prefix != null && module.Prefix != "")
+            {
+                ClassName = module.Prefix + "r_" + entity1.ClassName.Replace(module.Prefix, "") + "_" + entity2.ClassName.Replace(module.Prefix, "");
+            }
+            else {
 
-            string ClassName = module.Prefix + "r_" + entity1.ClassName.Replace(module.Prefix, "") + "_" + entity2.ClassName.Replace(module.Prefix, "");
+                ClassName = "r_" + entity1.ClassName + "_" + entity2.ClassName;
+            }
 
             relation.EntityName = entity.EntityName + " " + entity2.EntityName + " 关联表";
             relation.ClassName = ClassName;
@@ -427,6 +440,97 @@ namespace Hoyi.forms
             if (entity != null)
             {
                 entity.Notes = txNotes.Text;
+            }
+        }
+
+        public List<AttributeInfo> checkattrs = new List<AttributeInfo>();
+
+        private void cmbsysfield_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                try
+                {
+                    List<AttributeInfo> attrs = new List<AttributeInfo>();
+                    attrs.Add(checkattrs[cmbsysfield.SelectedIndex]);
+                    entity.Attributes.AddRange(attrs);
+                    this.BindAttributes();
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        private void cmbsysfield_TextUpdate(object sender, EventArgs e)
+        {
+            cmbsysfield.DroppedDown = true;
+            cmbsysfield.Items.Clear();
+            checkattrs.Clear();
+
+
+            foreach (ModuleInfo item in AppConf.Ins.Application.Modules)
+            {
+                foreach (EntityInfo ents in item.Entitys)
+                {
+                    foreach (AttributeInfo attrs in ents.Attributes)
+                    {
+                        if (attrs.ColumnName.Contains(cmbsysfield.Text) || attrs.Comment.Contains(cmbsysfield.Text))
+                        {
+                            checkattrs.Add(attrs);
+                        }
+                    }
+                }
+            }
+
+            foreach (AttributeInfo item in checkattrs)
+            {
+                cmbsysfield.Items.Add(item.Comment + "(" + item.ColumnName + ")");
+            }
+
+            cmbsysfield.SelectionStart = cmbsysfield.Text.Length;
+        }
+        /// <summary>
+        /// 检索出来的templatename.
+        /// </summary>
+        public List<String> checkedtempalte = new List<string>();
+
+        private void cmbchecktemplate_TextUpdate(object sender, EventArgs e)
+        {
+            cmbchecktemplate.DroppedDown = true;
+            cmbchecktemplate.Items.Clear();
+            checkedtempalte.Clear();
+
+
+            foreach (String item in alltemplates)
+            {
+                if (item.Contains(cmbchecktemplate.Text))
+                {
+                    checkedtempalte.Add(item);
+                }
+            }
+            foreach (String item in checkedtempalte)
+            {
+                cmbchecktemplate.Items.Add(item);
+            }
+
+            cmbchecktemplate.SelectionStart = cmbchecktemplate.Text.Length;
+        }
+
+        private void cmbchecktemplate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                try
+                {
+                    List<AttributeInfo> attrs = new List<AttributeInfo>();
+                    attrs =   AttrTemplateCtrl.Cr().GetTemplate(entity, cmbchecktemplate.SelectedItem.ToString());
+                    entity.Attributes.AddRange(attrs);
+                    this.BindAttributes();
+                }
+                catch (Exception)
+                {
+                }
             }
         }
     }

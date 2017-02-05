@@ -40,5 +40,6 @@ namespace Hoyi.model
             }
             return attrs;
         }
+
     }
 }
