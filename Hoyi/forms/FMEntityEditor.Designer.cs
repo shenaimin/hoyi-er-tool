@@ -165,13 +165,13 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Size = new System.Drawing.Size(1218, 641);
-            this.splitContainer1.SplitterDistance = 65;
+            this.splitContainer1.SplitterDistance = 57;
             this.splitContainer1.TabIndex = 0;
             // 
             // cmbsysfield
             // 
             this.cmbsysfield.FormattingEnabled = true;
-            this.cmbsysfield.Location = new System.Drawing.Point(1032, 3);
+            this.cmbsysfield.Location = new System.Drawing.Point(591, 4);
             this.cmbsysfield.Name = "cmbsysfield";
             this.cmbsysfield.Size = new System.Drawing.Size(160, 20);
             this.cmbsysfield.TabIndex = 22;
@@ -199,12 +199,13 @@
             // chkNeedFPYTable
             // 
             this.chkNeedFPYTable.AutoSize = true;
-            this.chkNeedFPYTable.Location = new System.Drawing.Point(630, 6);
+            this.chkNeedFPYTable.Location = new System.Drawing.Point(1146, 5);
             this.chkNeedFPYTable.Name = "chkNeedFPYTable";
             this.chkNeedFPYTable.Size = new System.Drawing.Size(108, 16);
             this.chkNeedFPYTable.TabIndex = 18;
             this.chkNeedFPYTable.Text = "Need FPY Table";
             this.chkNeedFPYTable.UseVisualStyleBackColor = true;
+            this.chkNeedFPYTable.Visible = false;
             this.chkNeedFPYTable.CheckedChanged += new System.EventHandler(this.chkNeedFPYTable_CheckedChanged);
             // 
             // cmbMySQLDataType
@@ -218,14 +219,14 @@
             // cmbTemplate
             // 
             this.cmbTemplate.FormattingEnabled = true;
-            this.cmbTemplate.Location = new System.Drawing.Point(300, 4);
+            this.cmbTemplate.Location = new System.Drawing.Point(820, 4);
             this.cmbTemplate.Name = "cmbTemplate";
             this.cmbTemplate.Size = new System.Drawing.Size(160, 20);
             this.cmbTemplate.TabIndex = 15;
             // 
             // btnAddModelAttrs
             // 
-            this.btnAddModelAttrs.Location = new System.Drawing.Point(466, 2);
+            this.btnAddModelAttrs.Location = new System.Drawing.Point(986, 1);
             this.btnAddModelAttrs.Name = "btnAddModelAttrs";
             this.btnAddModelAttrs.Size = new System.Drawing.Size(154, 23);
             this.btnAddModelAttrs.TabIndex = 14;
@@ -281,8 +282,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(1218, 572);
-            this.splitContainer3.SplitterDistance = 350;
+            this.splitContainer3.Size = new System.Drawing.Size(1218, 580);
+            this.splitContainer3.SplitterDistance = 354;
             this.splitContainer3.TabIndex = 0;
             // 
             // tabControl1
@@ -294,7 +295,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1218, 350);
+            this.tabControl1.Size = new System.Drawing.Size(1218, 354);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
@@ -303,7 +304,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1210, 324);
+            this.tabPage1.Size = new System.Drawing.Size(1210, 328);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -330,8 +331,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnDeleteAttr);
             this.splitContainer2.Panel2.Controls.Add(this.btnEditAttr);
             this.splitContainer2.Panel2.Controls.Add(this.btnAddAttr);
-            this.splitContainer2.Size = new System.Drawing.Size(1204, 318);
-            this.splitContainer2.SplitterDistance = 283;
+            this.splitContainer2.Size = new System.Drawing.Size(1204, 322);
+            this.splitContainer2.SplitterDistance = 286;
             this.splitContainer2.TabIndex = 0;
             // 
             // gridAttributes
@@ -341,7 +342,7 @@
             this.gridAttributes.Location = new System.Drawing.Point(0, 0);
             this.gridAttributes.Name = "gridAttributes";
             this.gridAttributes.RowTemplate.Height = 23;
-            this.gridAttributes.Size = new System.Drawing.Size(1204, 283);
+            this.gridAttributes.Size = new System.Drawing.Size(1204, 286);
             this.gridAttributes.TabIndex = 0;
             this.gridAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAttributes_CellClick);
             this.gridAttributes.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridAttributes_RowHeaderMouseDoubleClick);
@@ -694,8 +695,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.tabControl2);
-            this.splitContainer4.Size = new System.Drawing.Size(1218, 218);
-            this.splitContainer4.SplitterDistance = 65;
+            this.splitContainer4.Size = new System.Drawing.Size(1218, 222);
+            this.splitContainer4.SplitterDistance = 66;
             this.splitContainer4.TabIndex = 0;
             // 
             // chkPrimaryKey
@@ -749,7 +750,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1218, 149);
+            this.tabControl2.Size = new System.Drawing.Size(1218, 152);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPage5
@@ -770,7 +771,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1210, 123);
+            this.tabPage5.Size = new System.Drawing.Size(1210, 126);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "DataType";
             // 
@@ -952,7 +953,7 @@
             // cmbchecktemplate
             // 
             this.cmbchecktemplate.FormattingEnabled = true;
-            this.cmbchecktemplate.Location = new System.Drawing.Point(802, 4);
+            this.cmbchecktemplate.Location = new System.Drawing.Point(361, 4);
             this.cmbchecktemplate.Name = "cmbchecktemplate";
             this.cmbchecktemplate.Size = new System.Drawing.Size(160, 20);
             this.cmbchecktemplate.TabIndex = 23;
@@ -962,7 +963,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(741, 6);
+            this.label16.Location = new System.Drawing.Point(300, 8);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(59, 12);
             this.label16.TabIndex = 24;
@@ -971,7 +972,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(968, 6);
+            this.label17.Location = new System.Drawing.Point(758, 8);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(59, 12);
             this.label17.TabIndex = 24;
@@ -980,7 +981,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(968, 6);
+            this.label18.Location = new System.Drawing.Point(528, 8);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(59, 12);
             this.label18.TabIndex = 24;
