@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMEntityEditor));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cmbchecktemplate = new System.Windows.Forms.ComboBox();
             this.cmbsysfield = new System.Windows.Forms.ComboBox();
             this.txNotes = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -102,10 +106,8 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cmbchecktemplate = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -167,6 +169,43 @@
             this.splitContainer1.Size = new System.Drawing.Size(1218, 641);
             this.splitContainer1.SplitterDistance = 57;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(528, 8);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(59, 12);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "SysField:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(758, 8);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 12);
+            this.label17.TabIndex = 24;
+            this.label17.Text = "Template:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(300, 8);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(59, 12);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Template:";
+            // 
+            // cmbchecktemplate
+            // 
+            this.cmbchecktemplate.FormattingEnabled = true;
+            this.cmbchecktemplate.Location = new System.Drawing.Point(361, 4);
+            this.cmbchecktemplate.Name = "cmbchecktemplate";
+            this.cmbchecktemplate.Size = new System.Drawing.Size(160, 20);
+            this.cmbchecktemplate.TabIndex = 23;
+            this.cmbchecktemplate.TextUpdate += new System.EventHandler(this.cmbchecktemplate_TextUpdate);
+            this.cmbchecktemplate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbchecktemplate_KeyPress);
             // 
             // cmbsysfield
             // 
@@ -322,6 +361,8 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.button2);
+            this.splitContainer2.Panel2.Controls.Add(this.button1);
             this.splitContainer2.Panel2.Controls.Add(this.btnShow);
             this.splitContainer2.Panel2.Controls.Add(this.btnSave);
             this.splitContainer2.Panel2.Controls.Add(this.btnCancelAttr);
@@ -342,6 +383,7 @@
             this.gridAttributes.Location = new System.Drawing.Point(0, 0);
             this.gridAttributes.Name = "gridAttributes";
             this.gridAttributes.RowTemplate.Height = 23;
+            this.gridAttributes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridAttributes.Size = new System.Drawing.Size(1204, 286);
             this.gridAttributes.TabIndex = 0;
             this.gridAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAttributes_CellClick);
@@ -352,7 +394,7 @@
             // 
             this.btnShow.Image = ((System.Drawing.Image)(resources.GetObject("btnShow.Image")));
             this.btnShow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnShow.Location = new System.Drawing.Point(463, 5);
+            this.btnShow.Location = new System.Drawing.Point(668, 4);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(77, 23);
             this.btnShow.TabIndex = 11;
@@ -367,7 +409,7 @@
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(354, 5);
+            this.btnSave.Location = new System.Drawing.Point(559, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(103, 23);
             this.btnSave.TabIndex = 10;
@@ -380,7 +422,7 @@
             // 
             this.btnCancelAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelAttr.Image")));
             this.btnCancelAttr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelAttr.Location = new System.Drawing.Point(623, 6);
+            this.btnCancelAttr.Location = new System.Drawing.Point(829, 4);
             this.btnCancelAttr.Name = "btnCancelAttr";
             this.btnCancelAttr.Size = new System.Drawing.Size(96, 23);
             this.btnCancelAttr.TabIndex = 10;
@@ -393,7 +435,7 @@
             this.btnOKAttr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnOKAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnOKAttr.Image")));
             this.btnOKAttr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOKAttr.Location = new System.Drawing.Point(725, 6);
+            this.btnOKAttr.Location = new System.Drawing.Point(931, 4);
             this.btnOKAttr.Name = "btnOKAttr";
             this.btnOKAttr.Size = new System.Drawing.Size(81, 23);
             this.btnOKAttr.TabIndex = 9;
@@ -405,7 +447,7 @@
             // 
             this.btnDownAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnDownAttr.Image")));
             this.btnDownAttr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDownAttr.Location = new System.Drawing.Point(182, 5);
+            this.btnDownAttr.Location = new System.Drawing.Point(283, 4);
             this.btnDownAttr.Name = "btnDownAttr";
             this.btnDownAttr.Size = new System.Drawing.Size(75, 23);
             this.btnDownAttr.TabIndex = 8;
@@ -418,7 +460,7 @@
             // 
             this.btnUpAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnUpAttr.Image")));
             this.btnUpAttr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpAttr.Location = new System.Drawing.Point(98, 5);
+            this.btnUpAttr.Location = new System.Drawing.Point(199, 4);
             this.btnUpAttr.Name = "btnUpAttr";
             this.btnUpAttr.Size = new System.Drawing.Size(75, 23);
             this.btnUpAttr.TabIndex = 7;
@@ -431,7 +473,7 @@
             // 
             this.btnDeleteAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteAttr.Image")));
             this.btnDeleteAttr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteAttr.Location = new System.Drawing.Point(4, 5);
+            this.btnDeleteAttr.Location = new System.Drawing.Point(4, 4);
             this.btnDeleteAttr.Name = "btnDeleteAttr";
             this.btnDeleteAttr.Size = new System.Drawing.Size(86, 23);
             this.btnDeleteAttr.TabIndex = 6;
@@ -444,7 +486,7 @@
             // 
             this.btnEditAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnEditAttr.Image")));
             this.btnEditAttr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditAttr.Location = new System.Drawing.Point(812, 5);
+            this.btnEditAttr.Location = new System.Drawing.Point(1018, 4);
             this.btnEditAttr.Name = "btnEditAttr";
             this.btnEditAttr.Size = new System.Drawing.Size(75, 23);
             this.btnEditAttr.TabIndex = 5;
@@ -457,7 +499,7 @@
             // 
             this.btnAddAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAttr.Image")));
             this.btnAddAttr.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddAttr.Location = new System.Drawing.Point(263, 6);
+            this.btnAddAttr.Location = new System.Drawing.Point(468, 4);
             this.btnAddAttr.Name = "btnAddAttr";
             this.btnAddAttr.Size = new System.Drawing.Size(85, 23);
             this.btnAddAttr.TabIndex = 0;
@@ -471,7 +513,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1210, 324);
+            this.tabPage2.Size = new System.Drawing.Size(1210, 328);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Keys";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -481,7 +523,7 @@
             this.tabPage3.Controls.Add(this.splitContainer5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1210, 324);
+            this.tabPage3.Size = new System.Drawing.Size(1210, 328);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "RelationShips";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -513,7 +555,7 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.datagridContraint);
-            this.splitContainer5.Size = new System.Drawing.Size(1210, 324);
+            this.splitContainer5.Size = new System.Drawing.Size(1210, 328);
             this.splitContainer5.SplitterDistance = 48;
             this.splitContainer5.TabIndex = 0;
             // 
@@ -674,7 +716,7 @@
             this.datagridContraint.Location = new System.Drawing.Point(0, 0);
             this.datagridContraint.Name = "datagridContraint";
             this.datagridContraint.RowTemplate.Height = 23;
-            this.datagridContraint.Size = new System.Drawing.Size(1210, 272);
+            this.datagridContraint.Size = new System.Drawing.Size(1210, 276);
             this.datagridContraint.TabIndex = 0;
             // 
             // splitContainer4
@@ -936,7 +978,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1210, 123);
+            this.tabPage7.Size = new System.Drawing.Size(1210, 126);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "Default";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -945,47 +987,36 @@
             // 
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1210, 123);
+            this.tabPage8.Size = new System.Drawing.Size(1210, 126);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "Rule/Constaint";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // cmbchecktemplate
+            // button1
             // 
-            this.cmbchecktemplate.FormattingEnabled = true;
-            this.cmbchecktemplate.Location = new System.Drawing.Point(361, 4);
-            this.cmbchecktemplate.Name = "cmbchecktemplate";
-            this.cmbchecktemplate.Size = new System.Drawing.Size(160, 20);
-            this.cmbchecktemplate.TabIndex = 23;
-            this.cmbchecktemplate.TextUpdate += new System.EventHandler(this.cmbchecktemplate_TextUpdate);
-            this.cmbchecktemplate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbchecktemplate_KeyPress);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(368, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "BOTTOM(&N)";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // label16
+            // button2
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(300, 8);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 12);
-            this.label16.TabIndex = 24;
-            this.label16.Text = "Template:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(758, 8);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 12);
-            this.label17.TabIndex = 24;
-            this.label17.Text = "Template:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(528, 8);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 12);
-            this.label18.TabIndex = 24;
-            this.label18.Text = "SysField:";
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(115, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "TOP(&U)";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FMEntityEditor
             // 
@@ -1115,5 +1146,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cmbchecktemplate;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }

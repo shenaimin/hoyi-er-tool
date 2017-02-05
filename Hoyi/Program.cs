@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,9 +36,48 @@ namespace Hoyi
 
             //RegTXT();
             REGISTER_REGTABLE();
+
+            RunThreadStartPage();
             Application.Run(new FMClass(args));
         }
 
+        public static void RunThreadStartPage() {
+
+            startpageThread = new Thread(RunStartPage);
+            startpageThread.Start();
+        }
+
+        public static void RunStartPage() {
+            StartPages.Ins.ShowDialog();
+        }
+
+        public static void CloseStartPg()
+        {
+            StartPages.Ins.Close();
+        }
+
+        public static Thread startpageThread;
+
+        /// <summary>
+        /// 加载页面的启动.
+        /// </summary>
+        public static Thread loadingpageThread;
+
+        public static void RunLoadingPage()
+        {
+            loadingpageThread = new Thread(RunLoadPage);
+            loadingpageThread.Start();
+        }
+
+        public static void RunLoadPage()
+        {
+            LoadingPage.Ins.ShowDialog();
+        }
+
+        public static void CloseLoadingPage()
+        {
+            LoadingPage.Ins.Close();
+        }
 
         /// <summary>
         /// 注册注册表.

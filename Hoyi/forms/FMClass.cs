@@ -21,6 +21,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,12 +37,15 @@ namespace Hoyi.forms
         }
         public FMClass()
         {
+
             InitializeComponent();
         }
 
+        delegate void CloseStartPagedelegate();
 
         private void FMClass_Load(object sender, EventArgs e)
         {
+            this.Hide();
             AttTempConf.Ins.InitTemps();
             ProTreeCtrl.Ins.ProTree = this.treeProject;
             formConf.CurrentModel = this.model1;
@@ -71,9 +75,16 @@ namespace Hoyi.forms
                 LoadFromPath(path);
                 AppConf.LoadAndSavedPath = path;
                 this.Text = "HOYI ER、类图设计        " + AppConf.LoadAndSavedPath + "   [hoyi.org][kuaifish.com 快鱼技术 快人一步]" ;
-                MessageBox.Show("加载完成.");
+                //MessageBox.Show("加载完成.");
             }
+
+            this.WindowState = FormWindowState.Maximized;
+            CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseStartPg);
+            this.Invoke(closepg);
+            this.Show();
         }
+
+        
 
         void model1_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -173,13 +184,19 @@ namespace Hoyi.forms
             dialog.Filter = "HOYI Document(*.hoyi)|*.hoyi|XML Document(*.xml)|*.xml|All Files|*.*";
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                Program.RunLoadingPage();
+
                 string path = dialog.FileName;
                 LoadFromPath(path);
                 AppConf.LoadAndSavedPath = path;
                 this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
-                MessageBox.Show("加载完成.");
+                //Thread.Sleep(20000);
+                //MessageBox.Show("加载完成.");
+                ProTreeCtrl.Ins.ReLoadTree();
+
+                CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
+                this.Invoke(closepg);
             }
-            ProTreeCtrl.Ins.ReLoadTree();
         }
 
         private void 添加模块ToolStripMenuItem_Click(object sender, EventArgs e)

@@ -278,44 +278,204 @@ namespace Hoyi.forms
             entity.NeedfpyTable = chkNeedFPYTable.Checked;
         }
 
+        public void DownAttr(int idx)
+        {
+            int index = idx;
+            //int index = checkedRowIndex;
+            entity.Attributes.kk交换(index, index + 1);
+            BindAttributes();
+            //gridAttributes.Rows[0].Selected = false;
+            //gridAttributes.Rows[index == gridAttributes.Rows.Count - 1 ? index : index + 1].Selected = true;
+            checkedRowIndex = index == gridAttributes.Rows.Count - 1 ? index : index + 1;
+        }
+
+        List<int> downidx = new List<int>();
+
         private void btnDownAttr_Click(object sender, EventArgs e)
         {
-            //if (gridAttributes.SelectedRows.Count > 0)
-            //{
-            //    int index = gridAttributes.SelectedRows[0].Index;
-            //    //entity.Attributes.
-            //    entity.Attributes.kk交换(index, index + 1);
-            //    BindAttributes();
-            //}
-            if (checkedRowIndex < gridAttributes.Rows.Count)
+            if (gridAttributes.SelectedRows.Count > 0)
             {
-                int index = checkedRowIndex;
-                entity.Attributes.kk交换(index, index + 1);
+                downidx.Clear();
+                foreach (DataGridViewRow item in gridAttributes.SelectedRows)
+                {
+                    downidx.Add(item.Index);
+                    item.Selected = false;
+                }
+                downidx = downidx.OrderByDescending(s => s).ToList();
+                foreach (int item in downidx)
+                {
+                    entity.Attributes.kk移动(item, item + 1);
+                    //entity.Attributes.kk交换(item, item + 1);
+                }
                 BindAttributes();
-                gridAttributes.Rows[0].Selected = false;
-                gridAttributes.Rows[index == gridAttributes.Rows.Count - 1 ? index : index  + 1].Selected = true;
-                checkedRowIndex = index == gridAttributes.Rows.Count - 1 ? index : index + 1;
+
+                foreach (DataGridViewRow item in gridAttributes.Rows)
+                {
+                    item.Selected = false;
+                }
+                
+                foreach (int item in downidx)
+                {
+                    try
+                    {
+                        gridAttributes.Rows[item + 1].Selected = true;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
             }
+            else if (checkedRowIndex < gridAttributes.Rows.Count)
+            {
+                DownAttr(checkedRowIndex);
+                gridAttributes.Rows[0].Selected = false;
+                gridAttributes.Rows[checkedRowIndex == gridAttributes.Rows.Count - 1 ? checkedRowIndex : checkedRowIndex + 1].Selected = true;
+            }
+        }
+
+        public void UpAttr(int idx)
+        {
+            //gridAttributes.Rows[0].Selected = false;
+            //gridAttributes.Rows[index == gridAttributes.Rows.Count - 1 ? index : index + 1].Selected = true;
+
+            int index = idx;
+            entity.Attributes.kk交换(index, index - 1);
+            BindAttributes();
+            //gridAttributes.Rows[0].Selected = false;
+            //gridAttributes.Rows[index == 0 ? index : index - 1].Selected = true;
+            checkedRowIndex = index == 0 ? index : index - 1;
         }
 
         private void btnUpAttr_Click(object sender, EventArgs e)
         {
-            if (checkedRowIndex >= 0)
+            if (gridAttributes.SelectedRows.Count > 0)
             {
+                downidx.Clear();
+                foreach (DataGridViewRow item in gridAttributes.SelectedRows)
+                {
+                    downidx.Add(item.Index);
+                    item.Selected = false;
+                }
+                downidx = downidx.OrderBy(s => s).ToList();
+                for (int i = 0; i < downidx.Count; i++)
+                //for (int i = (downidx.Count -1); i >=0; i--)
+                //foreach (int item in downidx)
+                {
+                    var item = downidx[i];
+                    entity.Attributes.kk移动(item, item - 1);
+                    //entity.Attributes.kk交换(item, item - 1);
+                }
+
+                BindAttributes();
+
+
+                foreach (DataGridViewRow item in gridAttributes.Rows)
+                {
+                    item.Selected = false;
+                }
+               
+                foreach (int item in downidx)
+                {
+                    try
+                    {
+                        gridAttributes.Rows[item - 1].Selected = true;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                
+            }
+            else if (checkedRowIndex >= 0)
+            {
+                UpAttr(checkedRowIndex);
+                gridAttributes.Rows[0].Selected = false;
+                gridAttributes.Rows[checkedRowIndex == 0 ? checkedRowIndex : checkedRowIndex - 1].Selected = true;
+                //checkedRowIndex = index == 0 ? index : index - 1;
+            }
+        }
+        /// <summary>
+        /// 置顶
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (gridAttributes.SelectedRows.Count > 0)
+            {
+                downidx.Clear();
+                foreach (DataGridViewRow item in gridAttributes.SelectedRows)
+                {
+                    downidx.Add(item.Index);
+                    item.Selected = false;
+                }
+
+                downidx = downidx.OrderBy(s => s).ToList();
+                for (int i = 0; i < downidx.Count; i++)
+                    //for (int i = (downidx.Count - 1); i >= 0; i--)
+                {
+                    entity.Attributes.kk移动(downidx[i], i);
+                }
+                BindAttributes();
+                for (int i = 0; i < downidx.Count; i++)
+                {
+                    gridAttributes.Rows[i].Selected = true;
+                }
+            }
+            else if (checkedRowIndex >= 0){
                 int index = checkedRowIndex;
-                entity.Attributes.kk交换(index, index - 1);
+                entity.Attributes.kk顶部(index);
                 BindAttributes();
                 gridAttributes.Rows[0].Selected = false;
-                gridAttributes.Rows[index == 0 ? index : index - 1].Selected = true;
-                checkedRowIndex = index == 0 ? index : index - 1;
+                gridAttributes.Rows[0].Selected = true;
+                //checkedRowIndex = index == 0 ? index : index - 1;
+                checkedRowIndex = 0;
             }
-            //if (gridAttributes.SelectedRows.Count > 0)
-            //{
-            //    int index = gridAttributes.SelectedRows[0].Index;
-            //    //entity.Attributes.
-            //    entity.Attributes.kk交换(index, index - 1);
-            //    BindAttributes();
-            //}
+        }
+        /// <summary>
+        /// 置底
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (gridAttributes.SelectedRows.Count > 0)
+            {
+                downidx.Clear();
+                foreach (DataGridViewRow item in gridAttributes.SelectedRows)
+                {
+                    downidx.Add(item.Index);
+                    item.Selected = false;
+                }
+
+                downidx = downidx.OrderByDescending(s => s).ToList();
+                for (int i = 0; i < downidx.Count; i++)
+                    //for (int i = (downidx.Count - 1); i >= 0; i--)
+                {
+                    entity.Attributes.kk移动(downidx[i], gridAttributes.Rows.Count - 1 - i);
+                }
+
+                BindAttributes();
+                foreach (DataGridViewRow item in gridAttributes.Rows)
+                {
+                    item.Selected = false;
+                }
+                for (int i = gridAttributes.Rows.Count - 1; i > gridAttributes.Rows.Count - 1 - downidx.Count; i--)
+                {
+                    gridAttributes.Rows[i].Selected = true;
+                }
+            }else if (checkedRowIndex < gridAttributes.Rows.Count){
+                int index = checkedRowIndex;
+                entity.Attributes.kk底部(index);
+                BindAttributes();
+                gridAttributes.Rows[0].Selected = false;
+                gridAttributes.Rows[gridAttributes.Rows.Count - 1].Selected = true;
+                //checkedRowIndex = index == gridAttributes.Rows.Count - 1 ? index : index + 1;
+
+                checkedRowIndex = gridAttributes.Rows.Count - 1; ;
+            }
         }
 
         private void btnCopyAndUni_Click(object sender, EventArgs e)

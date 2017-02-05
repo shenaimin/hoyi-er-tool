@@ -65,9 +65,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 12);
+            this.label1.Size = new System.Drawing.Size(131, 12);
             this.label1.TabIndex = 2;
-            this.label1.Text = "HOYI ER TOOL  V2.10";
+            this.label1.Text = "HOYI ER TOOL  V2.10.1";
             // 
             // label2
             // 
@@ -100,7 +100,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(164, 34);
+            this.label5.Location = new System.Drawing.Point(173, 34);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(125, 12);
             this.label5.TabIndex = 6;

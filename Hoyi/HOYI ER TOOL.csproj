@@ -188,7 +188,19 @@
     <Compile Include="forms\FMUseCase.Designer.cs">
       <DependentUpon>FMUseCase.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\LoadingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\LoadingPage.Designer.cs">
+      <DependentUpon>LoadingPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\properGridCtrl.cs" />
+    <Compile Include="forms\StartPages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\StartPages.Designer.cs">
+      <DependentUpon>StartPages.cs</DependentUpon>
+    </Compile>
     <Compile Include="model\AttributeRows.cs" />
     <Compile Include="model\AttributeViewRow.cs" />
     <Compile Include="model\AttrTemplateCtrl.cs" />
@@ -245,20 +257,26 @@
     <EmbeddedResource Include="forms\FMUseCase.resx">
       <DependentUpon>FMUseCase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\LoadingPage.resx">
+      <DependentUpon>LoadingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\StartPages.resx">
+      <DependentUpon>StartPages.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -276,8 +294,12 @@
     <Content Include="helpdoc\api\fields_demo.txt" />
     <Content Include="helpdoc\api\java_ex.java" />
     <Content Include="helpdoc\api\modelinfo_demo.txt" />
+    <Content Include="img\12210757-56d90ec78ff3414a92d164ca5d2a6cbc.jpg" />
     <Content Include="img\hoyi.org.png" />
     <Content Include="img\lgoo.png" />
+    <Content Include="img\mdglogo-blue.png" />
+    <Content Include="img\meetdragon.png" />
+    <Content Include="img\meetdragonlogo_simple.png" />
     <Content Include="img\ui-check-box-mix.png" />
     <Content Include="img\ui-check-box-uncheck.png" />
     <Content Include="img\ui-check-box.png" />
