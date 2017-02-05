@@ -99,6 +99,9 @@
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.删除模块ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
+            this.删除实体ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -639,20 +642,27 @@
             // 
             // treeProject
             // 
+            this.treeProject.AllowDrop = true;
             this.treeProject.ContextMenuStrip = this.contextMenuStrip1;
             this.treeProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeProject.Location = new System.Drawing.Point(0, 0);
             this.treeProject.Name = "treeProject";
             this.treeProject.Size = new System.Drawing.Size(132, 739);
             this.treeProject.TabIndex = 0;
+            this.treeProject.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeProject_ItemDrag);
+            this.treeProject.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeProject_DragDrop);
+            this.treeProject.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeProject_DragEnter);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.添加模块ToolStripMenuItem,
-            this.修改模块名ToolStripMenuItem});
+            this.修改模块名ToolStripMenuItem,
+            this.删除模块ToolStripMenuItem,
+            this.toolStripMenuItem9,
+            this.删除实体ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(123, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 120);
             // 
             // 添加模块ToolStripMenuItem
             // 
@@ -665,7 +675,7 @@
             // 
             this.修改模块名ToolStripMenuItem.Name = "修改模块名ToolStripMenuItem";
             this.修改模块名ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.修改模块名ToolStripMenuItem.Text = "修改";
+            this.修改模块名ToolStripMenuItem.Text = "修改模块";
             this.修改模块名ToolStripMenuItem.Click += new System.EventHandler(this.修改模块名ToolStripMenuItem_Click);
             // 
             // splitContainer2
@@ -721,6 +731,25 @@
             this.timer2.Enabled = true;
             this.timer2.Interval = 10000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // 删除模块ToolStripMenuItem
+            // 
+            this.删除模块ToolStripMenuItem.Name = "删除模块ToolStripMenuItem";
+            this.删除模块ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除模块ToolStripMenuItem.Text = "删除模块";
+            this.删除模块ToolStripMenuItem.Click += new System.EventHandler(this.删除模块ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(149, 6);
+            // 
+            // 删除实体ToolStripMenuItem
+            // 
+            this.删除实体ToolStripMenuItem.Name = "删除实体ToolStripMenuItem";
+            this.删除实体ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除实体ToolStripMenuItem.Text = "删除实体";
+            this.删除实体ToolStripMenuItem.Click += new System.EventHandler(this.删除实体ToolStripMenuItem_Click);
             // 
             // FMClass
             // 
@@ -827,5 +856,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem 实体迁移ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 从外部HOYI文件迁移ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除模块ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
+        private System.Windows.Forms.ToolStripMenuItem 删除实体ToolStripMenuItem;
     }
 }

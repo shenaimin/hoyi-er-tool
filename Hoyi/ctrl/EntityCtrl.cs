@@ -56,6 +56,7 @@ namespace Hoyi.ctrl
                 }
             }
             table.DrawExpand = true;
+            table.Tag = entity;
             return table;
         }
     }

@@ -75,7 +75,14 @@ namespace Hoyi.forms
             {
                 entity.ElementID = "Element" + Guid.NewGuid();
             }
-            model1.Shapes.Add(entity.ElementID, table);
+            try
+            {
+                model1.Shapes.Add(entity.ElementID, table);
+            }
+            catch (Exception)
+            {
+
+            }
 
             table.LocationChanged += table_LocationChanged;
             table.SelectedChanged += properGridCtrl.Ins.table_SelectedChanged;
@@ -140,9 +147,14 @@ namespace Hoyi.forms
             {
                 Table table = e.Value as Table;
                 EntityInfo ent = table.Tag as EntityInfo;
+
                 if (!formConf.ContainEntity(ent)) // 包含就不用管，不包含要加入关联.
                 {
-                    MessageBox.Show("暂时不支持复制，请删除新添加的对象.");
+                    //ProTreeCtrl.Ins.CheckedModule.Entitys.Add(ent);
+                    //ProTreeCtrl.Ins.ReLoadTree();
+                    //ProTreeCtrl.Ins.ReloadModule();
+
+                    MessageBox.Show("暂时不支持复制、剪贴，请不要尝试 CTRL+C、CTRL+V.","无法撤销警告");
                     //EntityInfo newen = ent.Clone();
                     //table.LocationChanged += table_LocationChanged;
                     //table.SelectedChanged += properGridCtrl.Ins.table_SelectedChanged;
@@ -195,38 +207,44 @@ namespace Hoyi.forms
         /// <param name="e"></param>
         void model1_ElementRemoved(object sender, ElementsEventArgs e)
         {
-            if (e.Value is Table)
+            try
             {
-                Table table = e.Value as Table;
-                EntityInfo ent = table.Tag as EntityInfo;
-                AppConf.Ins.views_enkey.Remove(ent);
-                AppConf.Ins.views_tbkey.Remove(table);
-
-                if (formConf.ContainEntity(ent)) // 包含就不用管，不包含要加入关联.
+                if (e.Value is Table)
                 {
-                    ModuleInfo mo = formConf.GetEntityModule(ent);
-                    if (mo != null)
+                    Table table = e.Value as Table;
+                    EntityInfo ent = table.Tag as EntityInfo;
+                    AppConf.Ins.views_enkey.Remove(ent);
+                    AppConf.Ins.views_tbkey.Remove(table);
+
+                    if (formConf.ContainEntity(ent)) // 包含就不用管，不包含要加入关联.
                     {
-                        mo.Entitys.Remove(ent);
+                        ModuleInfo mo = formConf.GetEntityModule(ent);
+                        if (mo != null)
+                        {
+                            mo.Entitys.Remove(ent);
+                        }
+                    }
+                    // 从系统内删除这些EntityInfo.
+                    //EntityInfo newent = ent.Clone();
+                    ProTreeCtrl.Ins.ReLoadTree();
+                }
+                else if (e.Value is Line)
+                {
+                    if (formConf.lineConKeys.Keys.Contains((Line)e.Value))
+                    {
+                        ConnInfo con = formConf.lineConKeys[(Line)e.Value];
+
+                        if (AppConf.Ins.Application.Conns.Contains(con))
+                        {
+                            AppConf.Ins.Application.Conns.Remove(con);
+                        }
+                        formConf.lineConKeys.Remove((Line)e.Value);
+                        formConf.conLineKeys.Remove(con);
                     }
                 }
-                // 从系统内删除这些EntityInfo.
-                //EntityInfo newent = ent.Clone();
-                ProTreeCtrl.Ins.ReLoadTree();
             }
-            else if (e.Value is Line)
+            catch (Exception)
             {
-                if (formConf.lineConKeys.Keys.Contains((Line)e.Value))
-                {
-                    ConnInfo con = formConf.lineConKeys[(Line)e.Value];
-
-                    if (AppConf.Ins.Application.Conns.Contains(con))
-                    {
-                        AppConf.Ins.Application.Conns.Remove(con);
-                    }
-                    formConf.lineConKeys.Remove((Line)e.Value);
-                    formConf.conLineKeys.Remove(con);
-                }
             }
         }
 

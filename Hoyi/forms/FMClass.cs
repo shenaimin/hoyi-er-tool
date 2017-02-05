@@ -42,6 +42,7 @@ namespace Hoyi.forms
 
         private void FMClass_Load(object sender, EventArgs e)
         {
+            AttTempConf.Ins.InitTemps();
             ProTreeCtrl.Ins.ProTree = this.treeProject;
             formConf.CurrentModel = this.model1;
 
@@ -204,12 +205,66 @@ namespace Hoyi.forms
                 }
                 else
                 {
-                    MessageBox.Show("Checked is Not A ModuleInfo.");
+                    MessageBox.Show("选中对象不是模块.");
                 }
             }
             else
             {
-                MessageBox.Show("Please check a node.");
+                MessageBox.Show("未选中节点.");
+            }
+        }
+        private void 删除模块ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeProject.SelectedNode != null)
+            {
+                if (treeProject.SelectedNode.Tag is ModuleInfo)
+                {
+                    DialogResult dr = MessageBox.Show("无法撤销警告!\r\n删除模块会将相关联的实体全部删除,而且无法撤销.\r\n确认删除吗？", "无法撤销警告!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (dr == DialogResult.OK)
+                    {
+                        ModuleInfo targetmodlue = (treeProject.SelectedNode.Tag as ModuleInfo);
+                        AppConf.Ins.Application.Modules.Remove(targetmodlue);
+
+                        ProTreeCtrl.Ins.ReLoadTree();
+                        ProTreeCtrl.Ins.ReloadModule();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("选中对象不是模块.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("未选中节点.");
+            }
+        }
+
+        private void 删除实体ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeProject.SelectedNode != null)
+            {
+                if (treeProject.SelectedNode.Tag is EntityInfo)
+                {
+                    DialogResult dr = MessageBox.Show("无法撤销警告!\r\n删除实体会将相关联的实体全部删除,而且无法撤销.\r\n确认删除吗？", "无法撤销警告!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (dr == DialogResult.OK)
+                    {
+                        ModuleInfo targetmodlue = (treeProject.SelectedNode.Parent.Tag as ModuleInfo);
+                        EntityInfo entityinfo = (treeProject.SelectedNode.Tag as EntityInfo);
+                        AppConf.Ins.Application.Modules.Single(s=>s==targetmodlue).Entitys.Remove(entityinfo);
+
+                        ProTreeCtrl.Ins.ReLoadTree();
+                        ProTreeCtrl.Ins.ReloadModule();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("选中对象不是实体.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("未选中节点.");
             }
         }
 
@@ -415,5 +470,84 @@ namespace Hoyi.forms
             FMTB_OUT_MOVE move = new FMTB_OUT_MOVE();
             move.Show();
         }
+
+
+        private Point Position = new Point(0, 0);
+
+        private void treeProject_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            // 开始进行拖放操作，并将拖放的效果设置成移动。
+            this.DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+        private void treeProject_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(TreeNode)))
+                e.Effect = DragDropEffects.Move;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void treeProject_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeNode myNode = null;
+            if (e.Data.GetDataPresent(typeof(TreeNode)))
+            {
+                myNode = (TreeNode)(e.Data.GetData(typeof(TreeNode)));
+            }
+            else
+            {
+                MessageBox.Show("error");
+            }
+            Position.X = e.X;
+            Position.Y = e.Y;
+            Position = treeProject.PointToClient(Position);
+            TreeNode DropNode = this.treeProject.GetNodeAt(Position);
+            // 1.目标节点不是空。2.目标节点不是被拖拽接点的子节点。3.目标节点不是被拖拽节点本身
+            if (myNode.Tag is EntityInfo)
+            {
+                if (DropNode != null && DropNode.Parent != myNode && DropNode != myNode)
+                {
+                    TreeNode DragNode = myNode;
+                    // 将被拖拽节点从原来位置删除。
+                    //myNode.Remove();
+                    // 在目标节点下增加被拖拽节点
+                    //DropNode.Nodes.Add(DragNode);
+
+                    if (DropNode.Tag is ModuleInfo)
+                    {
+                        //MessageBox.Show("拖动到ModuleInfo    ->DragNode:" + myNode + ",DropNode:" + DropNode);
+
+                        AppConf.Ins.Application.Modules.Single(s=>s== (DropNode.Tag as ModuleInfo)).Entitys.Add((DragNode.Tag as EntityInfo).Clone());
+                        AppConf.Ins.Application.Modules.Single(s => s == (DragNode.Parent.Tag as ModuleInfo)).Entitys.Remove(DragNode.Tag as EntityInfo);
+
+                        ProTreeCtrl.Ins.ReLoadTree();
+                        ProTreeCtrl.Ins.ReloadModule();
+                    }
+                    else if (DropNode.Tag is EntityInfo){
+                        //MessageBox.Show("拖动到EntityInfo  ->DragNode:" + myNode + ",DropNode:" + DropNode);
+
+                        AppConf.Ins.Application.Modules.Single(s => s == (DropNode.Parent.Tag as ModuleInfo)).Entitys.Add((DragNode.Tag as EntityInfo).Clone());
+                        AppConf.Ins.Application.Modules.Single(s => s == (DragNode.Parent.Tag as ModuleInfo)).Entitys.Remove(DragNode.Tag as EntityInfo);
+
+                        ProTreeCtrl.Ins.ReLoadTree();
+                        ProTreeCtrl.Ins.ReloadModule();
+                    }
+                }
+            }
+            else {
+                MessageBox.Show("只允许拖动实体.");
+            }
+            //treeProject.ExpandAll();
+           
+            // 如果目标节点不存在，即拖拽的位置不存在节点，那么就将被拖拽节点放在根节点之下
+            //if (DropNode == null)
+            //{
+            //    TreeNode DragNode = myNode;
+            //    myNode.Remove();
+            //    treeProject.Nodes.Add(DragNode);
+            //}
+        }
+
     }
 }

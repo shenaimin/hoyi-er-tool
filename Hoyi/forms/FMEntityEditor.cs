@@ -39,22 +39,16 @@ namespace Hoyi.forms
         public event RefreshModelTablehandler RefreshModeltable;
 
         public EntityInfo entity;
-
-        /// <summary>
-        /// 所有的模版
-        /// </summary>
-        public List<String> alltemplates = new List<string>();
+     
 
         private void FMEntityEditor_Load(object sender, EventArgs e)
         {
             txEntityName.Focus();
-            DirectoryInfo dir = new DirectoryInfo(Application.StartupPath + "\\att_temps");
-            foreach (FileInfo dd in dir.GetFiles())
+            foreach (string item in AttTempConf.Ins.alltemps)
             {
-                cmbTemplate.Items.Add(dd.Name);
-                alltemplates.Add(dd.Name);
+                cmbTemplate.Items.Add(item);
             }
-            if (dir.GetFiles().Length > 0)
+            if (AttTempConf.Ins.alltemps.Count > 0)
             {
                 cmbTemplate.SelectedIndex = 0;
             }
@@ -434,7 +428,6 @@ namespace Hoyi.forms
 
             }
         }
-
         private void txNotes_TextChanged(object sender, EventArgs e)
         {
             if (entity != null)
@@ -452,7 +445,13 @@ namespace Hoyi.forms
                 try
                 {
                     List<AttributeInfo> attrs = new List<AttributeInfo>();
-                    attrs.Add(checkattrs[cmbsysfield.SelectedIndex]);
+
+                    AttributeInfo att = checkattrs[cmbsysfield.SelectedIndex];
+
+                    att.IsPK = false;
+                    att.IsIdentity = false;
+
+                    attrs.Add(att);
                     entity.Attributes.AddRange(attrs);
                     this.BindAttributes();
                 }
@@ -501,8 +500,7 @@ namespace Hoyi.forms
             cmbchecktemplate.Items.Clear();
             checkedtempalte.Clear();
 
-
-            foreach (String item in alltemplates)
+            foreach (String item in AttTempConf.Ins.alltemps)
             {
                 if (item.Contains(cmbchecktemplate.Text))
                 {

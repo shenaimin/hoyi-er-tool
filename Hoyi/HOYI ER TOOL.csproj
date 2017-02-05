@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="appConf\AttTempConf.cs" />
     <Compile Include="appConf\formConf.cs" />
     <Compile Include="attscon\GetObjectHelper.cs" />
     <Compile Include="attscon\ObjectFactory.cs" />

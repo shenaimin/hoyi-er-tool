@@ -70,6 +70,10 @@ namespace Hoyi.ctrl
                 }
                 CheckedModule = module;
             }
+            if (AppConf.Ins.Application.Modules.Count > 0)
+            {
+                CheckedModule = AppConf.Ins.Application.Modules[0];
+            }
             ProTree.ExpandAll();
             //ProTree.AfterSelect += ProTree_AfterSelect;
             cancheck = true;
