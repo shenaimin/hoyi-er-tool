@@ -27,7 +27,7 @@ namespace Hoyi.Reg
             {
                 FileTypeRegInfo fileTypeRegInfo = new FileTypeRegInfo(".hoyi"); //文件类型信息
                 fileTypeRegInfo.Description = "HOYI ER图、类图设计";
-                fileTypeRegInfo.ExePath = Application.StartupPath + "\\Hoyi.exe";
+                fileTypeRegInfo.ExePath = Application.StartupPath + "\\Hoyi ER TOOL.exe";
                 fileTypeRegInfo.ExtendName = ".hoyi";
                 fileTypeRegInfo.IcoPath = Application.StartupPath + "\\hoyi.ico"; //文件图标使用应用程序的
                 FileTypeRegister fileTypeRegister = new FileTypeRegister(); //注册
@@ -43,7 +43,7 @@ namespace Hoyi.Reg
             {
                 FileTypeRegInfo fileTypeRegInfo = new FileTypeRegInfo(".hoyi"); //文件类型信息
                 fileTypeRegInfo.Description = "HOYI ER图、类图设计";
-                fileTypeRegInfo.ExePath = Application.StartupPath + "\\Hoyi.exe";
+                fileTypeRegInfo.ExePath = Application.StartupPath + "\\Hoyi ER TOOL.exe";
                 fileTypeRegInfo.ExtendName = ".hoyi";
                 fileTypeRegInfo.IcoPath = Application.StartupPath + "\\hoyi.ico"; //文件图标使用应用程序的
                 FileTypeRegister.UpdateFileTypeRegInfo(fileTypeRegInfo);

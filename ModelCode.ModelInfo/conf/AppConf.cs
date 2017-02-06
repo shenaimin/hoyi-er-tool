@@ -51,6 +51,12 @@ namespace Hoyi.conf
         public string Version = "";
 
         /// <summary>
+        /// 是否已经保存，用于在退出的时候判断是否已经全部保存了，全部保存的话就不弹出询问框。
+        /// 第一次为true,第一次打开的都不用保存.
+        /// </summary>
+        public bool DocSaved = true;
+
+        /// <summary>
         /// 全局的应用.
         /// </summary>
         private ApplicationInfo _application;

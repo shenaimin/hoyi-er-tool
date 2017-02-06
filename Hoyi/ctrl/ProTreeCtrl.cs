@@ -78,6 +78,9 @@ namespace Hoyi.ctrl
             ProTree.ExpandAll();
             //ProTree.AfterSelect += ProTree_AfterSelect;
             cancheck = true;
+
+
+            AppConf.Ins.DocSaved = false;
         }
         /// <summary>
         /// 重新加载模型.
@@ -92,6 +95,8 @@ namespace Hoyi.ctrl
             ClassDiagCtrl.Ins.ClearModel();
             ClassDiagCtrl.Ins.LoadFromModuleInfo(CheckedModule);
             ConnCtrl.Ins.LoadConnects(ClassDiagCtrl.Ins.currentModel, AppConf.Ins.Application.Conns);
+
+            AppConf.Ins.DocSaved = false;
         }
 
         /**

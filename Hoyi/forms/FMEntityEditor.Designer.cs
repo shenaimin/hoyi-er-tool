@@ -321,6 +321,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
+            this.splitContainer3.Panel2Collapsed = true;
             this.splitContainer3.Size = new System.Drawing.Size(1218, 580);
             this.splitContainer3.SplitterDistance = 354;
             this.splitContainer3.TabIndex = 0;
@@ -334,7 +335,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1218, 354);
+            this.tabControl1.Size = new System.Drawing.Size(1218, 580);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
@@ -343,7 +344,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1210, 328);
+            this.tabPage1.Size = new System.Drawing.Size(1210, 554);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -372,8 +373,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnDeleteAttr);
             this.splitContainer2.Panel2.Controls.Add(this.btnEditAttr);
             this.splitContainer2.Panel2.Controls.Add(this.btnAddAttr);
-            this.splitContainer2.Size = new System.Drawing.Size(1204, 322);
-            this.splitContainer2.SplitterDistance = 286;
+            this.splitContainer2.Size = new System.Drawing.Size(1204, 548);
+            this.splitContainer2.SplitterDistance = 486;
             this.splitContainer2.TabIndex = 0;
             // 
             // gridAttributes
@@ -384,7 +385,7 @@
             this.gridAttributes.Name = "gridAttributes";
             this.gridAttributes.RowTemplate.Height = 23;
             this.gridAttributes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridAttributes.Size = new System.Drawing.Size(1204, 286);
+            this.gridAttributes.Size = new System.Drawing.Size(1204, 486);
             this.gridAttributes.TabIndex = 0;
             this.gridAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAttributes_CellClick);
             this.gridAttributes.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridAttributes_RowHeaderMouseDoubleClick);

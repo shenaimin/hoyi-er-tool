@@ -52,7 +52,7 @@
             this.lsPre.ItemHeight = 12;
             this.lsPre.Location = new System.Drawing.Point(17, 103);
             this.lsPre.Name = "lsPre";
-            this.lsPre.Size = new System.Drawing.Size(350, 268);
+            this.lsPre.Size = new System.Drawing.Size(422, 268);
             this.lsPre.TabIndex = 1;
             this.lsPre.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsPre_MouseDoubleClick);
             // 
@@ -62,7 +62,7 @@
             this.lsStarted.ItemHeight = 12;
             this.lsStarted.Location = new System.Drawing.Point(18, 395);
             this.lsStarted.Name = "lsStarted";
-            this.lsStarted.Size = new System.Drawing.Size(350, 220);
+            this.lsStarted.Size = new System.Drawing.Size(421, 220);
             this.lsStarted.TabIndex = 2;
             this.lsStarted.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsPre_MouseDoubleClick);
             // 
@@ -89,7 +89,7 @@
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button1.Location = new System.Drawing.Point(15, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(349, 48);
+            this.button1.Size = new System.Drawing.Size(424, 48);
             this.button1.TabIndex = 5;
             this.button1.Text = "点此关闭";
             this.button1.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button1;
-            this.ClientSize = new System.Drawing.Size(391, 622);
+            this.ClientSize = new System.Drawing.Size(451, 622);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

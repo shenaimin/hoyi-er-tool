@@ -39,31 +39,33 @@ namespace Hoyi.forms
         public event RefreshModelTablehandler RefreshModeltable;
 
         public EntityInfo entity;
-     
 
         private void FMEntityEditor_Load(object sender, EventArgs e)
         {
-            foreach (string item in AttTempConf.Ins.alltemps)
+            if (entity != null)
             {
-                cmbTemplate.Items.Add(item);
-                cmbchecktemplate.Items.Add(item);
-            }
-            if (AttTempConf.Ins.alltemps.Count > 0)
-            {
-                cmbTemplate.SelectedIndex = 0;
-            }
-            cmbMySQLDataType.DataSource = Enum.GetValues(typeof(MySqlDbType));
+                if (entity.Attributes.Count > 0)
+                {
+                    BindAttributes();
+                    BindConstraintAtt();
+                }
+                foreach (string item in AttTempConf.Ins.alltemps)
+                {
+                    cmbTemplate.Items.Add(item);
+                    cmbchecktemplate.Items.Add(item);
+                }
+                if (AttTempConf.Ins.alltemps.Count > 0)
+                {
+                    cmbTemplate.SelectedIndex = 0;
+                }
 
-            this.splitContainer3.Panel2Collapsed = true;
-            if (entity == null)
-            {
+                chkNeedFPYTable.Checked = entity.NeedfpyTable;
+                txNotes.Text = entity.Notes;
+            }
+            else {
                 entity = new EntityInfo();
             }
-            chkNeedFPYTable.Checked = entity.NeedfpyTable;
-            txNotes.Text = entity.Notes;
-
-            BindAttributes();
-            BindConstraintAtt();
+            cmbMySQLDataType.DataSource = Enum.GetValues(typeof(MySqlDbType));
             txEntityName.Focus();
         }
         /// <summary>
@@ -101,6 +103,8 @@ namespace Hoyi.forms
             CONSCTRL cons = new CONSCTRL();
             cons.Copyfrom(entity);
             datagridContraint.DataSource = cons.cons;
+
+            AppConf.Ins.DocSaved = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -179,6 +183,8 @@ namespace Hoyi.forms
             gridAttributes.DataSource = rows.rows;
 
             checkedRowIndex = -1;
+
+            AppConf.Ins.DocSaved = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -204,6 +204,8 @@ namespace Hoyi.forms
 
                 this.Text = "HOYI ER、类图设计 " + path + "      已保存.                    [hoyi.org][kuaifish.com 快鱼技术 快人一步]" ;
             }
+            // 按了保存，文档Saved为true,做了其他操作就变成false
+            AppConf.Ins.DocSaved = true;
         }
 
         public void LoadFromPath(string path)
@@ -229,26 +231,36 @@ namespace Hoyi.forms
 
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "HOYI Document(*.hoyi)|*.hoyi|XML Document(*.xml)|*.xml|All Files|*.*";
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (AppConf.Ins.Application.Modules.Count <= 1 || formConf.getConfEntity().Count == 0) {
+                AppConf.Ins.DocSaved = true;
+            }
+            
+            if (AppConf.Ins.DocSaved)
             {
-                Program.RunLoadingPage();
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "HOYI Document(*.hoyi)|*.hoyi|XML Document(*.xml)|*.xml|All Files|*.*";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Program.RunLoadingPage();
 
-                string path = dialog.FileName;
-                LoadFromPath(path);
-                AppConf.LoadAndSavedPath = path;
-                this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
-                //Thread.Sleep(20000);
-                //MessageBox.Show("加载完成.");
-                ProTreeCtrl.Ins.ReLoadTree();
+                    string path = dialog.FileName;
+                    LoadFromPath(path);
+                    AppConf.LoadAndSavedPath = path;
+                    this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
+                    //Thread.Sleep(20000);
+                    //MessageBox.Show("加载完成.");
+                    ProTreeCtrl.Ins.ReLoadTree();
 
-                CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
-                this.Invoke(closepg);
-                this.Activate();
+                    CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
+                    this.Invoke(closepg);
+                    this.Activate();
 
-                // 模拟鼠标右击一下，有一个打开文档选中几个实体的BUG.
-                mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                    // 模拟鼠标右击一下，有一个打开文档选中几个实体的BUG.
+                    mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                }
+            }
+            else {
+                MessageBox.Show("当前文档未保存，请按 CTRL+S 保存后再打开新的文档。");
             }
         }
 
@@ -358,6 +370,7 @@ namespace Hoyi.forms
                 else if (e.KeyCode == Keys.O)
                 {
                     打开OToolStripMenuItem_Click(null, null);
+                    AppConf.Ins.DocSaved = true;
                 }
                 else if (e.KeyCode == Keys.I)
                 {
@@ -448,7 +461,15 @@ namespace Hoyi.forms
             {
                 i += mods.Entitys.Count;
             }
-            string path = Application.StartupPath + "/autosave/" + AppConf.Ins.Application.AppName + "[" + i.ToString() + ".Entity]" + DateTime.Now.ToString("_yyyy_MM_dd_HH_mm_ss") + ".hoyi";
+            string path = "";
+            if (AppConf.Ins.Application.Modules.Count > 0)
+            {
+                String firstmodulename = AppConf.Ins.Application.Modules[0].ModuleName;
+                path = Application.StartupPath + "/autosave/" + AppConf.Ins.Application.AppName + "[" + firstmodulename + "][" + i.ToString() + ".Entity]" + DateTime.Now.ToString("_yyyy_MM_dd_HH_mm_ss") + ".hoyi";
+            }
+            else {
+                path = Application.StartupPath + "/autosave/" + AppConf.Ins.Application.AppName + "[" + i.ToString() + ".Entity]" + DateTime.Now.ToString("_yyyy_MM_dd_HH_mm_ss") + ".hoyi";
+            }
             FileStream fs1 = new FileStream(path, FileMode.Create, FileAccess.Write);//创建写入文件 
             StreamWriter sw = new StreamWriter(fs1);
             sw.WriteLine("");//开始写入值
@@ -472,7 +493,6 @@ namespace Hoyi.forms
 
         protected override void OnClosed(EventArgs e)
         {
-            TipSave();
             if (formConf.AreExitRemoveAutoSave) // 如果退出前删除.
             {
                 directCtrl dir = new directCtrl();
@@ -481,15 +501,53 @@ namespace Hoyi.forms
             base.OnClosed(e);
         }
 
-        public void TipSave()
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (formConf.getConfEntity().Count > 0)
+            // e.Cancel 是否取消的意思。false表示没有取消关闭.
+            if (AppConf.Ins.DocSaved)
             {
-                DialogResult result = MessageBox.Show("当前有操作项目未保存,是否保存！", "确认保存", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
+                e.Cancel = false;
+            }
+            else {
+                bool canclose = TipSave();
+                if (canclose)
+                {
+                    e.Cancel = false;
+                }
+                else {
+                    e.Cancel = true;
+                }
+            }
+
+            base.OnFormClosing(e);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns>true表示可以关闭，false表示不可以关闭.</returns>
+        public bool TipSave()
+        {
+            if (AppConf.Ins.Application.Modules.Count > 1 || formConf.getConfEntity().Count > 0)
+            {
+                DialogResult result = MessageBox.Show("当前有操作项目未保存,是否保存并退出系统！\n\r  是：保存并退出系统， 否：直接退出系统，取消：不做任何操作,不退出系统.\n\r ", "确认保存", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
                     保存SToolStripMenuItem_Click(null, null);
+                    return true;
                 }
+                else if (result == DialogResult.No)
+                {
+                    return true;
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return false;
+                }
+                return false;
+            }
+            else {
+                return true;
             }
         }
 
@@ -687,13 +745,69 @@ namespace Hoyi.forms
 
                 //MessageBox.Show(Checkedentity.EntityName);
             }
-
         }
 
         private void 生成数据字典ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FM_EXPORTDataDIC fM_EXPORTDataDIC = new FM_EXPORTDataDIC();
             fM_EXPORTDataDIC.Show();
+        }
+
+        private void FMClass_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void FMClass_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            int i;
+            for (i = 0; i < s.Length; i++)
+            {
+                if (s[i].Trim() != "")
+                {
+                    if (s[i].Trim().EndsWith(".hoyi"))
+                    {
+                        //MessageBox.Show(s[i].Trim());//打开文档
+
+                        if (AppConf.Ins.Application.Modules.Count <= 1 || formConf.getConfEntity().Count == 0)
+                        {
+                            AppConf.Ins.DocSaved = true;
+                        }
+
+                        if (AppConf.Ins.DocSaved)
+                        {
+                            Program.RunLoadingPage();
+
+                            string path = s[i].Trim();
+                            LoadFromPath(path);
+                            AppConf.LoadAndSavedPath = path;
+                            this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
+                            //Thread.Sleep(20000);
+                            //MessageBox.Show("加载完成.");
+                            ProTreeCtrl.Ins.ReLoadTree();
+
+                            CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
+                            this.Invoke(closepg);
+                            this.Activate();
+
+                            // 模拟鼠标右击一下，有一个打开文档选中几个实体的BUG.
+                            mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+                        }
+                        else {
+                            MessageBox.Show("当前文档未保存，请按 CTRL+S 保存后再打开新的文档。");
+                        }
+                    }
+                    else {
+                        MessageBox.Show("只支持打开.hoyi文档.");
+                    }
+                    
+                    //打开新的窗口 把路径传过去
+                }
+            }
         }
     }
 }

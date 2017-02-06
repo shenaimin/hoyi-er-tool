@@ -24,47 +24,64 @@ namespace ModelCode.Builder.Templates.Util
         /// <param name="obj"></param>
         /// <returns></returns>
         public static string GOTColumnDBAttr(object obj)
-        { 
-
-        //[DbAttr(datatype.Bigint, 20, isPK= false, Identity=false, Comment = "规格编号", FieldName = "standid",Prefix=12, suffix=21)]
-
-            AttributeInfo atts = obj as AttributeInfo;
-            string dbattr = "";
-            dbattr += "[DbAttr(datatype." + atts.TypeName.ToParscal() + ", " + atts.Length + ",";
-            dbattr += " Comment = \"" + ((atts.Comment != null && atts.Comment.Trim().Length > 0) ? atts.Comment : atts.ColumnName) + "\",";
-            dbattr += " FieldName = \"" + atts.ColumnName + "\",";
-            dbattr += atts.IsPK ? "isPK= true," : "";
-            dbattr += atts.IsIdentity ? "Identity=true," : "";
-            //NotNULL =
-            dbattr += atts.cisNull ? " NotNULL = true," : "";
-            dbattr += ((atts.DefaultVal != null && atts.DefaultVal.Trim().Length > 0) ? " DefaultValue = \"" + atts.DefaultVal + "\"," : "");
-            dbattr += ((atts.Preci != null && atts.Preci.Trim().Length > 0) ? " Prefix = " + atts.Preci + "," : "");
-            dbattr += ((atts.Scale != null && atts.Scale.Trim().Length > 0) ? " suffix = " + atts.Scale + "," : "");
-            dbattr = dbattr.TrimEnd(',');
-            dbattr += ")]";
-            return dbattr;
+        {
+            AttributeInfo attributeInfo = obj as AttributeInfo;
+            string text = "";
+            string text2 = text;
+            text = string.Concat(new string[]
+            {
+        text2,
+        "[DbAttr(datatype.",
+        attributeInfo.TypeName.ToParscal(),
+        ", ",
+        attributeInfo.Length,
+        ","
+            });
+            text = text + " Comment = \"" + ((attributeInfo.Comment != null && attributeInfo.Comment.Trim().Length > 0) ? attributeInfo.Comment : attributeInfo.ColumnName) + "\",";
+            text = text + " FieldName = \"" + attributeInfo.ColumnName + "\",";
+            text += (attributeInfo.IsPK ? "isPK= true," : "");
+            text += (attributeInfo.IsIdentity ? "Identity=true," : "");
+            text += (attributeInfo.cisNull ? " NotNULL = true," : "");
+            text += ((attributeInfo.DefaultVal != null && attributeInfo.DefaultVal.Trim().Length > 0) ? (" DefaultValue = \"" + attributeInfo.DefaultVal + "\",") : "");
+            text += ((attributeInfo.Preci != null && attributeInfo.Preci.Trim().Length > 0) ? (" Prefix = " + attributeInfo.Preci + ",") : "");
+            text += ((attributeInfo.Scale != null && attributeInfo.Scale.Trim().Length > 0) ? (" suffix = " + attributeInfo.Scale + ",") : "");
+            text = text.TrimEnd(new char[]
+            {
+        ','
+            });
+            return text + ")]";
         }
+
+
 
         public static string GOTColumnJAVADBAttr(object obj)
-        {        
-            //[DbAttr(datatype.Bigint, 20, isPK= false, Identity=false, Comment = "规格编号", FieldName = "standid",Prefix=12, suffix=21)]
-            //@DbAttr(type=datatype.Bigint, Length=30, Comment="用户编号", FieldName)
-
-            AttributeInfo atts = obj as AttributeInfo;
-            string dbattr = "";
-            dbattr += "@DbAttr(type=datatype." + atts.TypeName.ToParscal() + ",  Length = " + atts.Length + ",";
-            dbattr += " Comment = \"" + ((atts.Comment != null && atts.Comment.Trim().Length > 0) ? atts.Comment : atts.ColumnName) + "\",";
-            dbattr += " FieldName = \"" + atts.ColumnName + "\",";
-            dbattr += atts.IsPK ? "isPK= true," : "";
-            dbattr += atts.IsIdentity ? "Identity=true," : "";
-            //NotNULL =
-            dbattr += atts.cisNull ? " NotNULL = true," : "";
-            dbattr += ((atts.DefaultVal != null && atts.DefaultVal.Trim().Length > 0) ? " DefaultValue = \"" + atts.DefaultVal + "\"," : "");
-            dbattr += ((atts.Preci != null && atts.Preci.Trim().Length > 0) ? " Prefix = " + atts.Preci + "," : "");
-            dbattr += ((atts.Scale != null && atts.Scale.Trim().Length > 0) ? " suffix = " + atts.Scale + "," : "");
-            dbattr = dbattr.TrimEnd(',');
-            dbattr += ")";
-            return dbattr;
+        {
+            AttributeInfo attributeInfo = obj as AttributeInfo;
+            string text = "";
+            string text2 = text;
+            text = string.Concat(new string[]
+            {
+        text2,
+        "@DbAttrANNO(type=datatype.",
+        attributeInfo.TypeName.ToParscal(),
+        ",  Length = ",
+        attributeInfo.Length,
+        ","
+            });
+            text = text + " Comment = \"" + ((attributeInfo.Comment != null && attributeInfo.Comment.Trim().Length > 0) ? attributeInfo.Comment : attributeInfo.ColumnName) + "\",";
+            text = text + " FieldName = \"" + attributeInfo.ColumnName + "\",";
+            text += (attributeInfo.IsPK ? "isPK= true," : "");
+            text += (attributeInfo.IsIdentity ? "Identity=true," : "");
+            text += (attributeInfo.cisNull ? " NotNULL = true," : "");
+            text += ((attributeInfo.DefaultVal != null && attributeInfo.DefaultVal.Trim().Length > 0) ? (" DefaultValue = \"" + attributeInfo.DefaultVal + "\",") : "");
+            text += ((attributeInfo.Preci != null && attributeInfo.Preci.Trim().Length > 0) ? (" Prefix = " + attributeInfo.Preci + ",") : "");
+            text += ((attributeInfo.Scale != null && attributeInfo.Scale.Trim().Length > 0) ? (" suffix = " + attributeInfo.Scale + ",") : "");
+            text = text.TrimEnd(new char[]
+            {
+        ','
+            });
+            return text + ")";
         }
+
     }
 }
