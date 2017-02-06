@@ -80,5 +80,27 @@ namespace Hoyi.forms
         {
             this.Close();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (lsCurrentEntity.SelectedItem != null && lsTargetModule.SelectedItem != null)
+            {
+                EntityInfo tmpentity;
+                foreach (var item in lsCurrentEntity.SelectedItems)
+                {
+                    tmpentity = (item as EntityInfo).Clone();
+                    tmpentity.ElementID = "Element" + Guid.NewGuid().ToString();
+                    tmpentity.EntityName = tmpentity.EntityName + "COPY";
+                    tmpentity.constraints = new List<ConstraintInfo>();
+                    (lsTargetModule.SelectedItem as ModuleInfo).Entitys.Add(tmpentity);
+                }
+                bindDataCurrent();
+
+                lsCurrentEntity.DataSource = null;
+                lsCurrentEntity.DataSource = (lsCurrentModule.SelectedItem as ModuleInfo).Entitys;
+                ProTreeCtrl.Ins.ReLoadTree();
+                ProTreeCtrl.Ins.ReloadModule();
+            }
+        }
     }
 }

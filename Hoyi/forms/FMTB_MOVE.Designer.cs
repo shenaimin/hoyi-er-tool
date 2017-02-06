@@ -38,6 +38,9 @@
             this.lsCurrentModule = new System.Windows.Forms.ListBox();
             this.lsCurrentEntity = new System.Windows.Forms.ListBox();
             this.lsTargetModule = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -71,7 +74,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(32, 625);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 71);
+            this.button1.Size = new System.Drawing.Size(115, 69);
             this.button1.TabIndex = 6;
             this.button1.Text = "开始迁移";
             this.button1.UseVisualStyleBackColor = true;
@@ -80,9 +83,9 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(195, 625);
+            this.btnClose.Location = new System.Drawing.Point(302, 625);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(111, 71);
+            this.btnClose.Size = new System.Drawing.Size(111, 69);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "关闭";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -126,24 +129,55 @@
             this.lsTargetModule.Size = new System.Drawing.Size(426, 568);
             this.lsTargetModule.TabIndex = 11;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(167, 625);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 69);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "改ID复制";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(446, 636);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 12);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "1.迁移会将表从A移到B";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(447, 659);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(389, 12);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "2.改Id复制会以一张新表的方式复制进来，以前的外键关系等全部失效，";
+            // 
             // FMTB_MOVE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1274, 706);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lsTargetModule);
             this.Controls.Add(this.lsCurrentEntity);
             this.Controls.Add(this.lsCurrentModule);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FMTB_MOVE";
-            this.Text = "迁移表";
+            this.Text = "迁移复制表";
             this.Load += new System.EventHandler(this.FMTB_MOVE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -161,5 +195,8 @@
         private System.Windows.Forms.ListBox lsCurrentModule;
         private System.Windows.Forms.ListBox lsCurrentEntity;
         private System.Windows.Forms.ListBox lsTargetModule;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

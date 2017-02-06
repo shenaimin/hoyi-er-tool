@@ -115,5 +115,30 @@ namespace Hoyi.forms
                 MessageBox.Show("加载失败.");
             }
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (lsCurrentEntity.SelectedItem != null && lsTargetModule.SelectedItem != null)
+            {
+                EntityInfo tmpEntity;
+                foreach (var item in lsCurrentEntity.SelectedItems)
+                {
+                    tmpEntity = (item as EntityInfo).Clone();
+                    tmpEntity.ElementID = "Element" + Guid.NewGuid().ToString();
+                    tmpEntity.constraints = new List<ConstraintInfo>();
+                    if (!(lsTargetModule.SelectedItem as ModuleInfo).Entitys.Contains(tmpEntity))
+                    {
+                        (lsTargetModule.SelectedItem as ModuleInfo).Entitys.Add(tmpEntity);
+                    }
+                    (lsCurrentModule.SelectedItem as ModuleInfo).Entitys.Remove(item as EntityInfo);
+                }
+                bindDataCurrent();
+
+                lsCurrentEntity.DataSource = null;
+                lsCurrentEntity.DataSource = (lsCurrentModule.SelectedItem as ModuleInfo).Entitys;
+                ProTreeCtrl.Ins.ReLoadTree();
+                ProTreeCtrl.Ins.ReloadModule();
+            }
+        }
     }
 }

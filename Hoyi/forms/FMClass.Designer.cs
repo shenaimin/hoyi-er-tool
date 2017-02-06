@@ -238,7 +238,7 @@
             // 
             this.实体迁移ToolStripMenuItem.Name = "实体迁移ToolStripMenuItem";
             this.实体迁移ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.实体迁移ToolStripMenuItem.Text = "实体迁移";
+            this.实体迁移ToolStripMenuItem.Text = "实体迁移/复制";
             this.实体迁移ToolStripMenuItem.Click += new System.EventHandler(this.实体迁移ToolStripMenuItem_Click);
             // 
             // 从外部HOYI文件迁移ToolStripMenuItem
@@ -263,32 +263,32 @@
             // 项目结构图PToolStripMenuItem
             // 
             this.项目结构图PToolStripMenuItem.Name = "项目结构图PToolStripMenuItem";
-            this.项目结构图PToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.项目结构图PToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.项目结构图PToolStripMenuItem.Text = "项目结构图(&P)";
             this.项目结构图PToolStripMenuItem.Click += new System.EventHandler(this.项目结构图PToolStripMenuItem_Click);
             // 
             // 主操作图MToolStripMenuItem
             // 
             this.主操作图MToolStripMenuItem.Name = "主操作图MToolStripMenuItem";
-            this.主操作图MToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.主操作图MToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.主操作图MToolStripMenuItem.Text = "主操作图(&M)";
             // 
             // 属性视图AToolStripMenuItem
             // 
             this.属性视图AToolStripMenuItem.Name = "属性视图AToolStripMenuItem";
-            this.属性视图AToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.属性视图AToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.属性视图AToolStripMenuItem.Text = "属性视图(&A)";
             this.属性视图AToolStripMenuItem.Click += new System.EventHandler(this.属性视图AToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(146, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(149, 6);
             // 
             // 异常关闭选择ToolStripMenuItem
             // 
             this.异常关闭选择ToolStripMenuItem.Name = "异常关闭选择ToolStripMenuItem";
-            this.异常关闭选择ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.异常关闭选择ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.异常关闭选择ToolStripMenuItem.Text = "异常关闭选择";
             this.异常关闭选择ToolStripMenuItem.Click += new System.EventHandler(this.异常关闭选择ToolStripMenuItem_Click);
             // 

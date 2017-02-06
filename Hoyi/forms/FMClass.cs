@@ -85,6 +85,7 @@ namespace Hoyi.forms
                 LoadFromPath(path);
                 AppConf.LoadAndSavedPath = path;
                 this.Text = "HOYI ER、类图设计        " + AppConf.LoadAndSavedPath + "   [hoyi.org][kuaifish.com 快鱼技术 快人一步]" ;
+                AppConf.Ins.DocSaved = true;
                 //MessageBox.Show("加载完成.");
             }
 
@@ -257,6 +258,8 @@ namespace Hoyi.forms
 
                     // 模拟鼠标右击一下，有一个打开文档选中几个实体的BUG.
                     mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+
+                    AppConf.Ins.DocSaved = true;
                 }
             }
             else {

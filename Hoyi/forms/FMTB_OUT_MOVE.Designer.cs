@@ -40,6 +40,7 @@
             this.lsTargetModule = new System.Windows.Forms.ListBox();
             this.tx_url = new System.Windows.Forms.TextBox();
             this.btnImport = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -82,7 +83,7 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(171, 625);
+            this.btnClose.Location = new System.Drawing.Point(268, 625);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(87, 65);
             this.btnClose.TabIndex = 7;
@@ -145,12 +146,23 @@
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(154, 625);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 65);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "改ID复制";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // FMTB_OUT_MOVE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1274, 702);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.tx_url);
             this.Controls.Add(this.lsTargetModule);
@@ -184,5 +196,6 @@
         private System.Windows.Forms.ListBox lsTargetModule;
         private System.Windows.Forms.TextBox tx_url;
         private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button button2;
     }
 }
