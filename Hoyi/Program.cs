@@ -59,6 +59,8 @@ namespace Hoyi
         public static void CloseStartPg()
         {
             StartPages.Ins.Close();
+            FMClass.Ins.Show();
+            FMClass.Ins.Activate();
         }
 
         public static Thread startpageThread;

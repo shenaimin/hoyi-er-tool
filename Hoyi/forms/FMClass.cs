@@ -63,6 +63,7 @@ namespace Hoyi.forms
                 CloseStartPagedelegate closepg1 = new CloseStartPagedelegate(Program.CloseStartPg);
                 this.Invoke(closepg1);
                 this.WindowState = FormWindowState.Maximized;
+                FMClass.Ins.Activate();
                 this.Show();
                 异常关闭选择ToolStripMenuItem_Click(null, null);
             }
@@ -90,6 +91,8 @@ namespace Hoyi.forms
             this.WindowState = FormWindowState.Maximized;
             CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseStartPg);
             this.Invoke(closepg);
+            this.Focus();
+            FMClass.Ins.Activate();
             this.Show();
         }
 
@@ -242,6 +245,7 @@ namespace Hoyi.forms
 
                 CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
                 this.Invoke(closepg);
+                this.Activate();
 
                 // 模拟鼠标右击一下，有一个打开文档选中几个实体的BUG.
                 mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
