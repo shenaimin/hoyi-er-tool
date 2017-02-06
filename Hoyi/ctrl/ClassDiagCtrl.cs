@@ -108,6 +108,7 @@ namespace Hoyi.forms
             formConf.Editedtable = NewEntity(model1, 100, 50);
             return formConf.Editedtable;
         }
+
         public Form classForm;
 
         public void InitModelEvent(Model model1, Form _classForm) {
@@ -260,7 +261,7 @@ namespace Hoyi.forms
             formConf.Editedtable = ClassDiagCtrl.Ins.NewEntity(sender as Model, currentPoint.X - 20, currentPoint.Y - 20);
             ProTreeCtrl.Ins.ReLoadTree();
         }
-        void model1_ElementDoubleClick(object sender, EventArgs e)
+        public void model1_ElementDoubleClick(object sender, EventArgs e)
         {
             formConf.Editedtable = sender as Table;
             EntityInfo entity = AppConf.Ins.views_tbkey[formConf.Editedtable];

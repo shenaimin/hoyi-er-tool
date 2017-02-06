@@ -188,6 +188,12 @@
     <Compile Include="forms\FMUseCase.Designer.cs">
       <DependentUpon>FMUseCase.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\FM_EXPORTDataDIC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FM_EXPORTDataDIC.Designer.cs">
+      <DependentUpon>FM_EXPORTDataDIC.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\LoadingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FMUseCase.resx">
       <DependentUpon>FMUseCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FM_EXPORTDataDIC.resx">
+      <DependentUpon>FM_EXPORTDataDIC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\LoadingPage.resx">
       <DependentUpon>LoadingPage.cs</DependentUpon>

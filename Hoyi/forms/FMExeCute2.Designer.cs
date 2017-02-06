@@ -44,6 +44,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkTemplate = new System.Windows.Forms.CheckedListBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -63,8 +64,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(753, 637);
-            this.splitContainer1.SplitterDistance = 46;
+            this.splitContainer1.Size = new System.Drawing.Size(758, 687);
+            this.splitContainer1.SplitterDistance = 49;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -79,6 +80,7 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.btnClose);
             this.splitContainer2.Panel2.Controls.Add(this.btnExec);
             this.splitContainer2.Panel2.Controls.Add(this.txModuleNameSpace);
             this.splitContainer2.Panel2.Controls.Add(this.label12);
@@ -91,8 +93,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.label9);
             this.splitContainer2.Panel2.Controls.Add(this.chkTemplate);
             this.splitContainer2.Panel2.Controls.Add(this.label6);
-            this.splitContainer2.Size = new System.Drawing.Size(753, 587);
-            this.splitContainer2.SplitterDistance = 193;
+            this.splitContainer2.Size = new System.Drawing.Size(758, 634);
+            this.splitContainer2.SplitterDistance = 194;
             this.splitContainer2.TabIndex = 0;
             // 
             // treeEnts
@@ -101,14 +103,14 @@
             this.treeEnts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeEnts.Location = new System.Drawing.Point(0, 0);
             this.treeEnts.Name = "treeEnts";
-            this.treeEnts.Size = new System.Drawing.Size(193, 587);
+            this.treeEnts.Size = new System.Drawing.Size(194, 634);
             this.treeEnts.TabIndex = 0;
             // 
             // btnExec
             // 
             this.btnExec.Location = new System.Drawing.Point(135, 536);
             this.btnExec.Name = "btnExec";
-            this.btnExec.Size = new System.Drawing.Size(105, 39);
+            this.btnExec.Size = new System.Drawing.Size(144, 63);
             this.btnExec.TabIndex = 0;
             this.btnExec.Text = "生成";
             this.btnExec.UseVisualStyleBackColor = true;
@@ -210,11 +212,23 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "模板:";
             // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(366, 536);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(141, 63);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FMExeCute2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 637);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(758, 687);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FMExeCute2";
@@ -249,5 +263,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnClose;
     }
 }

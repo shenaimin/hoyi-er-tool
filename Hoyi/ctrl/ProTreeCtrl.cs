@@ -13,6 +13,7 @@ using Hoyi.forms;
 using ModelCode.ModelInfo;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,8 +94,23 @@ namespace Hoyi.ctrl
             ConnCtrl.Ins.LoadConnects(ClassDiagCtrl.Ins.currentModel, AppConf.Ins.Application.Conns);
         }
 
+        /**
+        树的右键选中.
+        */    
+        public void ProTree_MouseDown(object sender, MouseEventArgs e) {
+            if (e.Button == MouseButtons.Right) {
+                Point ClickPoint = new Point(e.X, e.Y);
+                TreeNode CurrentNode = ProTree.GetNodeAt(ClickPoint);
+                if (CurrentNode != null) {
+                    FMClass.Ins.ShowHideContextItem(CurrentNode.Tag);
+                    ProTree.SelectedNode = CurrentNode;
+                }
+            }
+        }
+
         public void ProTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            ProTree.ExpandAll();
             if (cancheck)
             {
                 if (ProTree.SelectedNode.Tag is ModuleInfo)
@@ -117,6 +133,7 @@ namespace Hoyi.ctrl
                     //MessageBox.Show(Checkedentity.EntityName);
                 }
             }
+            ProTree.ExpandAll();
         }
         /// <summary>
         /// 模拟选中当前模型.

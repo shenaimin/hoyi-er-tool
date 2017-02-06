@@ -7,6 +7,7 @@
  *          使用请在项目关于内标注hoyi版权，
  *          hoyi版权归hoyi.org所有
  */
+using Hoyi.conf;
 using Hoyi.filetype;
 using Hoyi.forms;
 using Microsoft.Win32;
@@ -33,12 +34,16 @@ namespace Hoyi
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-
             //RegTXT();
             REGISTER_REGTABLE();
 
+            // 设置系统版本号:
+            AppConf.Ins.Version = "2.11";
             RunThreadStartPage();
-            Application.Run(new FMClass(args));
+
+            // 将窗体static起来.
+            FMClass.Ins = new FMClass(args);
+            Application.Run(FMClass.Ins);
         }
 
         public static void RunThreadStartPage() {

@@ -8,6 +8,7 @@
  *          hoyi版权归hoyi.org所有
  */
 
+using Hoyi.conf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,17 @@ namespace Hoyi.forms
 
         private void FMAbout_Load(object sender, EventArgs e)
         {
+            lbversion.Text = "HOYI ER TOOL  V." + AppConf.Ins.Version;
+        }
 
+        private void FMAbout_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

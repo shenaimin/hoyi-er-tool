@@ -20,6 +20,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,6 +30,9 @@ namespace Hoyi.forms
 {
     public partial class FMClass : Form
     {
+        public static FMClass Ins;
+
+
         public string[] loadargs;
         public FMClass(string[] args)
         {
@@ -51,10 +55,15 @@ namespace Hoyi.forms
             formConf.CurrentModel = this.model1;
 
             treeProject.NodeMouseDoubleClick += ProTreeCtrl.Ins.ProTree_NodeMouseDoubleClick;
+            treeProject.MouseDown += ProTreeCtrl.Ins.ProTree_MouseDown;
 
             formConf.StartTime = DateTime.Now;
             if (EXPCTRL.Ins.AreExClosed())
             {
+                CloseStartPagedelegate closepg1 = new CloseStartPagedelegate(Program.CloseStartPg);
+                this.Invoke(closepg1);
+                this.WindowState = FormWindowState.Maximized;
+                this.Show();
                 异常关闭选择ToolStripMenuItem_Click(null, null);
             }
             属性视图AToolStripMenuItem_Click(null, null);
@@ -84,7 +93,30 @@ namespace Hoyi.forms
             this.Show();
         }
 
-        
+        public void ShowHideContextItem(object obj) {
+            修改系统信息ToolStripMenuItem.Visible = false;
+            //添加模块ToolStripMenuItem.Visible = false;  //添加模块一直都显示.
+            修改模块名ToolStripMenuItem.Visible = false;
+            删除模块ToolStripMenuItem.Visible = false;
+            修改实体ToolStripMenuItem.Visible = false;
+            删除实体ToolStripMenuItem.Visible = false;
+            if (obj is ModuleInfo)
+            {
+                //添加模块ToolStripMenuItem.Visible = true;
+                修改模块名ToolStripMenuItem.Visible = true;
+                删除模块ToolStripMenuItem.Visible = true;
+            }
+            else if (obj is EntityInfo)
+            {
+                修改实体ToolStripMenuItem.Visible = true;
+                删除实体ToolStripMenuItem.Visible = true;
+            }
+            else if (obj is ApplicationInfo)
+            {
+
+                修改系统信息ToolStripMenuItem.Visible = true;
+            }
+        }
 
         void model1_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -140,7 +172,9 @@ namespace Hoyi.forms
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-           ClassDiagCtrl.Ins.NewEntity(this.model1);
+            /* 创建表.立即打开编辑表的窗口.  */
+           Table tbs = ClassDiagCtrl.Ins.NewEntity(this.model1);
+            ClassDiagCtrl.Ins.model1_ElementDoubleClick(tbs, e);
         }
 
         private void 保存SToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,6 +212,18 @@ namespace Hoyi.forms
             ProTreeCtrl.Ins.ReLoadTree();
         }
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        private static extern int mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+
+        const int MOUSEEVENTF_MOVE = 0x0001;      //移动鼠标 
+        const int MOUSEEVENTF_LEFTDOWN = 0x0002; //模拟鼠标左键按下 
+        const int MOUSEEVENTF_LEFTUP = 0x0004; //模拟鼠标左键抬起 
+        const int MOUSEEVENTF_RIGHTDOWN = 0x0008; //模拟鼠标右键按下 
+        const int MOUSEEVENTF_RIGHTUP = 0x0010; //模拟鼠标右键抬起 
+        const int MOUSEEVENTF_MIDDLEDOWN = 0x0020; //模拟鼠标中键按下 
+        const int MOUSEEVENTF_MIDDLEUP = 0x0040; //模拟鼠标中键抬起 
+        const int MOUSEEVENTF_ABSOLUTE = 0x8000; //标示是否采用绝对坐标
+
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -196,6 +242,9 @@ namespace Hoyi.forms
 
                 CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
                 this.Invoke(closepg);
+
+                // 模拟鼠标右击一下，有一个打开文档选中几个实体的BUG.
+                mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
             }
         }
 
@@ -215,11 +264,11 @@ namespace Hoyi.forms
                     fs.mods = treeProject.SelectedNode.Tag as ModuleInfo;
                     fs.ShowDialog();
                 }
-                else if (treeProject.SelectedNode.Tag is ApplicationInfo)
-                {
-                    FMApp ap = new FMApp();
-                    ap.ShowDialog();
-                }
+                //else if (treeProject.SelectedNode.Tag is ApplicationInfo)
+                //{
+                //    FMApp ap = new FMApp();
+                //    ap.ShowDialog();
+                //}
                 else
                 {
                     MessageBox.Show("选中对象不是模块.");
@@ -302,6 +351,12 @@ namespace Hoyi.forms
                     导入IToolStripMenuItem_Click(null, null);
                 }
             }
+            if (e.Alt == true) {
+                if (e.KeyCode == Keys.A) {// 新建一个表，
+                    toolStripButton1_Click(null, null);
+                }
+            }
+
             if (e.KeyCode == Keys.V)
             {
                 toolStripButton7_Click(tsb_select, null);
@@ -468,7 +523,7 @@ namespace Hoyi.forms
 
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
-            ClassDiagCtrl.Ins.NewEntity(this.model1);
+            toolStripButton1_Click(sender, e);
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
@@ -566,5 +621,34 @@ namespace Hoyi.forms
             //}
         }
 
+        private void 修改系统信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FMApp ap = new FMApp();
+            ap.ShowDialog();
+        }
+
+        private void 修改实体ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (treeProject.SelectedNode.Tag is EntityInfo)
+            {
+                 EntityInfo Checkedentity = treeProject.SelectedNode.Tag as EntityInfo;
+                //formConf.Editedtable = Checkedentity;
+
+                FMEntityEditor editor = new FMEntityEditor();
+                editor.entity = Checkedentity;
+                editor.WindowState = FormWindowState.Maximized;
+                editor.RefreshModeltable += ClassDiagCtrl.Ins.editor_RefreshModeltable;
+                editor.ShowDialog();
+
+                //MessageBox.Show(Checkedentity.EntityName);
+            }
+
+        }
+
+        private void 生成数据字典ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FM_EXPORTDataDIC fM_EXPORTDataDIC = new FM_EXPORTDataDIC();
+            fM_EXPORTDataDIC.Show();
+        }
     }
 }

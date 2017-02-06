@@ -46,6 +46,11 @@ namespace Hoyi.conf
         public static string ExeTemplatename { get; set; }
 
         /// <summary>
+        /// 用来存储系统的版本号，请在Program中设置版本号.
+        /// </summary>
+        public string Version = "";
+
+        /// <summary>
         /// 全局的应用.
         /// </summary>
         private ApplicationInfo _application;

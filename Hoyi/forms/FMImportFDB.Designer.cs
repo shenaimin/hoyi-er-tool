@@ -30,12 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMImportFDB));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txRemoveEntityPre = new System.Windows.Forms.TextBox();
+            this.chkRemoveEntityPre = new System.Windows.Forms.CheckBox();
+            this.txRemovePre = new System.Windows.Forms.TextBox();
+            this.chkRemovePre = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbImportModule = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txSearch_un = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.cmbDatabase = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,6 +49,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.btnCheckAll = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNext = new System.Windows.Forms.Button();
             this.txMYSQLPORT = new System.Windows.Forms.TextBox();
@@ -60,10 +64,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lbAuthor = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.chkRemovePre = new System.Windows.Forms.CheckBox();
-            this.txRemovePre = new System.Windows.Forms.TextBox();
-            this.txRemoveEntityPre = new System.Windows.Forms.TextBox();
-            this.chkRemoveEntityPre = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +95,40 @@
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "选择导入表";
+            // 
+            // txRemoveEntityPre
+            // 
+            this.txRemoveEntityPre.Location = new System.Drawing.Point(317, 297);
+            this.txRemoveEntityPre.Name = "txRemoveEntityPre";
+            this.txRemoveEntityPre.Size = new System.Drawing.Size(195, 21);
+            this.txRemoveEntityPre.TabIndex = 49;
+            // 
+            // chkRemoveEntityPre
+            // 
+            this.chkRemoveEntityPre.AutoSize = true;
+            this.chkRemoveEntityPre.Location = new System.Drawing.Point(167, 301);
+            this.chkRemoveEntityPre.Name = "chkRemoveEntityPre";
+            this.chkRemoveEntityPre.Size = new System.Drawing.Size(150, 16);
+            this.chkRemoveEntityPre.TabIndex = 48;
+            this.chkRemoveEntityPre.Text = "去掉EntityName前缀-->";
+            this.chkRemoveEntityPre.UseVisualStyleBackColor = true;
+            // 
+            // txRemovePre
+            // 
+            this.txRemovePre.Location = new System.Drawing.Point(317, 324);
+            this.txRemovePre.Name = "txRemovePre";
+            this.txRemovePre.Size = new System.Drawing.Size(195, 21);
+            this.txRemovePre.TabIndex = 47;
+            // 
+            // chkRemovePre
+            // 
+            this.chkRemovePre.AutoSize = true;
+            this.chkRemovePre.Location = new System.Drawing.Point(167, 328);
+            this.chkRemovePre.Name = "chkRemovePre";
+            this.chkRemovePre.Size = new System.Drawing.Size(144, 16);
+            this.chkRemovePre.TabIndex = 46;
+            this.chkRemovePre.Text = "去掉ClassName前缀-->";
+            this.chkRemovePre.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -138,16 +172,6 @@
             this.txSearch_un.Size = new System.Drawing.Size(185, 21);
             this.txSearch_un.TabIndex = 41;
             this.txSearch_un.TextChanged += new System.EventHandler(this.txSearch_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(195, 328);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 44);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "关闭";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnImport
             // 
@@ -246,6 +270,17 @@
             this.label4.TabIndex = 31;
             this.label4.Text = "已选择数据表：";
             // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(195, 328);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(181, 44);
+            this.btnClose.TabIndex = 40;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.button1_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnNext);
@@ -257,7 +292,7 @@
             this.groupBox2.Controls.Add(this.txusername);
             this.groupBox2.Controls.Add(this.cmbAuthor);
             this.groupBox2.Controls.Add(this.txserver);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnClose);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.lbAuthor);
@@ -403,44 +438,11 @@
             this.label5.TabIndex = 28;
             this.label5.Text = "服务器名称：";
             // 
-            // chkRemovePre
-            // 
-            this.chkRemovePre.AutoSize = true;
-            this.chkRemovePre.Location = new System.Drawing.Point(167, 328);
-            this.chkRemovePre.Name = "chkRemovePre";
-            this.chkRemovePre.Size = new System.Drawing.Size(144, 16);
-            this.chkRemovePre.TabIndex = 46;
-            this.chkRemovePre.Text = "去掉ClassName前缀-->";
-            this.chkRemovePre.UseVisualStyleBackColor = true;
-            // 
-            // txRemovePre
-            // 
-            this.txRemovePre.Location = new System.Drawing.Point(317, 324);
-            this.txRemovePre.Name = "txRemovePre";
-            this.txRemovePre.Size = new System.Drawing.Size(195, 21);
-            this.txRemovePre.TabIndex = 47;
-            // 
-            // txRemoveEntityPre
-            // 
-            this.txRemoveEntityPre.Location = new System.Drawing.Point(317, 297);
-            this.txRemoveEntityPre.Name = "txRemoveEntityPre";
-            this.txRemoveEntityPre.Size = new System.Drawing.Size(195, 21);
-            this.txRemoveEntityPre.TabIndex = 49;
-            // 
-            // chkRemoveEntityPre
-            // 
-            this.chkRemoveEntityPre.AutoSize = true;
-            this.chkRemoveEntityPre.Location = new System.Drawing.Point(167, 301);
-            this.chkRemoveEntityPre.Name = "chkRemoveEntityPre";
-            this.chkRemoveEntityPre.Size = new System.Drawing.Size(150, 16);
-            this.chkRemoveEntityPre.TabIndex = 48;
-            this.chkRemoveEntityPre.Text = "去掉EntityName前缀-->";
-            this.chkRemoveEntityPre.UseVisualStyleBackColor = true;
-            // 
             // FMImportFDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(965, 460);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -483,7 +485,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbAuthor;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox txSearch_un;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

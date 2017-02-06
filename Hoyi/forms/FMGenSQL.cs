@@ -76,5 +76,10 @@ namespace Hoyi.forms
             btnExport.Text = "导出";
             btnExport.Enabled = true;
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

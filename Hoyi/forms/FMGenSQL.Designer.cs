@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMGenSQL));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.chkQiangDeleteFPY = new System.Windows.Forms.CheckBox();
+            this.chkQiangFPY = new System.Windows.Forms.CheckBox();
             this.chkDeleteFPY = new System.Windows.Forms.CheckBox();
             this.chkFPY = new System.Windows.Forms.CheckBox();
             this.chkFornAddPre = new System.Windows.Forms.CheckBox();
@@ -51,8 +54,6 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.rtxSQL = new System.Windows.Forms.RichTextBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.chkQiangFPY = new System.Windows.Forms.CheckBox();
-            this.chkQiangDeleteFPY = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnClose);
             this.splitContainer1.Panel1.Controls.Add(this.chkQiangDeleteFPY);
             this.splitContainer1.Panel1.Controls.Add(this.chkQiangFPY);
             this.splitContainer1.Panel1.Controls.Add(this.chkDeleteFPY);
@@ -95,8 +97,39 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1059, 627);
-            this.splitContainer1.SplitterDistance = 79;
+            this.splitContainer1.SplitterDistance = 68;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(942, 7);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 56);
+            this.btnClose.TabIndex = 19;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // chkQiangDeleteFPY
+            // 
+            this.chkQiangDeleteFPY.AutoSize = true;
+            this.chkQiangDeleteFPY.Location = new System.Drawing.Point(469, 47);
+            this.chkQiangDeleteFPY.Name = "chkQiangDeleteFPY";
+            this.chkQiangDeleteFPY.Size = new System.Drawing.Size(102, 16);
+            this.chkQiangDeleteFPY.TabIndex = 18;
+            this.chkQiangDeleteFPY.Text = "强制删除FPY表";
+            this.chkQiangDeleteFPY.UseVisualStyleBackColor = true;
+            // 
+            // chkQiangFPY
+            // 
+            this.chkQiangFPY.AutoSize = true;
+            this.chkQiangFPY.Location = new System.Drawing.Point(470, 12);
+            this.chkQiangFPY.Name = "chkQiangFPY";
+            this.chkQiangFPY.Size = new System.Drawing.Size(102, 16);
+            this.chkQiangFPY.TabIndex = 17;
+            this.chkQiangFPY.Text = "强制创建FPY表";
+            this.chkQiangFPY.UseVisualStyleBackColor = true;
             // 
             // chkDeleteFPY
             // 
@@ -168,9 +201,9 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(894, 5);
+            this.btnExport.Location = new System.Drawing.Point(836, 7);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.Size = new System.Drawing.Size(75, 56);
             this.btnExport.TabIndex = 10;
             this.btnExport.Text = "导出";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -266,9 +299,9 @@
             // 
             // btnPre
             // 
-            this.btnPre.Location = new System.Drawing.Point(813, 5);
+            this.btnPre.Location = new System.Drawing.Point(758, 7);
             this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(75, 23);
+            this.btnPre.Size = new System.Drawing.Size(75, 56);
             this.btnPre.TabIndex = 0;
             this.btnPre.Text = "预览";
             this.btnPre.UseVisualStyleBackColor = true;
@@ -287,7 +320,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.rtxSQL);
-            this.splitContainer2.Size = new System.Drawing.Size(1059, 544);
+            this.splitContainer2.Size = new System.Drawing.Size(1059, 555);
             this.splitContainer2.SplitterDistance = 165;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -296,7 +329,7 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(165, 544);
+            this.treeView1.Size = new System.Drawing.Size(165, 555);
             this.treeView1.TabIndex = 0;
             // 
             // rtxSQL
@@ -304,7 +337,7 @@
             this.rtxSQL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtxSQL.Location = new System.Drawing.Point(0, 0);
             this.rtxSQL.Name = "rtxSQL";
-            this.rtxSQL.Size = new System.Drawing.Size(890, 544);
+            this.rtxSQL.Size = new System.Drawing.Size(890, 555);
             this.rtxSQL.TabIndex = 0;
             this.rtxSQL.Text = "";
             // 
@@ -316,30 +349,11 @@
             this.imageList1.Images.SetKeyName(1, "ui-check-box.png");
             this.imageList1.Images.SetKeyName(2, "ui-check-box-mix.png");
             // 
-            // chkQiangFPY
-            // 
-            this.chkQiangFPY.AutoSize = true;
-            this.chkQiangFPY.Location = new System.Drawing.Point(470, 12);
-            this.chkQiangFPY.Name = "chkQiangFPY";
-            this.chkQiangFPY.Size = new System.Drawing.Size(102, 16);
-            this.chkQiangFPY.TabIndex = 17;
-            this.chkQiangFPY.Text = "强制创建FPY表";
-            this.chkQiangFPY.UseVisualStyleBackColor = true;
-            // 
-            // chkQiangDeleteFPY
-            // 
-            this.chkQiangDeleteFPY.AutoSize = true;
-            this.chkQiangDeleteFPY.Location = new System.Drawing.Point(469, 47);
-            this.chkQiangDeleteFPY.Name = "chkQiangDeleteFPY";
-            this.chkQiangDeleteFPY.Size = new System.Drawing.Size(102, 16);
-            this.chkQiangDeleteFPY.TabIndex = 18;
-            this.chkQiangDeleteFPY.Text = "强制删除FPY表";
-            this.chkQiangDeleteFPY.UseVisualStyleBackColor = true;
-            // 
             // FMGenSQL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1059, 627);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -384,5 +398,6 @@
         private System.Windows.Forms.CheckBox chkDeleteFPY;
         private System.Windows.Forms.CheckBox chkQiangFPY;
         private System.Windows.Forms.CheckBox chkQiangDeleteFPY;
+        private System.Windows.Forms.Button btnClose;
     }
 }

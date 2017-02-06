@@ -43,7 +43,6 @@ namespace Hoyi.forms
 
         private void FMEntityEditor_Load(object sender, EventArgs e)
         {
-            txEntityName.Focus();
             foreach (string item in AttTempConf.Ins.alltemps)
             {
                 cmbTemplate.Items.Add(item);
@@ -64,6 +63,7 @@ namespace Hoyi.forms
 
             BindAttributes();
             BindConstraintAtt();
+            txEntityName.Focus();
         }
         /// <summary>
         /// 绑定外键字段.
@@ -222,8 +222,38 @@ namespace Hoyi.forms
 
         private void btnDeleteAttr_Click(object sender, EventArgs e)
         {
-            if (checkedRowIndex != -1)
+            if (gridAttributes.SelectedRows.Count > 0)
             {
+                downidx.Clear();
+                foreach (DataGridViewRow item in gridAttributes.SelectedRows)
+                {
+                    downidx.Add(item.Index);
+                    item.Selected = false;
+                }
+
+                downidx = downidx.OrderByDescending(s => s).ToList();
+                for (int i = 0; i < downidx.Count; i++)
+                //for (int i = (downidx.Count - 1); i >= 0; i--)
+                {
+                    entity.Attributes.kk移动(downidx[i], gridAttributes.Rows.Count - 1 - i);
+                }
+
+                for (int i = 0; i < downidx.Count; i++)
+                {
+                    if (entity.Attributes.Count - 1 - i == -1)
+                    {
+                        entity.Attributes.RemoveAt(0);
+                    }
+                    else {
+                        entity.Attributes.RemoveAt(entity.Attributes.Count - 1 - i);
+                    }
+                }
+
+                BindAttributes();
+                this.BindConstraintAtt();
+
+            }
+            else if (checkedRowIndex != -1){
                 entity.Attributes.RemoveAt(checkedRowIndex);
                 this.BindAttributes();
                 this.BindConstraintAtt();
