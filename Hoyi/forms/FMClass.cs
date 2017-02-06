@@ -289,14 +289,23 @@ namespace Hoyi.forms
             {
                 if (treeProject.SelectedNode.Tag is ModuleInfo)
                 {
-                    DialogResult dr = MessageBox.Show("无法撤销警告!\r\n删除模块会将相关联的实体全部删除,而且无法撤销.\r\n确认删除吗？", "无法撤销警告!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    if (dr == DialogResult.OK)
+                    if (AppConf.Ins.Application.Modules.Count > 1)
                     {
-                        ModuleInfo targetmodlue = (treeProject.SelectedNode.Tag as ModuleInfo);
-                        AppConf.Ins.Application.Modules.Remove(targetmodlue);
+                        DialogResult dr = MessageBox.Show("无法撤销警告!\r\n删除模块会将相关联的实体全部删除,而且无法撤销.\r\n确认删除吗？", "无法撤销警告!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (dr == DialogResult.OK)
+                        {
 
-                        ProTreeCtrl.Ins.ReLoadTree();
-                        ProTreeCtrl.Ins.ReloadModule();
+
+                            ModuleInfo targetmodlue = (treeProject.SelectedNode.Tag as ModuleInfo);
+
+                            AppConf.Ins.Application.Modules.Remove(targetmodlue);
+
+                            ProTreeCtrl.Ins.ReLoadTree();
+                            ProTreeCtrl.Ins.ReloadModule();
+                        }
+                    }
+                    else {
+                        MessageBox.Show("删除失败，项目至少保留一个模块.");
                     }
                 }
                 else
@@ -354,40 +363,72 @@ namespace Hoyi.forms
                 {
                     导入IToolStripMenuItem_Click(null, null);
                 }
-            }
-            if (e.Alt == true) {
-                if (e.KeyCode == Keys.A) {// 新建一个表，
+                else if (e.KeyCode == Keys.Enter)
+                {
                     toolStripButton1_Click(null, null);
                 }
+                else if (e.KeyCode == Keys.M)
+                {
+                    添加模块ToolStripMenuItem_Click(sender, e);
+                }
+                else if (e.KeyCode == Keys.L)
+                {
+                    修改系统信息ToolStripMenuItem_Click(sender, e);
+                }
+                else if (e.KeyCode == Keys.W) {
+                    // 退出.
+                    this.Close();
+                }
             }
-
-            if (e.KeyCode == Keys.V)
+            else if (e.Alt == true)
             {
-                toolStripButton7_Click(tsb_select, null);
-            }
-            else if (e.KeyCode == Keys.L)
+                //if (e.KeyCode == Keys.A)
+                //{// 新建一个表，
+                //    toolStripButton1_Click(null, null);
+                //}else
+                if (e.KeyCode == Keys.V)
+                {
+                    toolStripButton7_Click(tsb_select, null);
+                }
+                else if (e.KeyCode == Keys.L)
+                {
+                    toolStripButton2_Click(tsb_line, null);
+                }
+                else if (e.KeyCode == Keys.C)
+                {
+                    tsbConnector_Click(tsbConnector, null);
+                }
+                else if (e.KeyCode == Keys.U)
+                {
+                    tsb_cir_Click(tsb_cir, null);
+                }
+            }else
             {
-                toolStripButton2_Click(tsb_line, null);
-            }
-            else if (e.KeyCode == Keys.C)
-            {
-                tsbConnector_Click(tsbConnector, null);
-            }
-            else if (e.KeyCode == Keys.U)
-            {
-                tsb_cir_Click(tsb_cir, null);
-            }
-            else if (e.KeyCode == Keys.F5)
-            {
-                生成EToolStripMenuItem1_Click(null, null);
-            }
-            else if (e.KeyCode == Keys.F9)
-            {
-                导出SQL语句ToolStripMenuItem_Click(null, null);
-            }
-            else if (e.KeyCode == Keys.F8)
-            {
-                打开OToolStripMenuItem_Click(null, null);
+                if (e.KeyCode == Keys.Enter) {
+                    if (formConf.Editedtable != null)
+                    {
+                        ClassDiagCtrl.Ins.model1_ElementDoubleClick(formConf.Editedtable, null);
+                    }
+                    else {
+                        MessageBoxButtons messButton = MessageBoxButtons.OKCancel;
+                        DialogResult dr = MessageBox.Show("确定要在当前模板中创建新表么?", "创建新表", messButton);
+                        if (dr == DialogResult.OK)
+                        {
+                            toolStripButton1_Click(null, null);
+                        }
+                    }
+                }else if (e.KeyCode == Keys.F5)
+                {
+                    生成EToolStripMenuItem1_Click(null, null);
+                }
+                else if (e.KeyCode == Keys.F9)
+                {
+                    导出SQL语句ToolStripMenuItem_Click(null, null);
+                }
+                else if (e.KeyCode == Keys.F8)
+                {
+                    打开OToolStripMenuItem_Click(null, null);
+                }
             }
         }
 

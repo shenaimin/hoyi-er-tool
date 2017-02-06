@@ -46,6 +46,7 @@ namespace Hoyi.forms
             foreach (string item in AttTempConf.Ins.alltemps)
             {
                 cmbTemplate.Items.Add(item);
+                cmbchecktemplate.Items.Add(item);
             }
             if (AttTempConf.Ins.alltemps.Count > 0)
             {

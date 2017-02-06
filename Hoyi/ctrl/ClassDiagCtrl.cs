@@ -95,11 +95,13 @@ namespace Hoyi.forms
 
         void table_LocationChanged(object sender, LocationChangedEventArgs e)
         {
-            if (AppConf.Ins.views_tbkey.ContainsKey(formConf.Editedtable))
-            {
-                EntityInfo entity = AppConf.Ins.views_tbkey[formConf.Editedtable];
-                entity.X = Int32.Parse(e.Location.X.ToString());
-                entity.Y = Int32.Parse(e.Location.Y.ToString());
+            if(formConf.Editedtable != null) { 
+                if (AppConf.Ins.views_tbkey.ContainsKey(formConf.Editedtable))
+                {
+                    EntityInfo entity = AppConf.Ins.views_tbkey[formConf.Editedtable];
+                    entity.X = Int32.Parse(e.Location.X.ToString());
+                    entity.Y = Int32.Parse(e.Location.Y.ToString());
+                }
             }
         }
 
@@ -114,14 +116,28 @@ namespace Hoyi.forms
         public void InitModelEvent(Model model1, Form _classForm) {
             this.classForm = _classForm;
 
-            model1.ElementDoubleClick += model1_ElementDoubleClick;
             model1.DiagramDoubleClick += model1_DiagramDoubleClick;
+            model1.DiagramClick += Model1_DiagramClick;
+
+            model1.ElementDoubleClick += model1_ElementDoubleClick;
+            model1.ElementClick += Model1_ElementClick;
+
             model1.ElementInserted += model1_ElementInserted;
             model1.ElementRemoved += model1_ElementRemoved;
             model1.MouseMove += model1_MouseMove;
 
             model1.ElementMouseDown += model1_ElementMouseDown;
             model1.MouseUp += model1_MouseUp;
+        }
+
+        private void Model1_ElementClick(object sender, EventArgs e)
+        {
+            formConf.Editedtable = sender as Table;
+        }
+
+        private void Model1_DiagramClick(object sender, EventArgs e)
+        {
+            formConf.Editedtable = null;
         }
 
         void model1_MouseUp(object sender, MouseEventArgs e)
@@ -259,6 +275,17 @@ namespace Hoyi.forms
         private void model1_DiagramDoubleClick(object sender, EventArgs e)
         {
             formConf.Editedtable = ClassDiagCtrl.Ins.NewEntity(sender as Model, currentPoint.X - 20, currentPoint.Y - 20);
+
+            EntityInfo entity = AppConf.Ins.views_tbkey[formConf.Editedtable];
+            //MessageBox.Show(entity.ToString());
+
+            FMEntityEditor editor = new FMEntityEditor();
+            editor.entity = entity;
+            editor.WindowState = FormWindowState.Maximized;
+            editor.RefreshModeltable += editor_RefreshModeltable;
+            editor.Show();
+
+
             ProTreeCtrl.Ins.ReLoadTree();
         }
         public void model1_ElementDoubleClick(object sender, EventArgs e)

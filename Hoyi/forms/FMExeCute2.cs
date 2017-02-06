@@ -45,6 +45,8 @@ namespace Hoyi.forms
 
             ExCodeTreeCtrl.Ins.CHECKTree = this.treeEnts;
             ExCodeTreeCtrl.Ins.ReLoadTree();
+
+            txModuleNameSpace.Focus();
         }
 
         public void InitSavedPath()

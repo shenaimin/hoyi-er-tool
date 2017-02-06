@@ -57,14 +57,14 @@
             this.txModuleName.Location = new System.Drawing.Point(141, 12);
             this.txModuleName.Name = "txModuleName";
             this.txModuleName.Size = new System.Drawing.Size(263, 21);
-            this.txModuleName.TabIndex = 1;
+            this.txModuleName.TabIndex = 0;
             // 
             // btnAddModule
             // 
             this.btnAddModule.Location = new System.Drawing.Point(200, 155);
             this.btnAddModule.Name = "btnAddModule";
             this.btnAddModule.Size = new System.Drawing.Size(105, 32);
-            this.btnAddModule.TabIndex = 2;
+            this.btnAddModule.TabIndex = 5;
             this.btnAddModule.Text = "提交";
             this.btnAddModule.UseVisualStyleBackColor = true;
             this.btnAddModule.Click += new System.EventHandler(this.btnAddModule_Click);
@@ -74,7 +74,7 @@
             this.txCaption.Location = new System.Drawing.Point(141, 93);
             this.txCaption.Name = "txCaption";
             this.txCaption.Size = new System.Drawing.Size(263, 21);
-            this.txCaption.TabIndex = 4;
+            this.txCaption.TabIndex = 3;
             // 
             // label2
             // 
@@ -90,7 +90,7 @@
             this.txSuffix.Location = new System.Drawing.Point(141, 66);
             this.txSuffix.Name = "txSuffix";
             this.txSuffix.Size = new System.Drawing.Size(263, 21);
-            this.txSuffix.TabIndex = 6;
+            this.txSuffix.TabIndex = 2;
             // 
             // label3
             // 
@@ -106,7 +106,7 @@
             this.txPrefix.Location = new System.Drawing.Point(141, 39);
             this.txPrefix.Name = "txPrefix";
             this.txPrefix.Size = new System.Drawing.Size(263, 21);
-            this.txPrefix.TabIndex = 8;
+            this.txPrefix.TabIndex = 1;
             // 
             // label4
             // 
@@ -122,7 +122,7 @@
             this.txType.Location = new System.Drawing.Point(141, 120);
             this.txType.Name = "txType";
             this.txType.Size = new System.Drawing.Size(263, 21);
-            this.txType.TabIndex = 10;
+            this.txType.TabIndex = 4;
             // 
             // label5
             // 
@@ -139,7 +139,7 @@
             this.btnCancel.Location = new System.Drawing.Point(89, 155);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(105, 32);
-            this.btnCancel.TabIndex = 11;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

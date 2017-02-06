@@ -32,6 +32,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.treeEnts = new System.Windows.Forms.TreeView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnExec = new System.Windows.Forms.Button();
             this.txModuleNameSpace = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkTemplate = new System.Windows.Forms.CheckedListBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -106,12 +106,23 @@
             this.treeEnts.Size = new System.Drawing.Size(194, 634);
             this.treeEnts.TabIndex = 0;
             // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(366, 536);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(141, 63);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // btnExec
             // 
             this.btnExec.Location = new System.Drawing.Point(135, 536);
             this.btnExec.Name = "btnExec";
             this.btnExec.Size = new System.Drawing.Size(144, 63);
-            this.btnExec.TabIndex = 0;
+            this.btnExec.TabIndex = 6;
             this.btnExec.Text = "生成";
             this.btnExec.UseVisualStyleBackColor = true;
             this.btnExec.Click += new System.EventHandler(this.btnExec_Click);
@@ -121,7 +132,7 @@
             this.txModuleNameSpace.Location = new System.Drawing.Point(135, 17);
             this.txModuleNameSpace.Name = "txModuleNameSpace";
             this.txModuleNameSpace.Size = new System.Drawing.Size(260, 21);
-            this.txModuleNameSpace.TabIndex = 23;
+            this.txModuleNameSpace.TabIndex = 0;
             this.txModuleNameSpace.Text = "HSAManager";
             // 
             // label12
@@ -138,7 +149,7 @@
             this.btnFolderChecker.Location = new System.Drawing.Point(135, 170);
             this.btnFolderChecker.Name = "btnFolderChecker";
             this.btnFolderChecker.Size = new System.Drawing.Size(71, 41);
-            this.btnFolderChecker.TabIndex = 30;
+            this.btnFolderChecker.TabIndex = 4;
             this.btnFolderChecker.Text = "选择";
             this.btnFolderChecker.UseVisualStyleBackColor = true;
             this.btnFolderChecker.Click += new System.EventHandler(this.btnFolderChecker_Click);
@@ -149,14 +160,14 @@
             this.txSaveFolder.Multiline = true;
             this.txSaveFolder.Name = "txSaveFolder";
             this.txSaveFolder.Size = new System.Drawing.Size(359, 36);
-            this.txSaveFolder.TabIndex = 29;
+            this.txSaveFolder.TabIndex = 3;
             // 
             // txDatabaseOperateClass
             // 
             this.txDatabaseOperateClass.Location = new System.Drawing.Point(135, 90);
             this.txDatabaseOperateClass.Name = "txDatabaseOperateClass";
             this.txDatabaseOperateClass.Size = new System.Drawing.Size(260, 21);
-            this.txDatabaseOperateClass.TabIndex = 27;
+            this.txDatabaseOperateClass.TabIndex = 2;
             this.txDatabaseOperateClass.Text = "DatabaseHelper";
             // 
             // txWebNameSpace
@@ -164,7 +175,7 @@
             this.txWebNameSpace.Location = new System.Drawing.Point(135, 54);
             this.txWebNameSpace.Name = "txWebNameSpace";
             this.txWebNameSpace.Size = new System.Drawing.Size(260, 21);
-            this.txWebNameSpace.TabIndex = 25;
+            this.txWebNameSpace.TabIndex = 1;
             this.txWebNameSpace.Text = "Module_HSAManager";
             // 
             // label11
@@ -201,7 +212,7 @@
             this.chkTemplate.Location = new System.Drawing.Point(135, 217);
             this.chkTemplate.Name = "chkTemplate";
             this.chkTemplate.Size = new System.Drawing.Size(372, 308);
-            this.chkTemplate.TabIndex = 10;
+            this.chkTemplate.TabIndex = 5;
             // 
             // label6
             // 
@@ -211,17 +222,6 @@
             this.label6.Size = new System.Drawing.Size(35, 12);
             this.label6.TabIndex = 9;
             this.label6.Text = "模板:";
-            // 
-            // btnClose
-            // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(366, 536);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 63);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "关闭";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FMExeCute2
             // 
