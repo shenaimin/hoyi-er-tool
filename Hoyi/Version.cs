@@ -69,6 +69,8 @@ namespace Hoyi
             builder.AppendLine("");
             builder.AppendLine("");
 
+            builder.AppendLine("");
+
             VersionContent = builder.ToString();
 
 
