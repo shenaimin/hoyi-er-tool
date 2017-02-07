@@ -398,26 +398,7 @@ namespace Hoyi.forms
             }
             else if (e.Alt == true)
             {
-                //if (e.KeyCode == Keys.A)
-                //{// 新建一个表，
-                //    toolStripButton1_Click(null, null);
-                //}else
-                if (e.KeyCode == Keys.V)
-                {
-                    toolStripButton7_Click(tsb_select, null);
-                }
-                else if (e.KeyCode == Keys.L)
-                {
-                    toolStripButton2_Click(tsb_line, null);
-                }
-                else if (e.KeyCode == Keys.C)
-                {
-                    tsbConnector_Click(tsbConnector, null);
-                }
-                else if (e.KeyCode == Keys.U)
-                {
-                    tsb_cir_Click(tsb_cir, null);
-                }
+                
             }else
             {
                 if (e.KeyCode == Keys.Enter) {
@@ -444,6 +425,26 @@ namespace Hoyi.forms
                 else if (e.KeyCode == Keys.F8)
                 {
                     打开OToolStripMenuItem_Click(null, null);
+                }
+                //if (e.KeyCode == Keys.A)
+                //{// 新建一个表，
+                //    toolStripButton1_Click(null, null);
+                //}else
+                if (e.KeyCode == Keys.V)
+                {
+                    toolStripButton7_Click(tsb_select, null);
+                }
+                else if (e.KeyCode == Keys.L)
+                {
+                    toolStripButton2_Click(tsb_line, null);
+                }
+                else if (e.KeyCode == Keys.C)
+                {
+                    tsbConnector_Click(tsbConnector, null);
+                }
+                else if (e.KeyCode == Keys.U)
+                {
+                    tsb_cir_Click(tsb_cir, null);
                 }
             }
         }
