@@ -799,7 +799,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FMClass";
             this.Text = "HOYI ER、类图设计      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.FMClass_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FMClass_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FMClass_DragEnter);

@@ -38,7 +38,7 @@ namespace Hoyi
             REGISTER_REGTABLE();
 
             // 设置系统版本号:
-            AppConf.Ins.Version = "3.4";
+            AppConf.Ins.Version = "3.41";
             RunThreadStartPage();
 
             // 将窗体static起来.
@@ -72,8 +72,10 @@ namespace Hoyi
 
         public static void RunLoadingPage()
         {
-            loadingpageThread = new Thread(RunLoadPage);
-            loadingpageThread.Start();
+            if (loadingpageThread != null) {
+                loadingpageThread = new Thread(RunLoadPage);
+                loadingpageThread.Start();
+            }
         }
 
         public static void RunLoadPage()
@@ -89,6 +91,16 @@ namespace Hoyi
 
         public static void CloseLoadingPage()
         {
+            try
+            {
+                if (loadingpageThread != null)
+                    loadingpageThread.Abort();
+            }
+            catch (Exception)
+            {
+
+            }
+            loadingpageThread = null;
             LoadingPage.Ins.Close();
         }
 

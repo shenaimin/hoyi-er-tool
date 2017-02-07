@@ -529,6 +529,9 @@ namespace Hoyi.forms
                 directCtrl dir = new directCtrl();
                 dir.DeleteDir(Application.StartupPath + "/autosave/");
             }
+
+            CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
+            this.Invoke(closepg);
             base.OnClosed(e);
         }
 
