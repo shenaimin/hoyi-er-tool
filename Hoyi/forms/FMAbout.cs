@@ -34,7 +34,8 @@ namespace Hoyi.forms
 
         private void FMAbout_Load(object sender, EventArgs e)
         {
-            lbversion.Text = "HOYI ER TOOL  V." + AppConf.Ins.Version;
+            lbversion.Text = "-Version：" + AppConf.Ins.Version;
+            rtxversion.Text = Version.GetVersion();
         }
 
         private void FMAbout_MouseUp(object sender, MouseEventArgs e)
@@ -45,6 +46,11 @@ namespace Hoyi.forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FMAbout_MouseDown(object sender, MouseEventArgs e)
+        {
+            //this.Close();
         }
     }
 }

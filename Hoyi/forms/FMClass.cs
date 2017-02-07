@@ -211,11 +211,22 @@ namespace Hoyi.forms
 
         public void LoadFromPath(string path)
         {
+            Program.RunLoadingPage();
+
+            //加载
             model1.Clear();
             AppConf.Ins.Application = XmlSerializer.LoadFromXml(path, typeof(ApplicationInfo)) as ApplicationInfo;
             ClassDiagCtrl.Ins.LoadAndRefreshModel(model1);
             ConnCtrl.Ins.LoadConnects(model1, AppConf.Ins.Application.Conns);
             ProTreeCtrl.Ins.ReLoadTree();
+
+            CloseStartPagedelegate closepg = new CloseStartPagedelegate(Program.CloseLoadingPage);
+            this.Invoke(closepg);
+            this.Activate();
+
+            // 模拟鼠标右击一下，有一个打开文档选中几个实体的BUG.
+            //mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
+            AppConf.Ins.DocSaved = true;
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
@@ -232,7 +243,7 @@ namespace Hoyi.forms
 
         private void 打开OToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (AppConf.Ins.Application.Modules.Count <= 1 || formConf.getConfEntity().Count == 0) {
+            if (AppConf.Ins.Application.Modules.Count <= 1 && formConf.getConfEntity().Count == 0) {
                 AppConf.Ins.DocSaved = true;
             }
             
@@ -445,6 +456,22 @@ namespace Hoyi.forms
                 else if (e.KeyCode == Keys.U)
                 {
                     tsb_cir_Click(tsb_cir, null);
+                }
+                else if (e.KeyCode == Keys.Add) // 加
+                {
+                    toolStripButton3_Click(null, null);
+                }
+                else if (e.KeyCode == Keys.OemMinus) // 减号
+                {
+                    toolStripButton6_Click(null, null);
+                }
+                else if (e.KeyCode == Keys.NumPad0) // 原始大小。
+                {
+                    toolStripButton4_Click(null, null);
+                }
+                else if (e.KeyCode == Keys.Z) // 选择缩放
+                {
+                    toolStripButton5_Click(null, null);
                 }
             }
         }
@@ -777,7 +804,7 @@ namespace Hoyi.forms
                     {
                         //MessageBox.Show(s[i].Trim());//打开文档
 
-                        if (AppConf.Ins.Application.Modules.Count <= 1 || formConf.getConfEntity().Count == 0)
+                        if (AppConf.Ins.Application.Modules.Count <= 1 && formConf.getConfEntity().Count == 0)
                         {
                             AppConf.Ins.DocSaved = true;
                         }

@@ -263,32 +263,32 @@
             // 项目结构图PToolStripMenuItem
             // 
             this.项目结构图PToolStripMenuItem.Name = "项目结构图PToolStripMenuItem";
-            this.项目结构图PToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.项目结构图PToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.项目结构图PToolStripMenuItem.Text = "项目结构图(&P)";
             this.项目结构图PToolStripMenuItem.Click += new System.EventHandler(this.项目结构图PToolStripMenuItem_Click);
             // 
             // 主操作图MToolStripMenuItem
             // 
             this.主操作图MToolStripMenuItem.Name = "主操作图MToolStripMenuItem";
-            this.主操作图MToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.主操作图MToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.主操作图MToolStripMenuItem.Text = "主操作图(&M)";
             // 
             // 属性视图AToolStripMenuItem
             // 
             this.属性视图AToolStripMenuItem.Name = "属性视图AToolStripMenuItem";
-            this.属性视图AToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.属性视图AToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.属性视图AToolStripMenuItem.Text = "属性视图(&A)";
             this.属性视图AToolStripMenuItem.Click += new System.EventHandler(this.属性视图AToolStripMenuItem_Click);
             // 
             // toolStripMenuItem7
             // 
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(146, 6);
             // 
             // 异常关闭选择ToolStripMenuItem
             // 
             this.异常关闭选择ToolStripMenuItem.Name = "异常关闭选择ToolStripMenuItem";
-            this.异常关闭选择ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.异常关闭选择ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.异常关闭选择ToolStripMenuItem.Text = "异常关闭选择";
             this.异常关闭选择ToolStripMenuItem.Click += new System.EventHandler(this.异常关闭选择ToolStripMenuItem_Click);
             // 
@@ -540,7 +540,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.ToolTipText = "放大";
+            this.toolStripButton3.ToolTipText = "放大(+)";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton6
@@ -551,7 +551,7 @@
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton6.Text = "toolStripButton6";
-            this.toolStripButton6.ToolTipText = "缩小";
+            this.toolStripButton6.ToolTipText = "缩小(-)";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // toolStripButton4
@@ -562,7 +562,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.ToolTipText = "原始大小";
+            this.toolStripButton4.ToolTipText = "原始大小(0)";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripButton5
@@ -573,7 +573,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton5.Text = "toolStripButton5";
-            this.toolStripButton5.ToolTipText = "选择缩放";
+            this.toolStripButton5.ToolTipText = "选择缩放(Z)";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // tsplog

@@ -8,6 +8,7 @@
  *          hoyi版权归hoyi.org所有
  */
 using Hoyi.appConf;
+using Hoyi.conf;
 using Hoyi.ctrl;
 using System;
 using System.Collections.Generic;
@@ -54,15 +55,26 @@ namespace Hoyi.forms
             FileInfo fl = ls.SelectedItem as FileInfo;
             string filePath = fl.Directory + "\\" + fl.Name;
 
-            DialogResult result = MessageBox.Show("是否要打开上次异常关闭的文档.", "加载异常关闭信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result == DialogResult.OK)
+
+            if (AppConf.Ins.Application.Modules.Count <= 1 && formConf.getConfEntity().Count == 0)
             {
-                //确定按钮的方法
-                parent.LoadFromPath(filePath);
+                AppConf.Ins.DocSaved = true;
             }
-            else
+
+            if (AppConf.Ins.DocSaved)
             {
-                //取消按钮的方法
+                DialogResult result = MessageBox.Show("是否要打开上次异常关闭的文档.", "加载异常关闭信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    //确定按钮的方法
+                    parent.LoadFromPath(filePath);
+                }
+                else
+                {
+                    //取消按钮的方法
+                }
+            }else {
+                MessageBox.Show("当前文档未保存，请按 CTRL+S 保存后再打开新的文档。");
             }
         }
     }
