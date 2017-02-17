@@ -158,6 +158,8 @@ namespace Hoyi.conf
             return entities;
         }
 
+
+
         /// <summary>
         /// 获取所有跟当前关联表有关系的实体.
         /// </summary>

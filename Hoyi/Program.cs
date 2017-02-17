@@ -38,7 +38,7 @@ namespace Hoyi
             REGISTER_REGTABLE();
 
             // 设置系统版本号:
-            AppConf.Ins.Version = "3.41";
+            AppConf.Ins.Version = "3.42";
             RunThreadStartPage();
 
             // 将窗体static起来.

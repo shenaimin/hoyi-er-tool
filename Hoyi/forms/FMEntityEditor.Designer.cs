@@ -35,7 +35,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbchecktemplate = new System.Windows.Forms.ComboBox();
-            this.cmbsysfield = new System.Windows.Forms.ComboBox();
+            this.cmbcopyfield = new System.Windows.Forms.ComboBox();
             this.txNotes = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.chkNeedFPYTable = new System.Windows.Forms.CheckBox();
@@ -108,6 +108,8 @@
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label19 = new System.Windows.Forms.Label();
+            this.cmbRelField = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -147,11 +149,13 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label19);
+            this.splitContainer1.Panel1.Controls.Add(this.cmbRelField);
             this.splitContainer1.Panel1.Controls.Add(this.label18);
             this.splitContainer1.Panel1.Controls.Add(this.label17);
             this.splitContainer1.Panel1.Controls.Add(this.label16);
             this.splitContainer1.Panel1.Controls.Add(this.cmbchecktemplate);
-            this.splitContainer1.Panel1.Controls.Add(this.cmbsysfield);
+            this.splitContainer1.Panel1.Controls.Add(this.cmbcopyfield);
             this.splitContainer1.Panel1.Controls.Add(this.txNotes);
             this.splitContainer1.Panel1.Controls.Add(this.label15);
             this.splitContainer1.Panel1.Controls.Add(this.chkNeedFPYTable);
@@ -166,7 +170,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer1.Size = new System.Drawing.Size(1218, 641);
+            this.splitContainer1.Size = new System.Drawing.Size(1688, 641);
             this.splitContainer1.SplitterDistance = 57;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -175,14 +179,14 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(528, 8);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 12);
+            this.label18.Size = new System.Drawing.Size(65, 12);
             this.label18.TabIndex = 24;
-            this.label18.Text = "SysField:";
+            this.label18.Text = "CopyField:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(758, 8);
+            this.label17.Location = new System.Drawing.Point(1012, 8);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(59, 12);
             this.label17.TabIndex = 24;
@@ -207,15 +211,16 @@
             this.cmbchecktemplate.TextUpdate += new System.EventHandler(this.cmbchecktemplate_TextUpdate);
             this.cmbchecktemplate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbchecktemplate_KeyPress);
             // 
-            // cmbsysfield
+            // cmbcopyfield
             // 
-            this.cmbsysfield.FormattingEnabled = true;
-            this.cmbsysfield.Location = new System.Drawing.Point(591, 4);
-            this.cmbsysfield.Name = "cmbsysfield";
-            this.cmbsysfield.Size = new System.Drawing.Size(160, 20);
-            this.cmbsysfield.TabIndex = 3;
-            this.cmbsysfield.TextUpdate += new System.EventHandler(this.cmbsysfield_TextUpdate);
-            this.cmbsysfield.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbsysfield_KeyPress);
+            this.cmbcopyfield.FormattingEnabled = true;
+            this.cmbcopyfield.Location = new System.Drawing.Point(594, 4);
+            this.cmbcopyfield.Name = "cmbcopyfield";
+            this.cmbcopyfield.Size = new System.Drawing.Size(160, 20);
+            this.cmbcopyfield.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.cmbcopyfield, "插入的内容可以随意修改，不影响源字段");
+            this.cmbcopyfield.TextUpdate += new System.EventHandler(this.cmbsysfield_TextUpdate);
+            this.cmbcopyfield.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbsysfield_KeyPress);
             // 
             // txNotes
             // 
@@ -223,7 +228,7 @@
             this.txNotes.Multiline = true;
             this.txNotes.Name = "txNotes";
             this.txNotes.Size = new System.Drawing.Size(670, 38);
-            this.txNotes.TabIndex = 4;
+            this.txNotes.TabIndex = 7;
             this.txNotes.TextChanged += new System.EventHandler(this.txNotes_TextChanged);
             // 
             // label15
@@ -238,7 +243,7 @@
             // chkNeedFPYTable
             // 
             this.chkNeedFPYTable.AutoSize = true;
-            this.chkNeedFPYTable.Location = new System.Drawing.Point(1146, 5);
+            this.chkNeedFPYTable.Location = new System.Drawing.Point(1460, 6);
             this.chkNeedFPYTable.Name = "chkNeedFPYTable";
             this.chkNeedFPYTable.Size = new System.Drawing.Size(108, 16);
             this.chkNeedFPYTable.TabIndex = 18;
@@ -258,14 +263,14 @@
             // cmbTemplate
             // 
             this.cmbTemplate.FormattingEnabled = true;
-            this.cmbTemplate.Location = new System.Drawing.Point(820, 4);
+            this.cmbTemplate.Location = new System.Drawing.Point(1077, 3);
             this.cmbTemplate.Name = "cmbTemplate";
             this.cmbTemplate.Size = new System.Drawing.Size(160, 20);
             this.cmbTemplate.TabIndex = 5;
             // 
             // btnAddModelAttrs
             // 
-            this.btnAddModelAttrs.Location = new System.Drawing.Point(986, 1);
+            this.btnAddModelAttrs.Location = new System.Drawing.Point(1243, 1);
             this.btnAddModelAttrs.Name = "btnAddModelAttrs";
             this.btnAddModelAttrs.Size = new System.Drawing.Size(154, 23);
             this.btnAddModelAttrs.TabIndex = 6;
@@ -322,7 +327,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
             this.splitContainer3.Panel2Collapsed = true;
-            this.splitContainer3.Size = new System.Drawing.Size(1218, 580);
+            this.splitContainer3.Size = new System.Drawing.Size(1688, 580);
             this.splitContainer3.SplitterDistance = 354;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -335,7 +340,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1218, 580);
+            this.tabControl1.Size = new System.Drawing.Size(1688, 580);
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
@@ -344,7 +349,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1210, 554);
+            this.tabPage1.Size = new System.Drawing.Size(1680, 554);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Attributes";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -373,7 +378,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnDeleteAttr);
             this.splitContainer2.Panel2.Controls.Add(this.btnEditAttr);
             this.splitContainer2.Panel2.Controls.Add(this.btnAddAttr);
-            this.splitContainer2.Size = new System.Drawing.Size(1204, 548);
+            this.splitContainer2.Size = new System.Drawing.Size(1674, 548);
             this.splitContainer2.SplitterDistance = 486;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -385,7 +390,7 @@
             this.gridAttributes.Name = "gridAttributes";
             this.gridAttributes.RowTemplate.Height = 23;
             this.gridAttributes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridAttributes.Size = new System.Drawing.Size(1204, 486);
+            this.gridAttributes.Size = new System.Drawing.Size(1674, 486);
             this.gridAttributes.TabIndex = 0;
             this.gridAttributes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridAttributes_CellClick);
             this.gridAttributes.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridAttributes_RowHeaderMouseDoubleClick);
@@ -540,7 +545,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1210, 328);
+            this.tabPage2.Size = new System.Drawing.Size(1210, 554);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Keys";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -550,7 +555,7 @@
             this.tabPage3.Controls.Add(this.splitContainer5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1210, 328);
+            this.tabPage3.Size = new System.Drawing.Size(1680, 554);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "RelationShips";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -582,8 +587,8 @@
             // splitContainer5.Panel2
             // 
             this.splitContainer5.Panel2.Controls.Add(this.datagridContraint);
-            this.splitContainer5.Size = new System.Drawing.Size(1210, 328);
-            this.splitContainer5.SplitterDistance = 48;
+            this.splitContainer5.Size = new System.Drawing.Size(1680, 554);
+            this.splitContainer5.SplitterDistance = 81;
             this.splitContainer5.TabIndex = 0;
             // 
             // btnRemove
@@ -743,7 +748,7 @@
             this.datagridContraint.Location = new System.Drawing.Point(0, 0);
             this.datagridContraint.Name = "datagridContraint";
             this.datagridContraint.RowTemplate.Height = 23;
-            this.datagridContraint.Size = new System.Drawing.Size(1210, 276);
+            this.datagridContraint.Size = new System.Drawing.Size(1680, 469);
             this.datagridContraint.TabIndex = 0;
             // 
             // splitContainer4
@@ -764,8 +769,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.tabControl2);
-            this.splitContainer4.Size = new System.Drawing.Size(1218, 222);
-            this.splitContainer4.SplitterDistance = 66;
+            this.splitContainer4.Size = new System.Drawing.Size(150, 46);
+            this.splitContainer4.SplitterDistance = 25;
             this.splitContainer4.TabIndex = 0;
             // 
             // chkPrimaryKey
@@ -1019,19 +1024,40 @@
             this.tabPage8.Text = "Rule/Constaint";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(756, 9);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(89, 12);
+            this.label19.TabIndex = 26;
+            this.label19.Text = "RelationField:";
+            // 
+            // cmbRelField
+            // 
+            this.cmbRelField.FormattingEnabled = true;
+            this.cmbRelField.Location = new System.Drawing.Point(845, 4);
+            this.cmbRelField.Name = "cmbRelField";
+            this.cmbRelField.Size = new System.Drawing.Size(160, 20);
+            this.cmbRelField.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.cmbRelField, "插入的字段跟源字段绑定，修改A表字段后，B表字段也被修改。");
+            this.cmbRelField.TextUpdate += new System.EventHandler(this.cmbRelField_TextUpdate);
+            this.cmbRelField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbRelField_KeyPress);
+            // 
             // FMEntityEditor
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSave;
-            this.ClientSize = new System.Drawing.Size(1218, 641);
+            this.ClientSize = new System.Drawing.Size(1688, 641);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FMEntityEditor";
             this.Text = "EntityEditor";
             this.Load += new System.EventHandler(this.FMEntityEditor_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FMEntityEditor_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -1142,12 +1168,14 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txNotes;
-        private System.Windows.Forms.ComboBox cmbsysfield;
+        private System.Windows.Forms.ComboBox cmbcopyfield;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cmbchecktemplate;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cmbRelField;
     }
 }

@@ -17,6 +17,14 @@ namespace Hoyi
             StringBuilder builder = new StringBuilder();
 
             builder.AppendLine("");
+            builder.AppendLine("-version: v3.42");
+
+            builder.AppendLine("");
+            builder.AppendLine("添加CopyField,和RelaField方法.");
+            builder.AppendLine("RelaField方法,可以加外键.");
+            builder.AppendLine("");
+
+            builder.AppendLine("");
             builder.AppendLine("-version: v3.41");
 
             builder.AppendLine("");

@@ -632,60 +632,6 @@ namespace Hoyi.forms
                 entity.Notes = txNotes.Text;
             }
         }
-
-        public List<AttributeInfo> checkattrs = new List<AttributeInfo>();
-
-        private void cmbsysfield_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Return)
-            {
-                try
-                {
-                    List<AttributeInfo> attrs = new List<AttributeInfo>();
-
-                    AttributeInfo att = checkattrs[cmbsysfield.SelectedIndex];
-
-                    att.IsPK = false;
-                    att.IsIdentity = false;
-
-                    attrs.Add(att);
-                    entity.Attributes.AddRange(attrs);
-                    this.BindAttributes();
-                }
-                catch (Exception)
-                {
-                }
-            }
-        }
-
-        private void cmbsysfield_TextUpdate(object sender, EventArgs e)
-        {
-            cmbsysfield.DroppedDown = true;
-            cmbsysfield.Items.Clear();
-            checkattrs.Clear();
-
-
-            foreach (ModuleInfo item in AppConf.Ins.Application.Modules)
-            {
-                foreach (EntityInfo ents in item.Entitys)
-                {
-                    foreach (AttributeInfo attrs in ents.Attributes)
-                    {
-                        if (attrs.ColumnName.Contains(cmbsysfield.Text) || attrs.Comment.Contains(cmbsysfield.Text))
-                        {
-                            checkattrs.Add(attrs);
-                        }
-                    }
-                }
-            }
-
-            foreach (AttributeInfo item in checkattrs)
-            {
-                cmbsysfield.Items.Add(item.Comment + "(" + item.ColumnName + ")");
-            }
-
-            cmbsysfield.SelectionStart = cmbsysfield.Text.Length;
-        }
         /// <summary>
         /// 检索出来的templatename.
         /// </summary>
@@ -727,6 +673,141 @@ namespace Hoyi.forms
                 {
                 }
             }
+        }
+
+        private void FMEntityEditor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Shift == true) {
+                if (e.KeyCode == Keys.Tab) {
+                    if (txEntityName.Focused) {
+
+                    }
+                }
+            }
+        }
+
+        public List<AttributeInfo> checkattrs = new List<AttributeInfo>();
+
+        private void cmbsysfield_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                try
+                {
+                    List<AttributeInfo> attrs = new List<AttributeInfo>();
+
+                    AttributeInfo att = checkattrs[cmbcopyfield.SelectedIndex].Clone();
+
+                    att.IsPK = false;
+                    att.IsIdentity = false;
+
+                    attrs.Add(att);
+                    entity.Attributes.AddRange(attrs);
+                    this.BindAttributes();
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        private void cmbsysfield_TextUpdate(object sender, EventArgs e)
+        {
+            cmbcopyfield.DroppedDown = true;
+            cmbcopyfield.Items.Clear();
+            checkattrs.Clear();
+
+
+            foreach (ModuleInfo item in AppConf.Ins.Application.Modules)
+            {
+                foreach (EntityInfo ents in item.Entitys)
+                {
+                    foreach (AttributeInfo attrs in ents.Attributes)
+                    {
+                        if (attrs.ColumnName.Contains(cmbcopyfield.Text) || attrs.Comment.Contains(cmbcopyfield.Text))
+                        {
+                            checkattrs.Add(attrs.Clone());
+                        }
+                    }
+                }
+            }
+
+            foreach (AttributeInfo item in checkattrs)
+            {
+                cmbcopyfield.Items.Add(item.Comment + "(" + item.ColumnName + ")");
+            }
+
+            cmbcopyfield.SelectionStart = cmbcopyfield.Text.Length;
+        }
+
+
+        private void cmbRelField_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                try
+                {
+                    List<AttributeInfo> attrs = new List<AttributeInfo>();
+
+                    // 将目标表的字段拷贝并插入当前表中，
+
+                    AttributeInfo att = checkattrs[cmbRelField.SelectedIndex];
+
+                    att.IsPK = false;
+                    att.IsIdentity = false;
+
+                    attrs.Add(att);
+                    entity.Attributes.AddRange(attrs);
+                    this.BindAttributes();
+
+
+                    // 给当前表加上外键.
+                    EntityInfo checkedrelEntity = checkedentities[cmbRelField.SelectedIndex];
+
+                    ConnCtrl.Ins.AddConstraint("", entity, att, checkedrelEntity, att);
+                    ConnCtrl.Ins.AddLine(entity, checkedrelEntity);
+                   
+                    BindConstraintAtt();
+
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+        
+
+        public List<EntityInfo> checkedentities = new List<EntityInfo>();
+
+        private void cmbRelField_TextUpdate(object sender, EventArgs e)
+        {
+            cmbRelField.DroppedDown = true;
+            cmbRelField.Items.Clear();
+            checkattrs.Clear();
+            checkedentities.Clear();
+
+
+            foreach (ModuleInfo item in AppConf.Ins.Application.Modules)
+            {
+                foreach (EntityInfo ents in item.Entitys)
+                {
+                    foreach (AttributeInfo attrs in ents.Attributes)
+                    {
+                        if (attrs.ColumnName.Contains(cmbRelField.Text) || attrs.Comment.Contains(cmbRelField.Text))
+                        {
+                            checkattrs.Add(attrs);
+                            checkedentities.Add(ents);
+                        }
+                    }
+                }
+            }
+
+            foreach (AttributeInfo item in checkattrs)
+            {
+                cmbRelField.Items.Add(item.Comment + "(" + item.ColumnName + ")");
+            }
+
+            cmbRelField.SelectionStart = cmbRelField.Text.Length;
         }
     }
 }
