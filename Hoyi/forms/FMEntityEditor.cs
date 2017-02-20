@@ -724,9 +724,11 @@ namespace Hoyi.forms
                 {
                     foreach (AttributeInfo attrs in ents.Attributes)
                     {
-                        if (attrs.ColumnName.Contains(cmbcopyfield.Text) || attrs.Comment.Contains(cmbcopyfield.Text))
-                        {
-                            checkattrs.Add(attrs.Clone());
+                        if (attrs.ColumnName != null && attrs.Comment != null) {
+                            if (attrs.ColumnName.Contains(cmbcopyfield.Text) || attrs.Comment.Contains(cmbcopyfield.Text))
+                            {
+                                checkattrs.Add(attrs.Clone());
+                            }
                         }
                     }
                 }

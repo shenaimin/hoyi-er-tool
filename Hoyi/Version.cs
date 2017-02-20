@@ -17,6 +17,19 @@ namespace Hoyi
             StringBuilder builder = new StringBuilder();
 
             builder.AppendLine("");
+            builder.AppendLine("-version: v3.44");
+
+            builder.AppendLine("");
+            builder.AppendLine("修复改ID复制的Bug.");
+            builder.AppendLine("");
+            builder.AppendLine("");
+            builder.AppendLine("");
+            builder.AppendLine("-version: v3.43");
+
+            builder.AppendLine("");
+            builder.AppendLine("修复存在空字段时，CopyField的Bug.");
+            builder.AppendLine("");
+            builder.AppendLine("");
             builder.AppendLine("-version: v3.42");
 
             builder.AppendLine("");

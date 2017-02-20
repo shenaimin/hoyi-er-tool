@@ -76,12 +76,24 @@ namespace ModelCode.ModelInfo
             ent.X = this.X;
             ent.Y = this.Y;
             // 这里考虑是否要克隆一组，而不是直接赋值.
-            ent.Attributes = this.Attributes;
-            ent.operaters = this.operaters;
-            ent.constraints = this.constraints;
-            ent.NeedfpyTable = NeedfpyTable;
-            ent.Notes = this.Notes;
+
+            ent.Attributes = this.CloneAttr(this.Attributes);
+
+            //ent.Attributes = this.Attributes;
+            ent.operaters = new List<IOperater>();
+            ent.constraints = new List<ConstraintInfo>();
+            ent.NeedfpyTable = false;
+            ent.Notes = this.Notes.Clone().ToString();
             return ent;
+        }
+
+        public List<AttributeInfo> CloneAttr(List<AttributeInfo> attrs) {
+            List<AttributeInfo> att = new List<AttributeInfo>();
+            foreach (AttributeInfo item in attrs)
+            {
+                att.Add(item.Clone());
+            }
+            return att;
         }
 
         public override string ToString()
