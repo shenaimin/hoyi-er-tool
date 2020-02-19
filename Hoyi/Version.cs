@@ -17,6 +17,10 @@ namespace Hoyi
             StringBuilder builder = new StringBuilder();
 
             builder.AppendLine("");
+            builder.AppendLine("-version: v3.50");
+            builder.AppendLine("");
+            builder.AppendLine("修改增删改后，整棵树刷新的问题.");
+            builder.AppendLine("");
             builder.AppendLine("-version: v3.44");
 
             builder.AppendLine("");

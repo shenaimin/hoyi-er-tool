@@ -1,6 +1,6 @@
 ﻿/*
  *          Author:Ellen
- *          Email:ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com
+ *          Email:ellen@miloong.com   专业的App外包提供商，广州巨鲸信息技术有限公司   www.miloong.com
  *          CreateDate:2015-01-20
  *          ModifyDate:2015-01-20
  *          hoyi entities @ hoyi.org
@@ -38,13 +38,25 @@ namespace Hoyi.ctrl
         }
 
         public TreeView ProTree;
-
+        /// <summary>
+        /// 选中模型的节点.
+        /// </summary>
+        public TreeNode CheckedModuleNode;
+        /// <summary>
+        /// 选中的模型
+        /// </summary>
         public ModuleInfo CheckedModule;
-
+        /// <summary>
+        /// 选中的实体.
+        /// </summary>
         public EntityInfo Checkedentity;
 
+        /// <summary>
+        /// 重新加载当前树.
+        /// </summary>
         public void ReLoadTree()
         {
+            //LoadingPageCtrls.ShowLoading();
             cancheck = false;
             ProTree.Nodes.Clear();
 
@@ -57,30 +69,104 @@ namespace Hoyi.ctrl
             TreeNode moduleNode, entityNode;
             foreach (ModuleInfo module in AppConf.Ins.Application.Modules)
             {
-                moduleNode = new TreeNode(module.ModuleName + "[" + module.Caption +"," + module.Prefix+ "]");
+                moduleNode = new TreeNode(module.ModuleName + "[" + module.Caption + "," + module.Prefix + ",ent:" + module.Entitys.Count + "]");
                 moduleNode.Tag = module;
 
                 root.Nodes.Add(moduleNode);
 
                 foreach (EntityInfo entity in module.Entitys)
                 {
-                    entityNode = new TreeNode(entity.EntityName + "[" + entity.ClassName + ",ops:" + entity.operaters.Count + "]");
+                    entityNode = new TreeNode(entity.EntityName + "[" + entity.ClassName + "]");
+                    //entityNode = new TreeNode(entity.EntityName + "[" + entity.ClassName + ",ops:" + entity.operaters.Count + "]");
                     entityNode.Tag = entity;
 
                     moduleNode.Nodes.Add(entityNode);
                 }
+                CheckedModuleNode = moduleNode;
                 CheckedModule = module;
             }
             if (AppConf.Ins.Application.Modules.Count > 0)
             {
                 CheckedModule = AppConf.Ins.Application.Modules[0];
+                if (ProTree.Nodes != null)
+                {
+                    if (ProTree.Nodes[0].Nodes != null)
+                    {
+                        CheckedModuleNode = ProTree.Nodes[0].Nodes[0];
+                    }
+                }
             }
-            ProTree.ExpandAll();
+            if (AppConf.Ins.Application.Modules.Count < 3)
+            {
+                ProTree.ExpandAll();
+            }
+            else
+            {
+                FMClass.Ins.toolStripButton2_Click_1(null, null);
+            }
             //ProTree.AfterSelect += ProTree_AfterSelect;
             cancheck = true;
 
 
             AppConf.Ins.DocSaved = false;
+
+            if (CheckedModule != null)
+            {
+                if (AppConf.Ins.Application.Modules != null)
+                {
+                    FMClass.Ins.tslbtatus.Text = "状态：模型加载完成.共加载 " + AppConf.Ins.Application.Modules.Count + "个模块";
+                }
+                else
+                {
+                    FMClass.Ins.tslbtatus.Text = "状态：模型加载完成.共加载0个模块";
+                }
+                FMClass.Ins.tslbcheckedmodule.Text = "选中模块:" + CheckedModule.ModuleName;
+            }
+            else
+            {
+                FMClass.Ins.tslbcheckedmodule.Text = "选中模块: 无";
+            }
+
+            //LoadingPageCtrls.ShowLoading();
+        }
+        /// <summary>
+        /// 重新加载当前Module的节点.
+        /// </summary>
+        public void ReLoadTreeModule()
+        {
+            cancheck = false;
+            TreeNode entityNode;
+            CheckedModuleNode.Nodes.Clear();
+            foreach (EntityInfo entity in CheckedModule.Entitys)
+            {
+                entityNode = new TreeNode(entity.EntityName + "[" + entity.ClassName + ",ops:" + entity.operaters.Count + "]");
+                entityNode.Tag = entity;
+
+                CheckedModuleNode.Nodes.Add(entityNode);
+            }
+            //ProTree.AfterSelect += ProTree_AfterSelect;
+            cancheck = true;
+
+            AppConf.Ins.DocSaved = false;
+
+            if (CheckedModule != null)
+            {
+                if (AppConf.Ins.Application.Modules != null)
+                {
+                    FMClass.Ins.tslbtatus.Text = "状态：添加一个实体";
+                }
+                else
+                {
+                    FMClass.Ins.tslbtatus.Text = "状态：添加一个实体";
+                }
+                FMClass.Ins.tslbcheckedmodule.Text = "选中模块:" + CheckedModule.ModuleName;
+            }
+            else
+            {
+                FMClass.Ins.tslbcheckedmodule.Text = "选中模块: 无";
+            }
+
+            //LoadingPageCtrls.ShowLoading();
         }
         /// <summary>
         /// 重新加载模型.
@@ -99,6 +185,7 @@ namespace Hoyi.ctrl
             AppConf.Ins.DocSaved = false;
         }
 
+
         /**
         树的右键选中.
         */    
@@ -115,30 +202,44 @@ namespace Hoyi.ctrl
 
         public void ProTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            ProTree.ExpandAll();
+            FMClass.Ins.tslbtatus.Text = "状态：模块加载中...";
+            //ProTree.ExpandAll();
             if (cancheck)
             {
-                if (ProTree.SelectedNode.Tag is ModuleInfo)
+                if (ProTree.SelectedNode != null)
                 {
-                    CheckedModule = ProTree.SelectedNode.Tag as ModuleInfo;
-                    ReloadModule();
+                    if (ProTree.SelectedNode.Tag is ModuleInfo)
+                    {
+                        CheckedModule = ProTree.SelectedNode.Tag as ModuleInfo;
+                        CheckedModuleNode = ProTree.SelectedNode;
+                        ReloadModule();
+                    }
+                    if (ProTree.SelectedNode.Tag is EntityInfo)
+                    {
+                        Checkedentity = ProTree.SelectedNode.Tag as EntityInfo;
+                        //formConf.Editedtable = Checkedentity;
 
-                }
-                if (ProTree.SelectedNode.Tag is EntityInfo)
-                {
-                    Checkedentity = ProTree.SelectedNode.Tag as EntityInfo;
-                    //formConf.Editedtable = Checkedentity;
+                        FMEntityEditor editor = new FMEntityEditor();
+                        editor.entity = Checkedentity;
+                        editor.WindowState = FormWindowState.Maximized;
+                        editor.RefreshModeltable += ClassDiagCtrl.Ins.editor_RefreshModeltable;
+                        editor.ShowDialog();
 
-                    FMEntityEditor editor = new FMEntityEditor();
-                    editor.entity = Checkedentity;
-                    editor.WindowState = FormWindowState.Maximized;
-                    editor.RefreshModeltable += ClassDiagCtrl.Ins.editor_RefreshModeltable;
-                    editor.ShowDialog();
-
-                    //MessageBox.Show(Checkedentity.EntityName);
+                        //MessageBox.Show(Checkedentity.EntityName);
+                    }
                 }
             }
-            ProTree.ExpandAll();
+            FMClass.Ins.tslbtatus.Text = "状态：模块加载完成.";
+            if(CheckedModule != null)
+            {
+                FMClass.Ins.tslbtatus.Text = "状态：模块[ " + CheckedModule.ModuleName +" ]加载完成.共加载 " + CheckedModule.Entitys.Count + "个实体";
+                FMClass.Ins.tslbcheckedmodule.Text = "选中模块:" + CheckedModule.ModuleName;
+            }
+            else
+            {
+                FMClass.Ins.tslbcheckedmodule.Text = "选中模块: 无";
+            }
+            //ProTree.ExpandAll();
         }
         /// <summary>
         /// 模拟选中当前模型.

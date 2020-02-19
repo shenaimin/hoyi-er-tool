@@ -40,8 +40,8 @@ namespace Hoyi.forms
 
         private void LoadingPage_Load(object sender, EventArgs e)
         {
-            timer1.Interval = 300;
-            timer1.Start();
+            //timer1.Interval = 300;
+            //timer1.Start();
         }
     }
 }

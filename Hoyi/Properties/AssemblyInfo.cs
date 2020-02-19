@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Hoyi ER TOOL")]
-[assembly: AssemblyDescription("HOYI ER TOOL ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com")]
+[assembly: AssemblyDescription("HOYI ER TOOL ellen@miloong.com   专业的App外包提供商，广州巨鲸信息技术有限公司   www.miloong.com")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("www.hoyi.org    www.kuaifish.com[快鱼技术 快人一步 专业的App外包开发商]")]
+[assembly: AssemblyCompany("www.hoyi.org    www.miloong.com[巨鲸信息 专业的App外包开发商]")]
 [assembly: AssemblyProduct("Hoyi ER TOOL")]
 [assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]

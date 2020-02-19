@@ -101,7 +101,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(323, 12);
             this.label5.TabIndex = 9;
-            this.label5.Text = "快鱼技术 快人一步，    软件产品、外包开发服务提供商。";
+            this.label5.Text = "巨鲸信息，    软件产品、外包开发服务提供商。";
             // 
             // label6
             // 
@@ -110,7 +110,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 12);
             this.label6.TabIndex = 8;
-            this.label6.Text = "www.kuaifish.com";
+            this.label6.Text = "www.miloong.com";
             // 
             // label7
             // 

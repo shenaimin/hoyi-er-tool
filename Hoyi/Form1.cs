@@ -1,6 +1,6 @@
 ﻿/*
  *          Author:Ellen
- *          Email:ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com
+ *          Email:ellen@miloong.com   专业的App外包提供商，广州巨鲸信息技术有限公司   www.miloong.com
  *          CreateDate:2015-01-20
  *          ModifyDate:2015-01-20
  *          hoyi entities @ hoyi.org
@@ -29,7 +29,7 @@ namespace Hoyi
 
         private void 关于HOYI设计AToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("shenaimin [Ellen] 2014-11-8 . ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com ");
+            MessageBox.Show("shenaimin [Ellen] 2014-11-8 . ellen@miloong.com   专业的App外包提供商，广州巨鲸信息技术有限公司   www.miloong.com ");
         }
 
         private void btnAppInfo_Click(object sender, EventArgs e)

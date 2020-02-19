@@ -121,16 +121,19 @@
   <data name="lgoo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\lgoo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="meetdragonlogo_simple" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\meetdragonlogo_simple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="hoyi.org" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\hoyi.org.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meetdragonlogo_simple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\meetdragonlogo_simple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mdglogo-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\mdglogo-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="12210757-56d90ec78ff3414a92d164ca5d2a6cbc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\12210757-56d90ec78ff3414a92d164ca5d2a6cbc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

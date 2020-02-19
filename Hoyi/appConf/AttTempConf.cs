@@ -36,9 +36,12 @@ namespace Hoyi.appConf
         public void InitTemps()
         {
             DirectoryInfo dir = new DirectoryInfo(Application.StartupPath + "\\att_temps");
-            foreach (FileInfo dd in dir.GetFiles())
+            if (dir.Exists)
             {
-                alltemps.Add(dd.Name);
+                foreach (FileInfo dd in dir.GetFiles())
+                {
+                    alltemps.Add(dd.Name);
+                }
             }
         }
 

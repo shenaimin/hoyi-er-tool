@@ -1,6 +1,6 @@
 ﻿/*
  *          Author:Ellen
- *          Email:ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com
+ *          Email:ellen@miloong.com   专业的App外包提供商，广州巨鲸信息技术有限公司   www.miloong.com
  *          CreateDate:2015-01-20
  *          ModifyDate:2015-01-20
  *          hoyi entities @ hoyi.org
@@ -66,6 +66,23 @@ namespace Hoyi.forms
         {
             return this.NewTable(this.currentModel, entity);
         }
+
+        /// <summary>
+        /// 根据ElementID，删除模型的图像，而不用重新刷新整个画布.
+        /// </summary>
+        /// <param name="ElementID"></param>
+        public void RemoveElement(String ElementID)
+        {
+            this.currentModel.Shapes.Remove(ElementID);
+        }
+        /// <summary>
+        /// 修改实体之后，更新Element.
+        /// </summary>
+        //public void UpdateElement(EntityInfo _entity)
+        //{
+        //    //this.currentModel.Shapes[_entity.ElementID] = new Table();
+        //    ProTreeCtrl.Ins.ReloadModule();
+        //}
 
         public Table NewTable(Model model1, EntityInfo entity)
         {
@@ -243,7 +260,8 @@ namespace Hoyi.forms
                     }
                     // 从系统内删除这些EntityInfo.
                     //EntityInfo newent = ent.Clone();
-                    ProTreeCtrl.Ins.ReLoadTree();
+                    //ProTreeCtrl.Ins.ReLoadTree();
+                    ProTreeCtrl.Ins.ReLoadTreeModule();
                 }
                 else if (e.Value is Line)
                 {
@@ -285,8 +303,9 @@ namespace Hoyi.forms
             editor.RefreshModeltable += editor_RefreshModeltable;
             editor.Show();
 
-
-            ProTreeCtrl.Ins.ReLoadTree();
+            // 双击后，重新加载树，改为双击后，只加载Model.
+            //ProTreeCtrl.Ins.ReLoadTree();
+            ProTreeCtrl.Ins.ReLoadTreeModule();
         }
         public void model1_ElementDoubleClick(object sender, EventArgs e)
         {
@@ -302,6 +321,10 @@ namespace Hoyi.forms
             //MessageBox.Show(sender.ToString());
         }
 
+        /// <summary>
+        /// 编辑完实体后的事件，这里不加载整棵树，这里只加载当前的Module。
+        /// </summary>
+        /// <param name="_entity"></param>
         public void editor_RefreshModeltable(EntityInfo _entity)
         {
             if (formConf.Editedtable != null)
@@ -317,8 +340,10 @@ namespace Hoyi.forms
                     }
                     formConf.Editedtable.Heading = _entity.EntityName;
                     formConf.Editedtable.SubHeading = _entity.ClassName + "[" + cons + "]\n" + "   [" + _entity.Attributes.Count.ToString() + " Fields]";
-                    
-                    ProTreeCtrl.Ins.ReLoadTree();
+
+                    //ProTreeCtrl.Ins.ReLoadTree();
+                    ProTreeCtrl.Ins.ReLoadTreeModule();
+                    //ClassDiagCtrl.Ins.UpdateElement(_entity);
                 }
             }
         }

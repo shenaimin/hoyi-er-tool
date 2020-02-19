@@ -307,9 +307,11 @@
     <Content Include="img\12210757-56d90ec78ff3414a92d164ca5d2a6cbc.jpg" />
     <Content Include="img\hoyi.org.png" />
     <Content Include="img\lgoo.png" />
+    <None Include="img\loading.gif" />
     <Content Include="img\mdglogo-blue.png" />
     <Content Include="img\meetdragon.png" />
     <Content Include="img\meetdragonlogo_simple.png" />
+    <Content Include="img\resizeApi.png" />
     <Content Include="img\ui-check-box-mix.png" />
     <Content Include="img\ui-check-box-uncheck.png" />
     <Content Include="img\ui-check-box.png" />

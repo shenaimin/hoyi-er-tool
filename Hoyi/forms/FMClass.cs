@@ -1,6 +1,6 @@
 ﻿/*
  *          Author:Ellen
- *          Email:ellen@kuaifish.com   专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com
+ *          Email:ellen@miloong.com   专业的App外包提供商，广州巨鲸信息技术有限公司   www.miloong.com
  *          CreateDate:2015-01-20
  *          ModifyDate:2015-01-20
  *          hoyi entities @ hoyi.org
@@ -49,6 +49,7 @@ namespace Hoyi.forms
 
         private void FMClass_Load(object sender, EventArgs e)
         {
+            this.tslbtatus.Alignment = ToolStripItemAlignment.Right;
             this.Hide();
             AttTempConf.Ins.InitTemps();
             ProTreeCtrl.Ins.ProTree = this.treeProject;
@@ -73,7 +74,7 @@ namespace Hoyi.forms
 
             ProTreeCtrl.Ins.ReLoadTree();
 
-            LoadModel();
+            InitModelEvents();
 
             properGridCtrl.propertyGrid1 = this.propertyGrid1;
 
@@ -84,7 +85,7 @@ namespace Hoyi.forms
                 string path = loadargs[0];
                 LoadFromPath(path);
                 AppConf.LoadAndSavedPath = path;
-                this.Text = "HOYI ER、类图设计        " + AppConf.LoadAndSavedPath + "   [hoyi.org][kuaifish.com 快鱼技术 快人一步]" ;
+                this.Text = "HOYI ER、类图设计        " + AppConf.LoadAndSavedPath + "   [hoyi.org][miloong.com 巨鲸信息]" ;
                 AppConf.Ins.DocSaved = true;
                 //MessageBox.Show("加载完成.");
             }
@@ -134,7 +135,10 @@ namespace Hoyi.forms
             }
         }
 
-        private void LoadModel()
+        /**
+         * 初始化 model的事件.
+         */
+        private void InitModelEvents()
         {
             ClassDiagCtrl.Ins.InitModelEvent(this.model1, this);
         }
@@ -166,7 +170,7 @@ namespace Hoyi.forms
         {
             FMAbout abs = new FMAbout();
             abs.ShowDialog();
-            //MessageBox.Show("hoyi.org@2015 All rights reserved.   [专业的App外包提供商，广州快鱼信息技术有限公司   www.kuaifish.com   ellen@kuaifish.com] ");
+            //MessageBox.Show("hoyi.org@2015 All rights reserved.   [专业的App外包提供商，广州巨鲸信息技术有限公司   www.miloong.com   ellen@miloong.com] ");
         }
 
         private void 属性视图AToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,7 +207,7 @@ namespace Hoyi.forms
                 string path = AppConf.LoadAndSavedPath;
                 XmlSerializer.SaveToXml(path, AppConf.Ins.Application, AppConf.Ins.Application.GetType(), null);
 
-                this.Text = "HOYI ER、类图设计 " + path + "      已保存.                    [hoyi.org][kuaifish.com 快鱼技术 快人一步]" ;
+                this.Text = "HOYI ER、类图设计 " + path + "      已保存.                    [hoyi.org][miloong.com 巨鲸信息]" ;
             }
             // 按了保存，文档Saved为true,做了其他操作就变成false
             AppConf.Ins.DocSaved = true;
@@ -258,7 +262,7 @@ namespace Hoyi.forms
                     string path = dialog.FileName;
                     LoadFromPath(path);
                     AppConf.LoadAndSavedPath = path;
-                    this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
+                    this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][miloong.com 巨鲸信息]";
                     //Thread.Sleep(20000);
                     //MessageBox.Show("加载完成.");
                     ProTreeCtrl.Ins.ReLoadTree();
@@ -358,8 +362,13 @@ namespace Hoyi.forms
                         EntityInfo entityinfo = (treeProject.SelectedNode.Tag as EntityInfo);
                         AppConf.Ins.Application.Modules.Single(s=>s==targetmodlue).Entitys.Remove(entityinfo);
 
-                        ProTreeCtrl.Ins.ReLoadTree();
-                        ProTreeCtrl.Ins.ReloadModule();
+                        //ProTreeCtrl.Ins.ReLoadTree();
+
+
+
+                        ProTreeCtrl.Ins.ReLoadTreeModule();
+                        ClassDiagCtrl.Ins.RemoveElement(entityinfo.ElementID);
+                        //ProTreeCtrl.Ins.ReloadModule();
                     }
                 }
                 else
@@ -501,6 +510,13 @@ namespace Hoyi.forms
             else {
                 path = Application.StartupPath + "/autosave/" + AppConf.Ins.Application.AppName + "[" + i.ToString() + ".Entity]" + DateTime.Now.ToString("_yyyy_MM_dd_HH_mm_ss") + ".hoyi";
             }
+            String savedPath = Application.StartupPath + "/autosave";
+            DirectoryInfo _savepath = new DirectoryInfo(savedPath);
+            if (!_savepath.Exists)
+            {
+                _savepath.Create();
+            }
+
             FileStream fs1 = new FileStream(path, FileMode.Create, FileAccess.Write);//创建写入文件 
             StreamWriter sw = new StreamWriter(fs1);
             sw.WriteLine("");//开始写入值
@@ -616,7 +632,7 @@ namespace Hoyi.forms
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "        [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
+            this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "        [hoyi.org][miloong.com 巨鲸信息]";
         }
 
         public void UnCheckExT(ToolStripButton tsb)
@@ -819,7 +835,7 @@ namespace Hoyi.forms
                             string path = s[i].Trim();
                             LoadFromPath(path);
                             AppConf.LoadAndSavedPath = path;
-                            this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][kuaifish.com 快鱼技术 快人一步]";
+                            this.Text = "HOYI ER、类图设计 " + AppConf.LoadAndSavedPath + "      [hoyi.org][miloong.com 巨鲸信息]";
                             //Thread.Sleep(20000);
                             //MessageBox.Show("加载完成.");
                             ProTreeCtrl.Ins.ReLoadTree();
@@ -843,5 +859,23 @@ namespace Hoyi.forms
                 }
             }
         }
+
+        public void toolStripButton2_Click_1(object sender, EventArgs e)
+        {
+            if(treeProject.Nodes.Count > 0)
+            {
+                treeProject.Nodes[0].Collapse();
+                treeProject.Nodes[0].Expand();
+            }
+        }
+
+        private void toolStripButton7_Click_1(object sender, EventArgs e)
+        {
+            if (treeProject.Nodes.Count > 0)
+            {
+                treeProject.Nodes[0].ExpandAll();
+            }
+        }
+
     }
 }
