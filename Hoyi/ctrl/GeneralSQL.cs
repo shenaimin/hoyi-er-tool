@@ -39,7 +39,7 @@ namespace Hoyi.ctrl
          *
          * */
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="AddDropTable"></param>
         /// <param name="AddYin"></param>
@@ -175,7 +175,7 @@ namespace Hoyi.ctrl
             bool AddFPY, bool DeleteFPY,
             bool AddCreateTable, bool RemoveFori, bool AddForiPre,
             bool AddDropTable, bool AddYin, bool AddEncode, string Encode,
-            bool AddComment, bool AddEngine, string Engine, bool AddPrefix, 
+            bool AddComment, bool AddEngine, string Engine, bool AddPrefix,
             bool AddSuffix, bool AddForien
             )
         {
