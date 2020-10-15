@@ -53,16 +53,23 @@ namespace Hoyi.ctrl
         {
             if (!inited)
             {
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(DEFAULT_OPERA_URL);
+                try
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(DEFAULT_OPERA_URL);
 
-                XmlNodeList tbfnodes = xmlDoc.SelectNodes("/OPERATES/DEFAULT_OPERATES");
-                DEFAULT_OPERATE = LoadOPFROMNODES(tbfnodes);
+                    XmlNodeList tbfnodes = xmlDoc.SelectNodes("/OPERATES/DEFAULT_OPERATES");
+                    DEFAULT_OPERATE = LoadOPFROMNODES(tbfnodes);
 
 
-                XmlNodeList allnodes = xmlDoc.SelectNodes("/OPERATES/ALL_OPERATES");
-                ALL_OPERATES = LoadAllNodeType(allnodes);
-                inited = true;
+                    XmlNodeList allnodes = xmlDoc.SelectNodes("/OPERATES/ALL_OPERATES");
+                    ALL_OPERATES = LoadAllNodeType(allnodes);
+                    inited = true;
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
         /// <summary>

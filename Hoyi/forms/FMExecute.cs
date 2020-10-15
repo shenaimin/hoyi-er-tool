@@ -209,7 +209,8 @@ namespace Hoyi.forms
             foreach (EntityInfo entity in modulestable)
             {
                 AppConf.Ins.CurrentExeEntity = entity;
-                control.LoadTemplateURL("Template/" + checkedTemplate[0]);
+                // 这个页面不用了。所以也不用生成了.
+                control.LoadTemplateURL("Template/" + checkedTemplate[0], "");
                 control.Execute(entity, this.txSaveFolder.Text);
             }
             MessageBox.Show("文档生成成功! CheckedEntity:" + modulestable.Count);

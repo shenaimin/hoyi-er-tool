@@ -45,6 +45,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.chkTemplate = new System.Windows.Forms.CheckedListBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cmbtempCate = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -80,6 +82,8 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.Controls.Add(this.label1);
+            this.splitContainer2.Panel2.Controls.Add(this.cmbtempCate);
             this.splitContainer2.Panel2.Controls.Add(this.btnClose);
             this.splitContainer2.Panel2.Controls.Add(this.btnExec);
             this.splitContainer2.Panel2.Controls.Add(this.txModuleNameSpace);
@@ -146,9 +150,9 @@
             // 
             // btnFolderChecker
             // 
-            this.btnFolderChecker.Location = new System.Drawing.Point(135, 170);
+            this.btnFolderChecker.Location = new System.Drawing.Point(500, 128);
             this.btnFolderChecker.Name = "btnFolderChecker";
-            this.btnFolderChecker.Size = new System.Drawing.Size(71, 41);
+            this.btnFolderChecker.Size = new System.Drawing.Size(60, 36);
             this.btnFolderChecker.TabIndex = 4;
             this.btnFolderChecker.Text = "选择";
             this.btnFolderChecker.UseVisualStyleBackColor = true;
@@ -223,6 +227,24 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "模板:";
             // 
+            // cmbtempCate
+            // 
+            this.cmbtempCate.FormattingEnabled = true;
+            this.cmbtempCate.Location = new System.Drawing.Point(135, 178);
+            this.cmbtempCate.Name = "cmbtempCate";
+            this.cmbtempCate.Size = new System.Drawing.Size(372, 20);
+            this.cmbtempCate.TabIndex = 32;
+            this.cmbtempCate.SelectedIndexChanged += new System.EventHandler(this.cmbtempCate_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 186);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 12);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "模板分类:";
+            // 
             // FMExeCute2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -264,5 +286,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ComboBox cmbtempCate;
+        private System.Windows.Forms.Label label1;
     }
 }

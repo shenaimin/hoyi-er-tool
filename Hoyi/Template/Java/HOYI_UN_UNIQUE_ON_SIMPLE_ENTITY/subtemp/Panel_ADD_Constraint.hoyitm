@@ -1,0 +1,5 @@
+<panel style="display:none;">
+<%%# t.Comment #%%>: <asp:TextBox runat="server" ID="tx_<%%# t.ColumnName #%%>" ></asp:TextBox>
+</panel>
+<%%# t.unikey().REFERENCED_TABLE_NAME.toentity().getsecfield().Comment  #%%>:<asp:DropDownList ID="ddl<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>" runat="server" Height="27px" Width="115px">
+</asp:DropDownList>

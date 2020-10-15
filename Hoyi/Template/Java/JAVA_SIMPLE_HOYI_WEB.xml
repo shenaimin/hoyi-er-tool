@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 用于注明生成各个文件是从哪个模板里面取值，并且放到哪个路径下面. -->
+<Docments>
+	<!-- mainOperate -->
+	<!-- 左边是树，右边是操作的模板对自循环有用， 非自循环左边的树不能生成.  -->
+
+	<Document id="hoyiphtml" Template="JAVA_SIMPLE_HOYI_WEB/projectmanag.hoyip.html" TargetURL="[TargetURL]/exmds/[m.Caption]/[e.ClassName]manage.hoyip.html" />
+	<Document id="hoyipjava" Template="JAVA_SIMPLE_HOYI_WEB/projectmanag.java" TargetURL="[TargetURL]/exmds/[m.Caption]/[e.ClassName]manage.java" />
+
+	<Document id="menujs" Template="JAVA_SIMPLE_HOYI_WEB/sys-menu.js" TargetURL="[TargetURL]/menu-js/[m.Caption]/sys-menu.js" />
+
+
+
+</Docments>

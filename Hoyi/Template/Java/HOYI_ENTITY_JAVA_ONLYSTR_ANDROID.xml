@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 用于注明生成各个文件是从哪个模板里面取值，并且放到哪个路径下面. -->
+<Docments>
+
+	<!-- models -->
+	<Document id="Model" Template="HOYI_ENTITY_JAVA_ONLYSTR_ANDROID/user.java" TargetURL="[TargetURL]/HOYI_ANDROID_ORM/[m.Caption]/[e.ClassName].java" />	
+
+</Docments>

@@ -36,9 +36,14 @@ namespace Hoyi.forms
             txModuleNameSpace.Text = AppConf.Ins.Application.NameSpace;
 
             DirectoryInfo direct = new DirectoryInfo(Application.StartupPath + "\\Template");
-            foreach (FileInfo fl in direct.GetFiles())
+            cmbtempCate.DisplayMember = "Name";
+            foreach (DirectoryInfo dir in direct.GetDirectories())
             {
-                chkTemplate.Items.Add(fl.Name);
+                cmbtempCate.Items.Add(dir.Name);
+            }
+            if (cmbtempCate.Items.Count > 0)
+            {
+                cmbtempCate.SelectedIndex = 1;
             }
 
             txSaveFolder.Text = AppConf.Ins.Application.SavedPath;
@@ -47,6 +52,20 @@ namespace Hoyi.forms
             ExCodeTreeCtrl.Ins.ReLoadTree();
 
             txModuleNameSpace.Focus();
+        }
+
+
+        private void cmbtempCate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chkTemplate.Items.Clear();
+            DirectoryInfo direct = new DirectoryInfo(Application.StartupPath + "\\Template" + "\\" + cmbtempCate.SelectedItem);
+            if (direct.Exists)
+            {
+                foreach (FileInfo fl in direct.GetFiles())
+                {
+                    chkTemplate.Items.Add(fl.Name);
+                }
+            }
         }
 
         public void InitSavedPath()
@@ -101,13 +120,13 @@ namespace Hoyi.forms
             {
                 foreach (EntityInfo entity in mo.Entitys)
                 {
-                    if (entity.operaters == null || entity.operaters.Count <= 0)
+                    /*if (entity.operaters == null || entity.operaters.Count <= 0)
                     {
                         DEFAULT_OPERATE_READER.Instance.INIT_DEFAULT_OPERA();
                         entity.operaters = DEFAULT_OPERATE_READER.Instance.DEFAULT_OPERATE;
-                    }
+                    }*/
                     AppConf.Ins.CurrentExeEntity = entity;
-                    control.LoadTemplateURL("Template/" + checkedTemplate[0]);
+                    control.LoadTemplateURL(checkedTemplate[0], cmbtempCate.SelectedItem.ToString());
                     control.Execute(entity, this.txSaveFolder.Text);
                 }
             }
@@ -128,5 +147,6 @@ namespace Hoyi.forms
         {
             this.Close();
         }
+
     }
 }

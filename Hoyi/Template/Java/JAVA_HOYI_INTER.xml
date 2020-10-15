@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 用于注明生成各个文件是从哪个模板里面取值，并且放到哪个路径下面. -->
+<Docments>
+
+	<!-- models -->
+	<Document id="Model" Template="JAVA_HOYI_INTER/SavedpwdService.java" TargetURL="[TargetURL]/HOYI_INTER/[m.Caption]/inter/[e.ClassName]Service.java" />	
+
+</Docments>

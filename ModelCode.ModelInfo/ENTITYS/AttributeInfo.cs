@@ -55,6 +55,10 @@ namespace ModelCode.ModelInfo
         /// </summary>
         public string Notes { get; set; }
         /// <summary>
+        /// 字段的Option,用JSON格式存储，[{"0":"开始"}, {"1", "结束"}]
+        /// </summary>
+        public string Options { get; set; }
+        /// <summary>
         /// 应该说是 key 属性
         /// 1. 如果Key是空的, 那么该列值的可以重复, 表示该列没有索引, 或者是一个非唯一的复合索引的非前导列
         /// 2. 如果Key是PRI, 那么该列是主键的组成部分
@@ -125,6 +129,7 @@ namespace ModelCode.ModelInfo
             attr.Collation = this.Collation;
             attr.Notes = this.Notes;
             attr.SysDefaultVal = this.SysDefaultVal;
+            attr.Options = this.Options;
 
             return attr;
         }

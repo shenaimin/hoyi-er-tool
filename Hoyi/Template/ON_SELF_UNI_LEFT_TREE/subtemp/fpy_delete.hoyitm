@@ -1,4 +1,0 @@
-if (true)  // 如果启用了首字母存储，没有的话，请删除这里的代码.
-					{
-						<%%# e.ClassName #%%>_fpyFactory.Create().DeleteBy<%%# e.getfirfieldName().ToParscal() #%%>(<%%# e.getfirfieldName() #%%>);
-                    }

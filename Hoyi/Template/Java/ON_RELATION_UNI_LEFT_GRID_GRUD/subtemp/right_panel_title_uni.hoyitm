@@ -1,0 +1,6 @@
+<div style="margin: 23px 0 0 5px; ">
+                    <asp:Label runat="server" ID="lb_checked<%%# t.rela_uni_out_tb_name()  #%%>Name" CssClass="uni_caption_name"></asp:Label>    &nbsp;的 <%%# e.EntityName  #%%>
+                </div>
+                <div style="display:none;">
+                    <asp:Label runat="server" ID="lb_checked<%%# t.rela_uni_out_tb_name()  #%%>"></asp:Label></div>
+                <br />

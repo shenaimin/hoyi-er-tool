@@ -1,8 +1,0 @@
-<tr>
-	<td>
-		<%%# t.Comment #%%>:
-	</td>
-	<td style="background-color:white;">
-		<asp:TextBox runat="server" ID="tx_<%%# t.ColumnName #%%>"></asp:TextBox>
-	</td>
-</tr>	

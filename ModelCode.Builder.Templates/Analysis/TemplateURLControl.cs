@@ -30,10 +30,10 @@ namespace ModelCode.Builder.Templates.Analysis
     {
         public List<TemplateRule> tempRules = new List<TemplateRule>();
 
-        public void LoadTemplateURL(string templates_navi_url)
+        public void LoadTemplateURL(string templates_navi_url, string subfolder)
         {
             XmlDocument xml = new XmlDocument();
-            xml.Load(System.AppDomain.CurrentDomain.BaseDirectory + templates_navi_url);
+            xml.Load(System.AppDomain.CurrentDomain.BaseDirectory + "Template\\" + subfolder + "\\" + templates_navi_url);
 
             string x = xml.ToString();
 
@@ -43,7 +43,7 @@ namespace ModelCode.Builder.Templates.Analysis
             {
                 TemplateRule rule = new TemplateRule();
                 rule.ID = node.Attributes["id"].InnerXml;
-                rule.TemplateURL = node.Attributes["Template"].InnerXml;
+                rule.TemplateURL = "Template\\" + subfolder + "\\" +  node.Attributes["Template"].InnerXml;
                 rule.TargetURL = node.Attributes["TargetURL"].InnerXml;
 
                 tempRules.Add(rule);

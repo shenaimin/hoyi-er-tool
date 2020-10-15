@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 用于注明生成各个文件是从哪个模板里面取值，并且放到哪个路径下面. -->
+<Docments>
+
+	<!-- mainOperate -->
+
+	<Document id="aspx" Template="HOYI_UN_UNIQUE_ON_SIMPLE_ENTITY/simpleDemo.aspx" TargetURL="[TargetURL]/page/mds/[m.Caption]/p[e.ClassName]/simpg_[e.ClassName].aspx" />
+	<Document id="cs" Template="HOYI_UN_UNIQUE_ON_SIMPLE_ENTITY/simpleDemo.aspx.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/p[e.ClassName]/simpg_[e.ClassName].aspx.cs" />
+	<Document id="designer" Template="HOYI_UN_UNIQUE_ON_SIMPLE_ENTITY/simpleDemo.aspx.designer.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/p[e.ClassName]/simpg_[e.ClassName].aspx.designer.cs" />
+
+	<!-- simpleOperate -->
+	<Document id="aspx1" Template="HOYI_UN_UNIQUE_ON_SIMPLE_ENTITY/user_show.aspx" TargetURL="[TargetURL]/page/mds/[m.Caption]/p[e.ClassName]/simsw_[e.ClassName].aspx" />
+	<Document id="cs1" Template="HOYI_UN_UNIQUE_ON_SIMPLE_ENTITY/user_show.aspx.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/p[e.ClassName]/simsw_[e.ClassName].aspx.cs" />
+	<Document id="designer1" Template="HOYI_UN_UNIQUE_ON_SIMPLE_ENTITY/user_show.aspx.designer.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/p[e.ClassName]/simsw_[e.ClassName].aspx.designer.cs" />
+
+	<!-- menus.js -->
+	<Document id="js" Template="HOYI_UN_UNIQUE_ON_SIMPLE_ENTITY/mds.js" TargetURL="[TargetURL]/sim_mds_[m.Caption].js" />
+
+</Docments>

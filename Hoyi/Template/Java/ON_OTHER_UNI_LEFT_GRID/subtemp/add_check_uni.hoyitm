@@ -1,0 +1,9 @@
+
+            // 如果只能存续一个名字.
+            if (ViewState["FIL_ID"] == null)
+            {
+                JSController.Alert("添加前，请先选择<%%# e.unienti().EntityName  #%%>.");
+            }
+            string <%%# e.uni1field().ColumnName  #%%> = ViewState["FIL_ID"].ToString();
+            if (!<%%#e.ClassName #%%>Factory.Create().ExistsBy<%%# e.getsecfield().ColumnName.ToParscal() #%%>A<%%# e.unikey_out_fieldname().ToParscal()  #%%>(tx_<%%# e.getsecfield().ColumnName #%%>.Text, <%%# e.unikey_out_fieldname()  #%%>))
+			//if (!<%%# e.ClassName #%%>Factory.Create().ExistsBy<%%# e.getsecfield().ColumnName.ToParscal() #%%>(tx_<%%# e.getsecfield().ColumnName #%%>.Text)) 

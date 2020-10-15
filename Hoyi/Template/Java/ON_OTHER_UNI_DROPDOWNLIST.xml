@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 用于注明生成各个文件是从哪个模板里面取值，并且放到哪个路径下面. -->
+<Docments>
+	<!-- models
+	<Document id="Model" Template="Template/ON_OTHER_UNI_DROPDOWNLIST/user.cs" TargetURL="[TargetURL]/Modules/[m.Caption]/Model/[e.ClassName]Info.cs" />
+	 -->
+	<!-- 外键操作，外键被用于生成一个DropDownList来显示.  -->
+	<!-- mainOperate -->
+
+	<Document id="aspx" Template="ON_OTHER_UNI_DROPDOWNLIST/simpleDemo.aspx" TargetURL="[TargetURL]/page/mds/[m.Caption]/[e.ClassName]/pg_[e.ClassName].aspx" />
+	<Document id="cs" Template="ON_OTHER_UNI_DROPDOWNLIST/simpleDemo.aspx.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/[e.ClassName]/pg_[e.ClassName].aspx.cs" />
+	<Document id="designer" Template="ON_OTHER_UNI_DROPDOWNLIST/simpleDemo.aspx.designer.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/[e.ClassName]/pg_[e.ClassName].aspx.designer.cs" />
+
+	<!-- simpleOperate -->
+	<Document id="aspx1" Template="ON_OTHER_UNI_DROPDOWNLIST/user_show.aspx" TargetURL="[TargetURL]/page/mds/[m.Caption]/[e.ClassName]/sw_[e.ClassName].aspx" />
+	<Document id="cs1" Template="ON_OTHER_UNI_DROPDOWNLIST/user_show.aspx.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/[e.ClassName]/sw_[e.ClassName].aspx.cs" />
+	<Document id="designer1" Template="ON_OTHER_UNI_DROPDOWNLIST/user_show.aspx.designer.cs" TargetURL="[TargetURL]/page/mds/[m.Caption]/[e.ClassName]/sw_[e.ClassName].aspx.designer.cs" />
+
+	<!-- menus.js -->
+	<Document id="js" Template="ON_OTHER_UNI_DROPDOWNLIST/mds.js" TargetURL="[TargetURL]/mds_[m.Caption].js" />
+
+</Docments>

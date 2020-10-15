@@ -15,7 +15,11 @@ namespace Hoyi
             VersionContent = "";
 
             StringBuilder builder = new StringBuilder();
-
+            builder.AppendLine("");
+            builder.AppendLine("-version: v8.02");
+            builder.AppendLine("");
+            builder.AppendLine("增加SysDefaultVal,Option,IF Tag.");
+            builder.AppendLine("");
             builder.AppendLine("");
             builder.AppendLine("-version: v3.50");
             builder.AppendLine("");

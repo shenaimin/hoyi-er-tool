@@ -1,0 +1,6 @@
+<div style="margin: 23px 0 0 5px; ">
+                    <asp:Label runat="server" ID="lb_checked<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>Name" CssClass="uni_caption_name"></asp:Label>    &nbsp;的 <%%# e.EntityName  #%%>
+                </div>
+                <div style="display:none;">
+                    <asp:Label runat="server" ID="lb_checked<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>"></asp:Label></div>
+                <br />

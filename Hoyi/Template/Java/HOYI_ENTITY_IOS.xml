@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 用于注明生成各个文件是从哪个模板里面取值，并且放到哪个路径下面. -->
+<Docments>
+
+	<!-- models -->
+	<Document id="Model" Template="HOYI_ENTITY_IOS/User.h" TargetURL="[TargetURL]/HOYI_IOS_ORM/[m.Caption]/[e.ClassName.ToParscal()].h" />
+	<Document id="Model1" Template="HOYI_ENTITY_IOS/User.m" TargetURL="[TargetURL]/HOYI_IOS_ORM/[m.Caption]/[e.ClassName.ToParscal()].m" />
+
+    <!-- Service -->
+    <Document id="Model" Template="HOYI_ENTITY_IOS/UserService.h" TargetURL="[TargetURL]/HOYI_IOS_ORM/[m.Caption]/[e.ClassName.ToParscal()]Service.h" />
+    <Document id="Model1" Template="HOYI_ENTITY_IOS/UserService.m" TargetURL="[TargetURL]/HOYI_IOS_ORM/[m.Caption]/[e.ClassName.ToParscal()]Service.m" />
+
+</Docments>

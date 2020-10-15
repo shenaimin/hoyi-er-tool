@@ -1,0 +1,3 @@
+function on<%%# t.unikey().REFERENCED_TABLE_NAME  #%%>change(obj) {
+            $('#tx_<%%# t.unikey().REFERENCED_TABLE_NAME.toentity().getfirfieldname()  #%%>').val(obj.value);
+        }

@@ -33,6 +33,11 @@ namespace Hoyi.ctrl
                 return _instance;
             }
         }
+
+        /*
+         *
+         *
+         * */
         /// <summary>
         /// 
         /// </summary>
@@ -70,9 +75,20 @@ namespace Hoyi.ctrl
                         result += "CREATE TABLE `" + (AddPrefix ? mo.Prefix : "") + ent.ClassName + (AddSuffix ? mo.Suffix : "") + "` (\n";
                         foreach (AttributeInfo att in ent.Attributes)
                         {
-                            result += "     `" + att.ColumnName + "` " + att.TypeName + "(" + (att.TypeName.ToLower().Equals("decimal") ? att.Preci + ", " + att.Scale : att.Length) + ")";
+                            /* https://blog.csdn.net/lijinzhou2017/article/details/81062877 哪些类型不用 设置长度.*/
+                            switch (att.TypeName.ToLower()) {
+                                case "datetime":
+                                    result += "     `" + att.ColumnName + "` " + att.TypeName;
+                                    break;
+                                default:
+                                    result += "     `" + att.ColumnName + "` " + att.TypeName + "(" + (att.TypeName.ToLower().Equals("decimal") ? att.Preci + ", " + att.Scale : att.Length) + ")";
+                                    break;
+
+                            }
+                            /*result += "     `" + att.ColumnName + "` " + att.TypeName + "(" + (att.TypeName.ToLower().Equals("decimal") ? att.Preci + ", " + att.Scale : att.Length) + ")";*/
                             result += att.cisNull ? " NULL " : " NOT NULL ";
                             result += att.DefaultVal == null ? "" :  " DEFAULT '" +  att.DefaultVal + "' ";
+                            result += att.SysDefaultVal == null ? "" : " DEFAULT " + att.SysDefaultVal + " ";
                             result += att.IsIdentity ? " AUTO_INCREMENT  " : " ";
                             result += AddComment ? " COMMENT '" + att.Comment + "' " : " ";
                             result += ",\n";

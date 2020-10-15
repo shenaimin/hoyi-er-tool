@@ -1,0 +1,9 @@
+
+                if (ViewState["FIL_ID"] == null)
+                {
+                    recordCount = <%%# e.ClassName #%%>Factory.Create().GetAllCount();
+                }
+                else
+                {
+                    recordCount = <%%# e.ClassName #%%>Factory.Create().GetBy<%%# e.unikey_in_fieldname().ToParscal() #%%>Count(<%%# e.unikey_in_fieldname() #%%>);
+                }
