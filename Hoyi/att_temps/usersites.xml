@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+            <AttributeInfo>
+              <Comment>用户编号</Comment>
+              <ColumnName>userid</ColumnName>
+              <TypeName>bigint</TypeName>
+              <Length>30</Length>
+              <IsPK>false</IsPK>
+              <IsIdentity>false</IsIdentity>
+              <cisNull>false</cisNull>
+              <IsUnique>false</IsUnique>
+              <DefaultVal>-1</DefaultVal>
+            </AttributeInfo>
+            <AttributeInfo>
+              <Comment>网站编号</Comment>
+              <ColumnName>websiteid</ColumnName>
+              <TypeName>bigint</TypeName>
+              <Length>30</Length>
+              <IsPK>false</IsPK>
+              <IsIdentity>false</IsIdentity>
+              <cisNull>false</cisNull>
+              <IsUnique>false</IsUnique>
+              <DefaultVal>-1</DefaultVal>
+            </AttributeInfo>
+</ArrayOfAttributeInfo>

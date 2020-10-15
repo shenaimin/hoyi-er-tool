@@ -86,6 +86,10 @@ namespace ModelCode.ModelInfo
         /// </summary>
         public string DefaultVal { get; set; }
         /// <summary>
+        /// 系统默认值，例如生成当前时间等.
+        /// </summary>
+        public string SysDefaultVal { get; set; }
+        /// <summary>
         /// Float,Double,Decimal的小数点前面的值.
         /// </summary>
         public string Preci { get; set; }
@@ -120,13 +124,14 @@ namespace ModelCode.ModelInfo
 
             attr.Collation = this.Collation;
             attr.Notes = this.Notes;
+            attr.SysDefaultVal = this.SysDefaultVal;
 
             return attr;
         }
 
         public override string ToString()
         {
-            return "[AttributeInfo:{Comment:" + Comment + ", ColumnName:" + ColumnName + ", TypeName:" + TypeName + ", Length:" + Length + ", Collation:" + Collation + ", cisNull:" + cisNull + ", IsPK:" + IsPK + ", IsUnique:" + IsUnique + ", Key:" + Key + ", Extra:" + Extra + ", IsIdentity:" + IsIdentity + ", DefaultVal:" + DefaultVal + ", Preci:" + Preci + ", Scale:" + Scale + ",Notes:" + Notes + "}]";
+            return "[AttributeInfo:{Comment:" + Comment + ", ColumnName:" + ColumnName + ", TypeName:" + TypeName + ", Length:" + Length + ", Collation:" + Collation + ", cisNull:" + cisNull + ", IsPK:" + IsPK + ", IsUnique:" + IsUnique + ", Key:" + Key + ", Extra:" + Extra + ", IsIdentity:" + IsIdentity + ", DefaultVal:" + DefaultVal + ", SysDefaultVal:" + SysDefaultVal + ", Preci:" + Preci + ", Scale:" + Scale + ",Notes:" + Notes + "}]";
         }
     }
 }

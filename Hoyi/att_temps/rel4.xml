@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AttributeInfo>
+              <Comment>备用1</Comment>
+              <ColumnName>rel1</ColumnName>
+              <TypeName>varchar</TypeName>
+              <Length>200</Length>
+              <IsPK>false</IsPK>
+              <IsIdentity>false</IsIdentity>
+              <cisNull>true</cisNull>
+              <IsUnique>false</IsUnique>
+            </AttributeInfo>
+            <AttributeInfo>
+              <Comment>备用2</Comment>
+              <ColumnName>rel2</ColumnName>
+              <TypeName>varchar</TypeName>
+              <Length>200</Length>
+              <IsPK>false</IsPK>
+              <IsIdentity>false</IsIdentity>
+              <cisNull>true</cisNull>
+              <IsUnique>false</IsUnique>
+            </AttributeInfo>
+            <AttributeInfo>
+              <Comment>备用3</Comment>
+              <ColumnName>rel3</ColumnName>
+              <TypeName>varchar</TypeName>
+              <Length>200</Length>
+              <IsPK>false</IsPK>
+              <IsIdentity>false</IsIdentity>
+              <cisNull>true</cisNull>
+              <IsUnique>false</IsUnique>
+            </AttributeInfo>
+            <AttributeInfo>
+              <Comment>备用4</Comment>
+              <ColumnName>rel4</ColumnName>
+              <TypeName>varchar</TypeName>
+              <Length>200</Length>
+              <IsPK>false</IsPK>
+              <IsIdentity>false</IsIdentity>
+              <cisNull>true</cisNull>
+              <IsUnique>false</IsUnique>
+            </AttributeInfo>
+</ArrayOfAttributeInfo>

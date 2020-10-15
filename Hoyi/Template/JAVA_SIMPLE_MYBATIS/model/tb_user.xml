@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="<%%# a.NameSpace #%%>.dao.I<%%# e.ClassName #%%>Dao">
+
+    <resultMap type="<%%# a.NameSpace #%%>.model.<%%# e.ClassName #%%>" id="resultList<%%# e.ClassName #%%>">
+	
+		<%%# [Fields[Equals(0)]={<id column="<%#= t.ColumnName #%>" property="<%#= t.ColumnName #%>" />}] #%%>
+		<%%# [Fields[>1]={<result column="<%#= t.ColumnName #%>" property="<%#= t.ColumnName #%>" />  
+		}] #%%>
+	</resultMap>
+	
+    <select id="countAll"  resultType="int">
+        select count(*) c from `<%%# e.ClassName #%%>`
+    </select>
+    
+     <select id="like<%%# e.ClassName #%%>count" parameterType="String" resultType="Int">
+        select count(*) c from `<%%# e.ClassName #%%>` where
+		<%%# [Fields[Equals(1)]={
+             <%#= t.ColumnName #%> like #{filters}   }] #%%><%%# [Fields[>2]={
+         or  <%#= t.ColumnName #%> like #{filters}   }] #%%>
+    </select>
+    
+    <select id="getAll<%%# e.ClassName #%%>"  useCache="false" flushCache="true"  parameterType="Map" resultMap="resultList<%%# e.ClassName #%%>">
+        select * from `<%%# e.ClassName #%%>` limit #{offset}, #{pagesize}
+    </select>
+    
+    <select id="selectby<%%# e.getfirfieldName() #%%>" parameterType="int" resultType="<%%# a.NameSpace #%%>.model.<%%# e.ClassName #%%>">
+        select * from `<%%# e.ClassName #%%>` where <%%# e.getfirfieldName() #%%> = #{<%%# e.getfirfieldName() #%%>}
+    </select>
+    
+    <select id="limit<%%# e.ClassName #%%>"  parameterType="Map"  resultMap="resultList<%%# e.ClassName #%%>">
+        select * from `<%%# e.ClassName #%%>` limit #{offset}, #{pagesize}
+    </select>
+	
+    <select id="like<%%# e.ClassName #%%>" parameterType="Map" resultMap="resultList<%%# e.ClassName #%%>">
+        select * from <%%# e.ClassName #%%> where
+		<%%# [Fields[Equals(1)]={
+             <%#= t.ColumnName #%> like #{filters}  }] #%%><%%# [Fields[>2]={
+         or  <%#= t.ColumnName #%> like #{filters}  }] #%%>
+          limit #{offset}, #{pagesize}
+    </select>
+    
+    <insert id="insert" parameterType="<%%# a.NameSpace #%%>.model.<%%# e.ClassName #%%>" useGeneratedKeys="true" keyProperty="<%%# e.getfirfieldName() #%%>">
+    	insert into <%%# e.ClassName #%%>(
+			<%%# [Fields[Inner,1,Last(1)]={ <%#= t.ColumnName #%>, }] #%%>
+			<%%# [Fields[Last(1)]={ <%#= t.ColumnName #%> }] #%%>
+    	)values(
+			<%%# [Fields[Inner,1,Last(1)]={ #{<%#= t.ColumnName #%>}, }] #%%>
+			<%%# [Fields[Last(1)]={ #{<%#= t.ColumnName #%>} }] #%%>
+    	)
+    </insert>
+    
+    <update id="UpdateByUnid" parameterType="<%%# a.NameSpace #%%>.model.<%%# e.ClassName #%%>">
+        update <%%# e.ClassName #%%> set 
+			<%%# [Fields[Inner,1,Last(1)]={ <%#= t.ColumnName #%>=#{<%#= t.ColumnName #%>}, }] #%%>
+			<%%# [Fields[Last(1)]={ <%#= t.ColumnName #%>=#{<%#= t.ColumnName #%>} }] #%%>
+    		where 
+			<%%# e.getfirfieldName() #%%>=#{<%%# e.getfirfieldName() #%%>}
+    </update>
+    
+    <delete id="delete<%%# e.ClassName #%%>" parameterType="String">
+    	delete from <%%# e.ClassName #%%> where <%%# e.getfirfieldName() #%%>=#{<%%# e.getfirfieldName() #%%>}
+    </delete>
+    
+</mapper>

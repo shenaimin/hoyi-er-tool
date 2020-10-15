@@ -29,6 +29,7 @@
     <IsIdentity>false</IsIdentity>
     <cisNull>false</cisNull>
     <IsUnique>false</IsUnique>
+    <DefaultVal>-1</DefaultVal>
   </AttributeInfo>
   <AttributeInfo>
     <Comment>备注</Comment>

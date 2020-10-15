@@ -83,7 +83,14 @@ namespace ModelCode.ModelInfo
             ent.operaters = new List<IOperater>();
             ent.constraints = new List<ConstraintInfo>();
             ent.NeedfpyTable = false;
-            ent.Notes = this.Notes.Clone().ToString();
+            if (this.Notes != null)
+            {
+                ent.Notes = this.Notes.Clone().ToString();
+            }
+            else
+            {
+                ent.Notes = "";
+            }
             return ent;
         }
 

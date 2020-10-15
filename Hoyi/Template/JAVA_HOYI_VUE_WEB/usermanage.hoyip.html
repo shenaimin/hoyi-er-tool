@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	
+    <title><%%# e.EntityName #%%> 管理</title>
+
+	<%# VUEBootStapLib() #%>
+
+	<style type="text/css">
+		a{
+			cursor: pointer;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="app">
+
+	<!-- Modal -->
+    <div class="modal fade" id="delmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">删除</h4>
+                </div>
+                <div id="modal-body" class="modal-body">
+                    你确定要删除<%%# e.EntityName #%%>： {{cur_<%%# e.getsecfieldName() #%%>}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnDelete" @click="Delete" class="btn btn-primary">确定删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add,Modi Modal -->
+    <div class="modal fade" id="modiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addmodallabel">
+                        {{ addmodelshow ? '添加<%%# e.EntityName #%%>' : '修改<%%# e.EntityName #%%>' }}
+                    </h4>
+                </div>
+                <div id="addmodalbody" class="modal-body">
+                    <form id="modiaddform" @submit="doSubmit" class="form-horizontal">
+                    	<%# GetInputers() #%>
+						
+                        <div class="space-4"></div>
+							
+                        <div class="modal-footer">
+                            <button  class="btn btn-primary" @click="Update<%%# e.ClassName.ToParscal() #%%>" >
+                            	 {{ addmodelshow ? '添加' : '修改' }}
+                        	</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+            	</div>
+            </div>
+        </div>
+    </div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="btn-group" role="group" aria-label="...">
+				<a class="btn btn-default" @click="showaddmodal"> <span
+					class="glyphicon glyphicon-plus" style="color: green;"
+					aria-hidden="true"></span> 添加<%%# e.EntityName #%%>
+				</a>
+				<div class="input-group" style="width: 30%; margin-left: 70%;">
+					<input type="text" class="form-control" id="txfilter" name="locfilter" v-model="filter" placeholder="输入查询条件"> 
+						<span class="input-group-btn">
+						<button class="btn btn-default" type="button" >查询</button>
+					</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<table  class="table table-border"  id="app">
+		<tr>
+			<%%# [Fields[>0]={<th><%#= t.Comment #%></th>
+			}] #%%>
+			<th></th>
+		</tr>
+		<tr v-for="us in curus" id="tr{{ us.<%%# e.getfirfieldName() #%%> }}">
+			<%%# [Fields[>0]={<td>{{ us.<%#= t.ColumnName #%> }}</td>
+			}] #%%>
+			<td>
+				<a class="label label-success" style="padding:4px;"  
+					@click="MODI(<%# GetModiClickPara() #%>)">
+					<span class="glyphicon glyphicon-pencil" style="color:white;" aria-hidden="true"></span>  
+				</a>
+				<a class="label label-danger" style="padding:4px 5px 4px 5px; margin-left: 16px;" @click="showdelmodal(us.<%%# e.getfirfieldName() #%%>, us.<%%# e.getsecfieldName() #%%>)" >
+					<span class="glyphicon glyphicon-trash" style="color:white;" aria-hidden="true" ></span>
+				</a>
+			</td>
+		</tr>
+		<tfoot>
+			<tr>
+				<td colspan="20" style="text-align: right;">
+					<ul id="pages" class="pagination">
+						<li><a @click="curpgs = 1" >&lt;&lt;</a></li> 
+						<li v-for="n in pgcount" @click="curpgs = n">
+							<a v-if="n===curpgs" style="background-color:#dddddd; color:white;" >{{n}}</a>
+							<a v-else>{{n}}</a>
+						</li> 
+						<li><a @click="curpgs = pgcount" >&gt;&gt;</a></li>  
+					</ul>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+	<script>
+
+		<%# HOYIVUEPostREQ() #%>
+
+		new Vue({
+			el:'#app',
+			data:<%# Tr<%%# e.ClassName.ToParscal() #%%>() #%>
+			,
+			methods:{
+				getdata:function(){
+					var pdata = {
+									"behavior":"RE<%%# e.ClassName.ToParscal() #%%>",
+									"pgindex": this.curpgs,
+									"filter": this.filter
+								};
+					Hoyi_VUE_Post(pdata, this.setresdata);
+				},
+				Delete:function(){
+		        	var pdata = {
+									"behavior":"DELETE",
+									"pgindex": this.curpgs,
+									"<%%# e.getfirfieldName() #%%>": this.cur_<%%# e.getfirfieldName() #%%>
+								};
+
+					Hoyi_VUE_Post(pdata, this.setresdata);
+
+		        }, Update<%%# e.ClassName.ToParscal() #%%>:function(){
+					var pdata = {};
+		        	if(this.addmodelshow){
+		        		pdata = {
+									"behavior":"Add<%%# e.ClassName.ToParscal() #%%>",
+									"pgindex": this.curpgs + 1,
+									<%# GetAddModiPara() #%>
+								};
+		        	}else{
+						pdata = {
+									"behavior":"UPDATEBYID",
+									"pgindex": this.curpgs,
+									<%# GetAddModiPara() #%>
+								};
+		        	}
+					Hoyi_VUE_Post(pdata, this.setresdata);
+		        }, 
+				setresdata:function(response){
+					if(response.data.status > 0){
+						this.curpgs = response.data.data.curpgs;
+						this.pgsize = response.data.data.pgsize;
+						this.datacount = response.data.data.datacount;
+						this.pgcount = response.data.data.pgcount;
+						this.curus = response.data.data.curus;
+
+		            	$("#modiModal").modal("hide");
+		            	$("#delmodal").modal("hide");
+					 }else{
+					 	alert('error:' + response.data.msg);
+					 }
+				},<%# GetModiMethod() #%>,doSubmit:function(){
+                    window.event.returnValue = false
+		        },showaddmodal:function(){
+					this.addmodelshow = true;
+
+					<%# ClearModiPara() #%>
+					//$("#modiaddform")[0].reset(); //将表单中的数据也清空
+		            $("#modiModal").modal("show");
+		        },
+		         showdelmodal(<%%# e.getfirfieldName() #%%>, <%%# e.getsecfieldName() #%%>){
+		            this.cur_<%%# e.getfirfieldName() #%%> = <%%# e.getfirfieldName() #%%>;
+		            this.cur_<%%# e.getsecfieldName() #%%> = <%%# e.getsecfieldName() #%%>;
+
+		            $("#delmodal").modal("show");
+		        }
+			},
+			watch:{
+				curpgs:function(val){
+					 this.getdata();
+				},
+				filter:function(val){
+					this.getdata();
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <AttributeInfo>
+    <Comment>星级</Comment>
+    <ColumnName>starts</ColumnName>
+    <TypeName>int</TypeName>
+    <Length>1</Length>
+    <IsPK>false</IsPK>
+    <IsIdentity>false</IsIdentity>
+    <cisNull>false</cisNull>
+    <IsUnique>false</IsUnique>
+    <Notes> 如果有用到就用1-5</Notes>
+    <DefaultVal>-1</DefaultVal>
+  </AttributeInfo>
+</ArrayOfAttributeInfo>

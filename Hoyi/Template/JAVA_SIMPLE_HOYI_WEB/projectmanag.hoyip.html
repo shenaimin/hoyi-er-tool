@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+    <title><%%# e.EntityName #%%> 管理</title>
+	<link href="../../js/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../../js/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+
+	<script type="text/javascript" src="../../js/jquery/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="../../js/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-validate/localization/messages_zh.js"></script>
+	<script type="text/javascript" src="../../js/jquery-validate/jquery.validate.js"></script>
+	<script type="text/javascript" src="../../js/hoyi-req.js"></script>
+
+	<script type="text/javascript">
+
+		var curindex = 1;
+		var currentid;
+		var currentname;
+		function pgc(index) {
+			 curindex = index;
+			 var filter = $('#txfilter').val();
+			 var pdata = {
+							"behavior":"Get<%%# e.ClassName.ToParscal() #%%>",
+							"pgindex":index,
+							"filter":filter
+						};
+			HOYI_POST(pdata, function(data, status){
+				 $('#rep<%%# e.ClassName #%%>_parent').empty().append(data);
+			});		
+		}
+
+		function validateForm() { 
+			//validate方法参数可选 return
+			return $("#modiaddform").validate({
+				  submitHandler: function(form) {
+					  //alert('submitHandler');
+				  }
+			}).form(); 
+		}
+		
+		function ADD(){
+				$('#addmodallabel').text("添加<%%# e.EntityName #%%>");
+			
+				<%%# [Fields[>0]={$('#form-<%#= t.ColumnName #%>').val('');
+				}] #%%>
+				
+				$("#btnModiSubmits").text("添加");
+		
+				$('#btnModiSubmits').unbind('click');
+				$('#btnModiSubmits').click(function () {
+					if (!validateForm()) {
+						//alert('验证失败');
+						// 验证失败，不提交.
+						return;
+					}
+					//$("#modiaddform").validation();
+					var pdata = {
+						"behavior":"Add<%%# e.ClassName.ToParscal() #%%>",
+						<%%# [Fields[Inner,0,Last(1)]={"<%#= t.ColumnName #%>":$('#form-<%#= t.ColumnName #%>').val(),
+						}] #%%><%%# [Fields[Last(1)]={"<%#= t.ColumnName #%>":$('#form-<%#= t.ColumnName #%>').val()}] #%%>
+						};
+						
+					HOYI_POST(pdata, function(rdata, status){
+						 if (rdata.status == 1) {
+								 pgc(curindex);
+								 $('#modiModal').modal("hide");
+							}else{
+								alert(rdata.msg);
+							}
+					});	
+				 })
+			$('#modiModal').modal();
+		}
+
+		function MODI(<%%# [Fields[Inner,0,Last(1)]={ <%#= t.ColumnName #%>, }] #%%><%%# [Fields[Last(1)]={ <%#= t.ColumnName #%> }] #%%>) {
+
+			$('#addmodallabel').text("修改<%%# e.EntityName #%%>:" + <%%# e.getsecfield().ColumnName #%%>);
+			<%%# [Fields[>0]={$('#form-<%#= t.ColumnName #%>').val(<%#= t.ColumnName #%>);
+			}] #%%>
+			
+			$("#btnModiSubmits").text("修改");
+
+			$('#btnModiSubmits').unbind('click');
+			$('#btnModiSubmits').click(function () {
+				if (!validateForm()) {
+					alert('验证失败, 请检查');
+					// 验证失败，不提交.
+					return;
+				}
+				var pdata = {
+					"behavior":"UPDATEBYID",
+					<%%# [Fields[Inner,0,Last(1)]={"<%#= t.ColumnName #%>":$('#form-<%#= t.ColumnName #%>').val(),
+					}] #%%><%%# [Fields[Last(1)]={"<%#= t.ColumnName #%>":$('#form-<%#= t.ColumnName #%>').val()}] #%%>
+					};
+					
+				HOYI_POST(pdata, function(rdata, status){
+					if (rdata.status == 1) {
+						pgc(curindex);
+						$('#modiModal').modal("hide");
+					}else{
+						alert(rdata.msg);
+					}
+				});	
+			})
+
+			$('#modiModal').modal("show");
+		}
+		
+		function DEL(id, name) {
+			currentid = id;
+			currentname = name;
+
+			$('#myModal').modal("show");
+			$("#myModalLabel").text("删除");
+			$("#modal-body").text("你确定要删除<%%# e.EntityName #%%>：" + currentname);
+		}
+		
+		$(function(){
+			$('#btnDelete').click(function () {
+				var pdata = {
+					"behavior":"DELETE",
+					"<%%# e.getfirfieldName() #%%>":currentid
+				};
+					
+				HOYI_POST(pdata, function(rdata, status){
+					if (status == "success") {
+						$('#myModal').modal('hide');
+						$('#tr' + currentid).empty();
+						pgc(curindex);
+					}
+				});	
+			});
+		})
+		
+	</script>
+</head>
+<body>
+	<!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div id="modal-body" class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnDelete" class="btn btn-primary">确定删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add,Modi Modal -->
+    <div class="modal fade" id="modiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addmodallabel">Modal title</h4>
+                </div>
+                <div id="addmodalbody" class="modal-body">
+                    <form id="modiaddform" class="form-horizontal">
+                        
+						<%%# [Fields[Equals(0)]={
+                        <div class="form-group" style="display:none;">
+                            <input type="text" name="form-<%#= t.ColumnName #%>" id="form-<%#= t.ColumnName #%>" placeholder="" class=" form-control col-xs-10 col-sm-5">
+                        </div>
+						}] #%%>	
+					
+						<%%# [Fields[Equals(1)]={
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <%#= t.Comment #%></label>
+
+                            <div class="col-sm-9">
+                                <input type="text" name="form-<%#= t.ColumnName #%>" id="form-<%#= t.ColumnName #%>" placeholder="" required="" class=" form-control col-xs-10 col-sm-5" >
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+						}] #%%>	
+						<%%# [Fields[>2]={
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <%#= t.Comment #%></label>
+
+                            <div class="col-sm-9">
+                                <input type="text" name="form-<%#= t.ColumnName #%>" id="form-<%#= t.ColumnName #%>" placeholder="" class=" form-control col-xs-10 col-sm-5" >
+                                <span class="help-inline col-xs-12 col-sm-7">
+                                    <span class="middle"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+						}] #%%>	
+							
+                        <div class="modal-footer">
+                            <button id="btnModiSubmits" class="btn btn-primary">添加</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+            	</div>
+            </div>
+        </div>
+    </div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="btn-group" role="group" aria-label="...">
+				<a class="btn btn-default" onclick="ADD();"> <span
+					class="glyphicon glyphicon-plus" style="color: green;"
+					aria-hidden="true"></span> 添加<%%# e.EntityName #%%>
+				</a>
+				<div class="input-group" style="width: 30%; margin-left: 70%;">
+					<input type="text" class="form-control" id="txfilter"
+						name="locfilter" placeholder="输入查询条件"> <span
+						class="input-group-btn">
+						<button class="btn btn-default" type="button"
+							onclick="pgc(1);">查询</button>
+					</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<table class="table table-border" id="rep<%%# e.ClassName #%%>_parent">
+		<hoyip:Repeater id="rep<%%# e.ClassName #%%>">
+			<HeaderTemplate>
+			<thead>
+				<tr>
+					<%%# [Fields[>1]={<th><%#= t.Comment #%></th>
+					}] #%%>
+					<th></th>
+				</tr>
+			</thead>
+			</HeaderTemplate>
+			<tbody>
+			<ItemTemplate>
+					<%%# [Fields[Equals(0)]={<tr id="tr{# <%#= t.ColumnName #%> #}">
+						}] #%%>	
+						<%%# [Fields[>1]={ <td>{# <%#= t.ColumnName #%> #}</td>
+						}] #%%>
+					<td>
+						<a class="label label-success" style="padding:4px;"  
+						onclick="MODI(<%%# [Fields[Inner,0,Last(1)]={'{# <%#= t.ColumnName #%> #}',}] #%%><%%# [Fields[Last(1)]={'{# <%#= t.ColumnName #%> #}'}] #%%>)">
+							<span class="glyphicon glyphicon-pencil" style="color:white;" aria-hidden="true"></span>  
+						</a>
+						<a class="label label-danger" style="padding:4px 5px 4px 5px; margin-left: 16px;"  
+						onclick="DEL('{# <%%# e.getfirfieldName() #%%> #}','{# <%%# e.getsecfieldName() #%%> #}');" >
+							<span class="glyphicon glyphicon-trash" style="color:white;" aria-hidden="true" ></span>
+						</a>
+					</td>
+				</tr>
+			</ItemTemplate>
+			</tbody>
+			<FooterTemplate>
+				<tfoot>
+					<tr>
+						<td colspan="20" style="text-align: right;">
+							<ul id="pages" class="pagination">
+								<li><a onclick="pgc(1)" href="#">&lt;&lt;</a></li> 
+								<Paging> 
+								<PagiCurrent><li><a style="background-color:#dddddd; color:white;" onclick="pgc({# pageindex #})" href="#">{# pageindex #}</a></li></PagiCurrent> 
+								<PagiCustom><li><a onclick="pgc({# pageindex #})" href="#">{# pageindex #}</a></li></PagiCustom> 
+								</Paging>
+								<li><a onclick="pgc({# pagecount #})" href="#">&gt;&gt;</a></li>  
+							</ul>
+						</td>
+					</tr>
+				</tfoot>
+			</FooterTemplate>
+		</hoyip:Repeater>
+	</table>
+</body>
+</html>

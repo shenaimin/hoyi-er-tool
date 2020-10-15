@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<AttributeInfo>
+		<Comment>状态</Comment>
+		<ColumnName>status</ColumnName>
+		<TypeName>int </TypeName>
+		<Length>10</Length>
+		<IsPK>false</IsPK>
+		<IsIdentity>false</IsIdentity>
+		<cisNull>false</cisNull>
+		<IsUnique>false</IsUnique>
+		<DefaultVal>0</DefaultVal>
+    </AttributeInfo>
+</ArrayOfAttributeInfo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AttributeInfo>
+    <Comment>金额</Comment>
+    <ColumnName>amount</ColumnName>
+    <TypeName>decimal</TypeName>
+    <Length>15</Length>
+    <Preci>15</Preci>
+    <Scale>2</Scale>
+    <IsPK>false</IsPK>
+    <IsIdentity>false</IsIdentity>
+    <cisNull>false</cisNull>
+    <IsUnique>false</IsUnique>
+	  <DefaultVal>0.0</DefaultVal>
+  </AttributeInfo>
+</ArrayOfAttributeInfo>

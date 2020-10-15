@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app id="WebApp_ID">
+	<display-name>demms</display-name>
+	
+<%%# [Tables[X]={
+	<servlet>
+		<servlet-name><%#= t.ClassName #%>Servlet</servlet-name>
+		<display-name><%#= t.ClassName #%> servlet</display-name>
+		<description><%#= t.ClassName #%> servlet</description>
+		<servlet-class><%#= a.NameSpace #%>.mds.<%#= t.ClassName #%>.<%#= t.ClassName #%>Servlet</servlet-class>
+	</servlet>
+}] #%%>
+
+<%%# [Tables[X]={
+	<servlet-mapping>
+		<servlet-name><%#= t.ClassName #%>Servlet</servlet-name>
+		<url-pattern>/servlet/<%#= t.ClassName #%>Servlet</url-pattern>
+	</servlet-mapping>
+
+}] #%%>
+	
+	
+	
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <AttributeInfo>
+        <Comment>修改状态</Comment>
+        <ColumnName>asyncstate</ColumnName>
+        <TypeName>int</TypeName>
+        <Length>0</Length>
+        <IsPK>false</IsPK>
+        <IsIdentity>false</IsIdentity>
+        <cisNull>false</cisNull>
+        <IsUnique>false</IsUnique>
+        <DefaultVal>-1</DefaultVal>
+    </AttributeInfo>
+    <AttributeInfo>
+        <Comment>最后修改时间</Comment>
+        <ColumnName>lastmoditime</ColumnName>
+        <TypeName>varchar</TypeName>
+        <Length>20</Length>
+        <IsPK>false</IsPK>
+        <IsIdentity>false</IsIdentity>
+        <cisNull>false</cisNull>
+        <IsUnique>false</IsUnique>
+        <SysDefaultVal>CURRENT_TIMESTAMP </SysDefaultVal>
+    </AttributeInfo>
+    <AttributeInfo>
+        <Comment>本地ID</Comment>
+        <ColumnName>localid</ColumnName>
+        <TypeName>varchar</TypeName>
+        <Length>30</Length>
+        <IsPK>false</IsPK>
+        <IsIdentity>false</IsIdentity>
+        <cisNull>false</cisNull>
+        <IsUnique>false</IsUnique>
+        <DefaultVal>-1</DefaultVal>
+    </AttributeInfo>
+</ArrayOfAttributeInfo>

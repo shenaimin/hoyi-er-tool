@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAttributeInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AttributeInfo>
+	  <Comment>门店编号</Comment>
+	  <ColumnName>facid</ColumnName>
+	  <TypeName>bigint</TypeName>
+	  <Length>20</Length>
+	  <IsPK>false</IsPK>
+	  <IsIdentity>false</IsIdentity>
+	  <cisNull>false</cisNull>
+	  <IsUnique>false</IsUnique>
+	  <Extra />
+	  <DefaultVal>-1</DefaultVal>
+	  <Collation />
+  </AttributeInfo>
+	<AttributeInfo>
+	  <Comment>员工编号</Comment>
+	  <ColumnName>empid</ColumnName>
+	  <TypeName>bigint</TypeName>
+	  <Length>20</Length>
+	  <IsPK>false</IsPK>
+	  <IsIdentity>false</IsIdentity>
+	  <cisNull>false</cisNull>
+	  <IsUnique>false</IsUnique>
+	  <Extra></Extra>
+	  <DefaultVal>-1</DefaultVal>
+	  <Collation />
+	</AttributeInfo>
+</ArrayOfAttributeInfo>
